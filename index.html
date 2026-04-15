@@ -230,6 +230,14 @@ body {
 .modal-url { display: inline-block; color: var(--purple-light); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid rgba(196, 181, 253, 0.3); transition: border-color 0.2s; }
 .modal-url:hover { border-color: var(--purple-light); }
 
+/* ── Disclaimer ── */
+.disclaimer {
+  position: relative; z-index: 2; text-align: center; padding: 12px 24px;
+  font-size: 0.8rem; font-style: italic; color: var(--text-muted);
+  border-bottom: 1px solid var(--glass-border);
+  background: rgba(139, 92, 246, 0.04);
+}
+
 /* ── Footer ── */
 .footer { position: relative; z-index: 2; text-align: center; padding: 40px 24px 60px; color: var(--text-muted); font-size: 0.8rem; }
 </style>
@@ -246,6 +254,9 @@ body {
   <div class="shape" style="width:200px;height:200px;left:55%;top:5%;animation-duration:20s;animation-delay:-4s;"></div>
 </div>
 <div class="mouse-orb" id="orb"></div>
+
+<!-- Disclaimer banner -->
+<div class="disclaimer">All product and company names on this page have been replaced with Star Wars codenames. The projects are real. The names are not. Unless you work for the Outer Rim Collective.</div>
 
 <!-- Hero -->
 <header class="hero">
