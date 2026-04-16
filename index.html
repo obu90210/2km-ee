@@ -267,7 +267,7 @@ body {
   <div class="hero-stats">
     <div class="stat"><div class="stat-number">21</div><div class="stat-label">Projects</div></div>
     <div class="stat"><div class="stat-number">6</div><div class="stat-label">Categories</div></div>
-    <div class="stat"><div class="stat-number">15</div><div class="stat-label">Active Now</div></div>
+    <div class="stat"><div class="stat-number">16</div><div class="stat-label">Active Now</div></div>
   </div>
 </header>
 
@@ -528,16 +528,16 @@ body {
   </div>
 
   <!-- ── Customer Chatbot ── -->
-  <div class="bubble" data-cat="auto" data-detail="The vision: a public chatbot on the company website that answers customer questions using our own documentation. The Jedi Archives MCP server was built as the indexing foundation. Third-party AI platforms evaluated and rejected. Awaiting management approval." data-alltech="Next.js (planned),Claude API,Pinecone,Knowledge MCP">
+  <div class="bubble" data-cat="auto" data-detail="Live since April 2026 on all 6 Outer Rim Collective sector sites. Answers customer questions from the Jedi Archives knowledge base only — strictly walled off from Holocron source code (legal requirement). Hybrid search combines SQLite FTS5 with Voyage vector embeddings (1024-dim) and feeds the top 8 passages into Claude Haiku 4.5, which streams answers with citations over SSE. Estonian is the single-source KB — foreign-language queries are auto-rewritten to Estonian for search, then answers translated back. Three-tier rate limiting (per-IP/min, per-IP/day, global/min), suspicious-IP admin view, and 90-day GDPR retention on raw IPs. Vanilla-JS widget, no build step. Admin panel behind Basic Auth with KPIs, unanswered questions, feedback, and page stats." data-alltech="Python 3.11,FastAPI,Claude Haiku 4.5,Voyage AI,SQLite FTS5,Docker,SSE,Apache">
     <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(236,72,153,0.08), 0 0 40px rgba(236,72,153,0.05);"></div>
     <div class="bubble-header">
       <div class="bubble-icon" style="background: rgba(236,72,153,0.15);">&#x1F4AC;</div>
-      <div><div class="bubble-title">Customer Chatbot</div><div class="bubble-tagline">AI support chatbot for company website</div></div>
+      <div><div class="bubble-title">Customer Chatbot</div><div class="bubble-tagline">Live AI support chatbot across 6 sector sites</div></div>
     </div>
-    <div class="bubble-desc">Customer-facing chatbot using the Jedi Archives MCP server as foundation. Next.js + Claude API + Pinecone planned.</div>
-    <div class="bubble-tags"><span class="tag">Next.js</span><span class="tag">Claude API</span><span class="tag">Pinecone</span><span class="tag">Knowledge MCP</span></div>
+    <div class="bubble-desc">Hybrid FTS5 + Voyage vector search over the Jedi Archives, Claude Haiku 4.5 streaming answers with citations. Multi-language query rewrite, 3-tier abuse protection, GDPR-compliant IP retention, admin panel.</div>
+    <div class="bubble-tags"><span class="tag">Python 3.11</span><span class="tag">FastAPI</span><span class="tag">Claude Haiku 4.5</span><span class="tag">Voyage AI</span><span class="tag">+4</span></div>
     <div class="bubble-footer">
-      <div class="status status-paused"><span class="status-dot"></span> Paused</div>
+      <div class="status status-active"><span class="status-dot"></span> Active</div>
       <span class="category-badge" style="background:rgba(236,72,153,0.12);color:#ec4899;">Automation</span>
     </div>
   </div>
