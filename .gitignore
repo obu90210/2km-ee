@@ -1,0 +1,11 @@
+# Scan artifacts — not part of the site
+*.json
+!_routes.json
+*.txt
+!.well-known/security.txt
+
+# Scan reports
+*-scan-*.md
+sslyze-*.txt
+nuclei-*.txt
+lighthouse-*.json
