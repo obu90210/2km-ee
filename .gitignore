@@ -3,9 +3,13 @@
 !_routes.json
 *.txt
 !.well-known/security.txt
+!robots.txt
 
 # Scan reports
 *-scan-*.md
 sslyze-*.txt
 nuclei-*.txt
 lighthouse-*.json
+
+# Local-only project instructions — not part of the deploy
+CLAUDE.md
