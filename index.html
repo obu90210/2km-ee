@@ -263,11 +263,11 @@ body {
 <header class="hero">
   <div class="hero-label">Outer Rim Collective &middot; AI & Automation</div>
   <h1 class="hero-name">Kaupo Karuse</h1>
-  <p class="hero-subtitle">20+ projects built with Claude, MCP servers, and a healthy obsession with ERP</p>
+  <p class="hero-subtitle">25+ projects built with Claude, MCP servers, and a healthy obsession with ERP</p>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-number">21</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-number">27</div><div class="stat-label">Projects</div></div>
     <div class="stat"><div class="stat-number">6</div><div class="stat-label">Categories</div></div>
-    <div class="stat"><div class="stat-number">16</div><div class="stat-label">Active Now</div></div>
+    <div class="stat"><div class="stat-number">22</div><div class="stat-label">Active Now</div></div>
   </div>
 </header>
 
@@ -287,15 +287,30 @@ body {
      ═══════════════════════════════════════════════════════ -->
 <main class="bubbles-container" id="bubbles">
 
+  <!-- ── Star Forge ── -->
+  <div class="bubble featured" data-cat="infra" data-detail="The planet everything orbits. One Linux server quietly running ~18 containers — every MCP server, dashboard, chatbot, and test tool on this page lives here. Apache out front terminates TLS and routes each service by hostname or path; Docker Compose runs the fleet; PostgreSQL and the cron jobs sit on the host. Documented top to bottom so the team can deploy without guessing." data-alltech="Rocky Linux,Docker Compose,Apache,PostgreSQL,CSF/LFD">
+    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
+    <div class="bubble-header">
+      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F3ED;</div>
+      <div><div class="bubble-title">Star Forge</div><div class="bubble-tagline">The internal tools server platform</div></div>
+    </div>
+    <div class="bubble-desc">The single Linux host running the whole platform — ~18 Docker containers behind Apache, with PostgreSQL and cron on the host. Every other tool here runs on it.</div>
+    <div class="bubble-tags"><span class="tag">Rocky Linux</span><span class="tag">Docker Compose</span><span class="tag">Apache</span><span class="tag">PostgreSQL</span><span class="tag">+1</span></div>
+    <div class="bubble-footer">
+      <div class="status status-active"><span class="status-dot"></span> Active</div>
+      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
+    </div>
+  </div>
+
   <!-- ── Holocron ── -->
-  <div class="bubble featured" data-cat="infra" data-detail="The crown jewel. Without Holocron, Claude knows nothing about Kyber Ledger. With it, Claude reads the actual source code of the entire ERP product — 4000+ Aurebesh files indexed and searchable in milliseconds. Deployed on a dedicated server, protected by IP whitelist and bearer token auth. Daily sync pulls latest code from the main repo at 06:00." data-alltech="Python 3.11,MCP SDK,SQLite FTS5,FastMCP,uvicorn,Apache">
+  <div class="bubble featured" data-cat="infra" data-detail="The crown jewel. Without Holocron, Claude knows nothing about Kyber Ledger. Rebuilt June 2026 as a full retrieval-augmented (RAG) engine: 4000+ Aurebesh source files plus the Aurebesh Codex docs embedded into a Qdrant vector database, with a dedicated reranker for precision. Two MCP transports (streamable-HTTP and SSE), 8 tools, behind IP whitelist and bearer-token auth. A nightly job keeps the index in sync with the main repo." data-alltech="Python,MCP SDK,Qdrant,Infinity embeddings,FastAPI,Docker,Apache">
     <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
     <div class="bubble-header">
       <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F52E;</div>
-      <div><div class="bubble-title">Holocron</div><div class="bubble-tagline">MCP server — ERP source code knowledge</div></div>
+      <div><div class="bubble-title">Holocron</div><div class="bubble-tagline">RAG MCP server — ERP source code knowledge</div></div>
     </div>
-    <div class="bubble-desc">Custom MCP server giving Claude direct access to the entire Kyber Ledger Aurebesh source code. 5 search tools backed by SQLite FTS5 — search code, explain modules, list register fields, trace field behavior.</div>
-    <div class="bubble-tags"><span class="tag">Python 3.11</span><span class="tag">MCP SDK</span><span class="tag">SQLite FTS5</span><span class="tag">FastMCP</span><span class="tag">+2</span></div>
+    <div class="bubble-desc">Custom MCP server giving Claude direct access to the entire Kyber Ledger Aurebesh source. Now a full RAG stack — Qdrant vectors + embeddings + reranker behind 8 tools: search code, get full definitions, list register fields, translate terms across 8 languages, explain modules.</div>
+    <div class="bubble-tags"><span class="tag">Python</span><span class="tag">Qdrant</span><span class="tag">FastAPI</span><span class="tag">MCP SDK</span><span class="tag">+3</span></div>
     <div class="bubble-footer">
       <div class="status status-active"><span class="status-dot"></span> Active</div>
       <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
@@ -311,6 +326,36 @@ body {
     </div>
     <div class="bubble-desc">~4000 articles from product FAQ, Holocron Archives, website content, and API docs — all searchable by Claude. Includes a multilingual ERP terminology dictionary with 3200+ terms across 8 languages.</div>
     <div class="bubble-tags"><span class="tag">Python 3.11</span><span class="tag">FastMCP</span><span class="tag">SQLite FTS5</span><span class="tag">httpx</span><span class="tag">+1</span></div>
+    <div class="bubble-footer">
+      <div class="status status-active"><span class="status-dot"></span> Active</div>
+      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- ── Senate Archives ── -->
+  <div class="bubble" data-cat="infra" data-detail="Commissioned by the Outer Rim Collective's board. A third knowledge MCP — but instead of source code or product docs, it answers questions about the company itself: financials, top customers, org structure, people. Runs alongside Holocron and Jedi Archives on the same server, gated to office + VPN only. No live ERP feed yet — curated data, refreshed by hand." data-alltech="Python,MCP SDK,SQLite,FastAPI,Docker">
+    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
+    <div class="bubble-header">
+      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F3DB;</div>
+      <div><div class="bubble-title">Senate Archives</div><div class="bubble-tagline">MCP server — board, finance &amp; HR knowledge</div></div>
+    </div>
+    <div class="bubble-desc">A board-facing MCP server: company profile, financials, top customers, and HR — answerable by Claude. Office + VPN only. Built June 2026.</div>
+    <div class="bubble-tags"><span class="tag">Python</span><span class="tag">MCP SDK</span><span class="tag">SQLite</span><span class="tag">FastAPI</span><span class="tag">+1</span></div>
+    <div class="bubble-footer">
+      <div class="status status-active"><span class="status-dot"></span> Active</div>
+      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
+    </div>
+  </div>
+
+  <!-- ── HoloNet ── -->
+  <div class="bubble" data-cat="infra" data-detail="One country-aware home for all Outer Rim help content. Stores articles per market and language and serves them over a JSON API, so the public website, the Customer Chatbot, and future tools all read from one source instead of scattered copies. Office/VPN-gated while it fills up; goes public later." data-alltech="Python,Starlette,SQLite FTS5,Docker">
+    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
+    <div class="bubble-header">
+      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F310;</div>
+      <div><div class="bubble-title">HoloNet</div><div class="bubble-tagline">Country-aware help content hub &amp; API</div></div>
+    </div>
+    <div class="bubble-desc">Unified, multi-country, multi-language help content store with a JSON API — one source of truth feeding the website and the Customer Chatbot.</div>
+    <div class="bubble-tags"><span class="tag">Python</span><span class="tag">Starlette</span><span class="tag">SQLite FTS5</span><span class="tag">Docker</span></div>
     <div class="bubble-footer">
       <div class="status status-active"><span class="status-dot"></span> Active</div>
       <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
@@ -401,6 +446,51 @@ body {
     </div>
     <div class="bubble-desc">PHP + Vanilla JS test management IDE. CodeMirror editor, live SSE output streaming, snapshot diff viewer, module tree.</div>
     <div class="bubble-tags"><span class="tag">PHP 8</span><span class="tag">JavaScript ES6+</span><span class="tag">CodeMirror 5</span><span class="tag">SQLite</span><span class="tag">+2</span></div>
+    <div class="bubble-footer">
+      <div class="status status-active"><span class="status-dot"></span> Active</div>
+      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
+    </div>
+  </div>
+
+  <!-- ── Garrison Command ── -->
+  <div class="bubble" data-cat="web" data-detail="An internal dashboard for the team that manages Outer Rim hosted-portal customers. Pulls usage logs over SFTP, cross-references the ERP, and shows who's active, who's idle, and who's asked to be switched off. Built for one power user; a nightly cron refreshes the data before the backup window." data-alltech="React,Express,PostgreSQL,SFTP,Docker">
+    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
+    <div class="bubble-header">
+      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F39B;</div>
+      <div><div class="bubble-title">Garrison Command</div><div class="bubble-tagline">Hosted-portal customer management</div></div>
+    </div>
+    <div class="bubble-desc">Staff dashboard to manage hosted-portal customers — usage analytics, account status, deactivation requests. React + Express + PostgreSQL, behind VPN.</div>
+    <div class="bubble-tags"><span class="tag">React</span><span class="tag">Express</span><span class="tag">PostgreSQL</span><span class="tag">SFTP</span><span class="tag">+1</span></div>
+    <div class="bubble-footer">
+      <div class="status status-active"><span class="status-dot"></span> Active</div>
+      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
+    </div>
+  </div>
+
+  <!-- ── Comlink ── -->
+  <div class="bubble" data-cat="web" data-detail="A Postman-style API workbench built for the consultants, so they can poke Kyber Ledger and Fleet Command REST endpoints without installing anything. Saves requests and (encrypted) credentials, supports GET/POST/PATCH. Office + VPN only, because it stores ERP passwords." data-alltech="Node.js,Express,React,Vite,PostgreSQL">
+    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
+    <div class="bubble-header">
+      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F4E1;</div>
+      <div><div class="bubble-title">Comlink</div><div class="bubble-tagline">REST API workbench for consultants</div></div>
+    </div>
+    <div class="bubble-desc">Browser-based REST API client for the team — test Kyber Ledger / Fleet Command endpoints, save requests, store credentials encrypted. GET/POST/PATCH.</div>
+    <div class="bubble-tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">Vite</span><span class="tag">+1</span></div>
+    <div class="bubble-footer">
+      <div class="status status-active"><span class="status-dot"></span> Active</div>
+      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
+    </div>
+  </div>
+
+  <!-- ── Kessel Turnover Report ── -->
+  <div class="bubble" data-cat="web" data-detail="A self-service sales report for one customer, Kessel Mining. Shows revenue per client and per item this year against the same period last year, plus a year-to-date view. Stateless — every page load pulls live numbers straight from the ERP, no database. Behind VPN and the customer's own office IP." data-alltech="Node.js,Express,ERP REST API">
+    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
+    <div class="bubble-header">
+      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F4CA;</div>
+      <div><div class="bubble-title">Kessel Turnover Report</div><div class="bubble-tagline">Year-over-year sales report</div></div>
+    </div>
+    <div class="bubble-desc">Year-over-year sales turnover report for Kessel Mining — revenue per customer and per item vs. last year, live from the ERP. Stateless Express app, no database.</div>
+    <div class="bubble-tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">ERP REST API</span></div>
     <div class="bubble-footer">
       <div class="status status-active"><span class="status-dot"></span> Active</div>
       <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
