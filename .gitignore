@@ -4,6 +4,7 @@
 *.txt
 !.well-known/security.txt
 !robots.txt
+!llms.txt
 
 # Scan reports
 *-scan-*.md

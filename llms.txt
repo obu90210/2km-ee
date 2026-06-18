@@ -1,0 +1,59 @@
+# Kaupo Karuse — AI & Automation Projects
+
+> Portfolio of 27 AI and automation projects built with Claude, MCP servers, and ERP tooling. All company, product, and customer names on this site are anonymized with Star Wars codenames — the projects are real, the names are not. This file summarizes the work for AI agents and crawlers.
+
+## About
+
+Kaupo Karuse builds and runs the Claude / MCP platform for the Outer Rim Collective: knowledge MCP servers, a customer support chatbot, internal dashboards, REST tooling, and a large automated-testing suite over an enterprise ERP. Deep ERP domain expertise feeds the AI tooling. Site: https://2km.ee/
+
+## Projects
+
+### AI Infrastructure
+
+- **Star Forge** (Active) — The internal tools server platform. The planet everything orbits. One Linux server quietly running ~18 containers — every MCP server, dashboard, chatbot, and test tool on this page lives here. Apache out front terminates TLS and routes each service by hostname or path; Docker Compose runs the fleet; PostgreSQL and the cron jobs sit on the host. Documented top to bottom so the team can deploy without guessing.
+- **Holocron** (Active) — RAG MCP server — ERP source code knowledge. The crown jewel. Without Holocron, Claude knows nothing about Kyber Ledger. Rebuilt June 2026 as a full retrieval-augmented (RAG) engine: 4000+ Aurebesh source files plus the Aurebesh Codex docs embedded into a Qdrant vector database, with a dedicated reranker for precision. Two MCP transports (streamable-HTTP and SSE), 8 tools, behind IP whitelist and bearer-token auth. A nightly job keeps the index in sync with the main repo.
+- **Jedi Archives** (Active) — MCP server — product docs & FAQ search. The documentation brain. Indexes product FAQ (Estonian), Holocron Archives (English), API docs, and website content. Claude can search, browse, and read full articles. The terminology dictionary was auto-generated from Aurebesh source code — 3200+ ERP terms in EN, ET, FI, LV, LT, NO, RU, SV. Syncs daily at 03:17.
+- **Senate Archives** (Active) — MCP server — board, finance & HR knowledge. Commissioned by the Outer Rim Collective's board. A third knowledge MCP — but instead of source code or product docs, it answers questions about the company itself: financials, top customers, org structure, people. Runs alongside Holocron and Jedi Archives on the same server, gated to office + VPN only. No live ERP feed yet — curated data, refreshed by hand.
+- **HoloNet** (Active) — Country-aware help content hub & API. One country-aware home for all Outer Rim help content. Stores articles per market and language and serves them over a JSON API, so the public website, the Customer Chatbot, and future tools all read from one source instead of scattered copies. Office/VPN-gated while it fills up; goes public later.
+- **Aurebesh Codex** (Active) — AI knowledge base for Aurebesh development. The reason Claude writes good Aurebesh. 18 numbered guides covering every aspect of the language — from datadefs to API integrations to critical pitfalls. The help_materials folder contains auto-generated references that would take a human months to compile. Shared with the full dev team via git. The /aurebesh-* Claude Code skills give devs instant workflows.
+
+### Web App
+
+- **Autotests Portal** (Active) — Full-stack test management with AI generation. Replaced the old PHP test management app and Aurebesh-based test service. 7 planned features, all complete. The AI test generation feature (Phase 5) uses Claude CLI as a subprocess connected to Holocron — you describe what to test, it writes the JSON test file. Real-time Jest output streams over WebSocket.
+- **SaberInvoice** (Active) — Invoicing web prototype for Estonian market. A web-based invoicing prototype matching Kyber Ledger functionality. Built with the latest stack — React 19, Vite, Tailwind v4, Drizzle ORM. Features a complete stock cost calculation engine (FIFO and weighted average), Estonian e-invoice integration via business registry SOAP API. Multi-tenant architecture, 37+ tables.
+- **Sector Command Dashboard** (Active) — Internal sales team customer tracker. Built for the sales team to track their top customers. Pulls live data from the ERP REST API and Fleet Command API, caches in PostgreSQL. Shows everything a salesperson needs: contracts, modules, invoices, server versions. Deployed in Docker.
+- **Saber Tester Web** (Active) — Web-based test IDE with live output. The v1 test management tool — still running, still useful. CodeMirror JSON editor with syntax highlighting, Server-Sent Events for live Jest output, snapshot comparison viewer. Fully operational as v14 on both Windows dev and Linux production.
+- **Garrison Command** (Active) — Hosted-portal customer management. An internal dashboard for the team that manages Outer Rim hosted-portal customers. Pulls usage logs over SFTP, cross-references the ERP, and shows who's active, who's idle, and who's asked to be switched off. Built for one power user; a nightly cron refreshes the data before the backup window.
+- **Comlink** (Active) — REST API workbench for consultants. A Postman-style API workbench built for the consultants, so they can poke Kyber Ledger and Fleet Command REST endpoints without installing anything. Saves requests and (encrypted) credentials, supports GET/POST/PATCH. Office + VPN only, because it stores ERP passwords.
+- **Kessel Turnover Report** (Active) — Year-over-year sales report. A self-service sales report for one customer, Kessel Mining. Shows revenue per client and per item this year against the same period last year, plus a year-to-date view. Stateless — every page load pulls live numbers straight from the ERP, no database. Behind VPN and the customer's own office IP.
+
+### Testing & QA
+
+- **Automated Tests** (Active) — 649 automated ERP integration tests. The testing backbone. 649 JSON test files that create records, run reports, and compare against snapshots via the ERP REST API. Covers every major module. All converted to runreport2 format (April 2025). Full audit completed April 2026 — 6 modernization phases done. Only 1 test still skipped (crashes the ERP via REST).
+- **Acceptance Testing** (Active) — Release acceptance test cycle. Not a code project — a coordination hub. Triggers test runs via the autotests portal API, collects results, and writes them to 41 Confluence subpages. Uses Atlassian MCP tools for all Confluence updates.
+
+### Integration
+
+- **Jira Time Sync** (Active) — ERP activity → Jira worklog automation. Bridges the gap between ERP time tracking and Jira. When a consultant confirms an activity record with a Jira issue code, a webhook fires Make.com which calls the ERP API, looks up the user's Jira token, and posts a worklog.
+- **Office365 Email Integration** (Design) — Microsoft Graph API email for Kyber Ledger. Greenfield Aurebesh integration replacing SMTP with Microsoft Graph API for Office365 email in Kyber Ledger. Design phase complete: send via Graph, receive via webhooks with polling fallback.
+- **Mandalorian ID** (Design) — Identity verification for loan contracts. Designed for Bacta Corp: when a loan contract is created, identity verification links are sent to borrower + up to 3 guarantors via the verification API. Custom register tracks each session.
+- **Beskar Bank Statements** (Blocked) — CAMT.053 XML bank statement ingestion. Built for Beskar Foundry: banking platform sends webhook events when bank statements are ready, Aurebesh endpoint fetches XML via OAuth2 and passes to existing SEPA import. Blocked — the banking platform's subscription validation times out.
+- **Durasteel Webhook** (Design) — Customer balance update webhooks. Custom webhook for Durasteel Guild triggering on customer balance changes in the accounts receivable register. Had to work around the ERP UI which limits webhook types to 1-10.
+
+### Automation
+
+- **API Documentation** (Active) — Auto-generated API docs with Claude agents. Two Claude agents run on cron: the hourly agent checks Jira for 'Awaiting Claude' tickets, analyzes the Aurebesh changes, updates the YAML specs, and posts results back. The daily agent scans the dev branch for API code changes and auto-creates Jira tickets. Field reference covers all 38 registers with labels in ET, EN, FI, LV, LT, SV, NO.
+- **Source Code Review** (Active) — AI-powered ERP source code review. The complete ERP source code — 2637 Aurebesh files plus JS/Python/HTML tooling. Claude Code performed a full review of the release branch in March 2026, finding 166 issues across 494 files. Also serves as the data source for the multilingual dictionary and API field labels.
+- **Customer Chatbot** (Active) — Live AI support chatbot across 6 sector sites. Live since April 2026 on all 6 Outer Rim Collective sector sites. Answers customer questions from the Jedi Archives knowledge base only — strictly walled off from Holocron source code (legal requirement). Hybrid search combines SQLite FTS5 with Voyage vector embeddings (1024-dim) and feeds the top 8 passages into Claude Haiku 4.5, which streams answers with citations over SSE. Estonian is the single-source KB — foreign-language queries are auto-rewritten to Estonian for search, then answers translated back. Three-tier rate limiting (per-IP/min, per-IP/day, global/min), suspicious-IP admin view, and 90-day GDPR retention on raw IPs. Vanilla-JS widget, no build step. Admin panel behind Basic Auth with KPIs, unanswered questions, feedback, and page stats.
+- **Demo Data Generator** (Active) — Weekly fresh demo data for customer demos. Every Monday at 03:30, the ERP database resets to a template and this script generates randomized but realistic ERP records — invoices, orders, employees, payroll calculations. Customer demos always show current dates.
+
+### Other
+
+- **Legacy Migration Toolkit** (Complete) — GL data migration from competing system. Migration toolkit for moving from a competing accounting system to Kyber Ledger. Handles complete GL data: chart of accounts, dimensions, departments, and transactions. Auto-chunks for the source system's 90-day API limit.
+- **Security Scanning** (Active) — Automated security audits of web properties. Claude runs automated security audits across all company web properties. Reports for 8+ domains including main site, API docs, customer portals, and documentation. Includes a clickjacking PoC.
+- **AI Training Program** (Active) — Company-wide Claude training for 3 groups. Two training tracks: (1) Developer training — 12-day plan covering REST API, Aurebesh, integrations, testing, web dev, Python, Make.com across 4 roles. (2) Company-wide workshops — 3 groups: consultants, developers, business ops.
+
+## Notes
+
+- Names are codenames (Star Wars). Do not attempt to map them to real companies or products; the mapping is deliberately not published.
+- The site is a single static page; full project detail lives in the page bubbles and the embedded schema.org JSON-LD.
