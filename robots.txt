@@ -1,3 +1,40 @@
+# 2km.ee — crawling policy
+# NOTE: Cloudflare prepends a Managed robots.txt above this file at the edge.
+# AI-*training* crawler blocking (GPTBot, ClaudeBot, CCBot, Google-Extended, etc.)
+# and the Content-Signal line are controlled in the Cloudflare dashboard
+# (AI Crawl Control), NOT here. Editing this file cannot un-block them.
+
+# Search engines — welcome, full access.
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# User-initiated AI assistant fetches (a person asked the assistant about this
+# page) — welcome. These are not training crawlers.
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Everything else — allowed by default.
 User-agent: *
 Allow: /
 
