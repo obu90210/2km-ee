@@ -58,6 +58,18 @@ document.querySelectorAll('.bubble').forEach(b => {
   });
 });
 
+// Assemble the contact email at runtime so it never appears whole in the HTML source.
+const emailEl = document.getElementById('email');
+if (emailEl) {
+  const rev = s => s.split('').reverse().join('');
+  const addr = rev(emailEl.dataset.u) + '@' + rev(emailEl.dataset.d);
+  const link = document.createElement('a');
+  link.className = 'footer-email';
+  link.href = 'mailto:' + addr;
+  link.textContent = addr;
+  emailEl.replaceWith(link);
+}
+
 document.querySelectorAll('.stat-number').forEach(el => {
   const target = parseInt(el.textContent);
   el.textContent = '0';
