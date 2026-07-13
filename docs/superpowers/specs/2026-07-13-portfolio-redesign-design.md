@@ -69,16 +69,14 @@ anywhere else** (fixes the current site's rgba-drift gotcha).
 | `--paper-raise` (hover/expanded) | `#ece5d4` | `#1f2027` |
 | `--ink` | `#191510` | `#ece7db` |
 | `--muted` | `#57503e` | `#a49d8c` |
-| `--faint` | `#6d6656` | `#8a8577` |
+| `--faint` | `#6d6656` | `#918c7e` |
 | `--hair` (rules) | `#d9d2bf` | `#2e3038` |
-| `--accent` (vermillion) | `#bd3a0e` | `#f2683c` |
+| `--accent` (vermillion) | `#b73809` | `#f2683c` |
 | `--live` | `#1a6b3c` | `#4ac97e` |
-| `--warn` (amber) | `#8a5f00` | `#d8a53a` |
+| `--warn` (amber) | `#855c00` | `#d8a53a` |
 | `--blocked` | `#8f1d1d` | `#e25a5a` |
 
-No gradients, no glass, no glows, no violet. Accessibility: all text tokens
-verified ≥ 4.5:1 (WCAG AA small text) against both `--paper` and `--paper-raise`
-at plan time; `--faint` and light `--warn` were bumped from the mockup values to pass.
+No gradients, no glass, no glows, no violet. Accessibility: all text tokens verified ≥ 4.5:1 (WCAG AA small text) against both `--paper` and `--paper-raise`; accent/warn (light) and faint (dark) were bumped once more at implementation time after the hover-background check.
 
 ## Theme toggle
 
