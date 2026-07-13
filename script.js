@@ -24,8 +24,9 @@ if (filters) {
   filters.addEventListener('click', e => {
     const btn = e.target.closest('button[data-f]');
     if (!btn) return;
-    filters.querySelectorAll('button[data-f]').forEach(b => b.classList.remove('active'));
+    filters.querySelectorAll('button[data-f]').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     const want = btn.dataset.f;
     document.querySelectorAll('.entry').forEach(entry => {
       entry.hidden = want !== 'all' && entry.dataset.cat !== want;

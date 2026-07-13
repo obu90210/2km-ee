@@ -100,7 +100,7 @@ body {
 .theme-btn {
   font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 11px; letter-spacing: 0.15em;
   background: none; border: 1px solid var(--hair); color: var(--muted);
-  padding: 6px 12px; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  padding: 6px 12px; cursor: pointer; white-space: nowrap; transition: border-color 0.2s, color 0.2s;
 }
 .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -134,7 +134,6 @@ body {
 }
 .fbtn:hover { color: var(--ink); }
 .fbtn.active { color: var(--accent); border-bottom: 1px solid var(--accent); }
-.fbtn .count { opacity: 0.6; }
 
 /* ── Index ── */
 .colhead {
@@ -221,13 +220,13 @@ a.email-link:hover { color: var(--accent); border-color: var(--accent); }
   </header>
 
   <nav class="filters" id="filters" hidden aria-label="Filter projects by category">
-    <button class="fbtn active" data-f="all">ALL <span class="count">31</span></button>
-    <button class="fbtn" data-f="infra">AI INFRASTRUCTURE <span class="count">7</span></button>
-    <button class="fbtn" data-f="web">WEB APPS <span class="count">9</span></button>
-    <button class="fbtn" data-f="test">TESTING &amp; QA <span class="count">2</span></button>
-    <button class="fbtn" data-f="integ">INTEGRATIONS <span class="count">5</span></button>
-    <button class="fbtn" data-f="auto">AUTOMATION <span class="count">4</span></button>
-    <button class="fbtn" data-f="other">OTHER <span class="count">4</span></button>
+    <button class="fbtn active" data-f="all" aria-pressed="true">ALL <span class="count">31</span></button>
+    <button class="fbtn" data-f="infra" aria-pressed="false">AI INFRASTRUCTURE <span class="count">7</span></button>
+    <button class="fbtn" data-f="web" aria-pressed="false">WEB APPS <span class="count">9</span></button>
+    <button class="fbtn" data-f="test" aria-pressed="false">TESTING &amp; QA <span class="count">2</span></button>
+    <button class="fbtn" data-f="integ" aria-pressed="false">INTEGRATIONS <span class="count">5</span></button>
+    <button class="fbtn" data-f="auto" aria-pressed="false">AUTOMATION <span class="count">4</span></button>
+    <button class="fbtn" data-f="other" aria-pressed="false">OTHER <span class="count">4</span></button>
   </nav>
 
   <div class="colhead" aria-hidden="true">
