@@ -69,15 +69,16 @@ anywhere else** (fixes the current site's rgba-drift gotcha).
 | `--paper-raise` (hover/expanded) | `#ece5d4` | `#1f2027` |
 | `--ink` | `#191510` | `#ece7db` |
 | `--muted` | `#57503e` | `#a49d8c` |
-| `--faint` | `#8d8571` | `#6f6a5e` |
+| `--faint` | `#6d6656` | `#8a8577` |
 | `--hair` (rules) | `#d9d2bf` | `#2e3038` |
 | `--accent` (vermillion) | `#bd3a0e` | `#f2683c` |
 | `--live` | `#1a6b3c` | `#4ac97e` |
-| `--warn` (amber) | `#9a6a00` | `#d8a53a` |
+| `--warn` (amber) | `#8a5f00` | `#d8a53a` |
 | `--blocked` | `#8f1d1d` | `#e25a5a` |
 
-No gradients, no glass, no glows, no violet. Accessibility: verify `--faint` on
-`--paper` meets WCAG AA for the small mono text; bump toward `--muted` if it fails.
+No gradients, no glass, no glows, no violet. Accessibility: all text tokens
+verified ≥ 4.5:1 (WCAG AA small text) against both `--paper` and `--paper-raise`
+at plan time; `--faint` and light `--warn` were bumped from the mockup values to pass.
 
 ## Theme toggle
 
