@@ -17,3 +17,6 @@ CLAUDE.md
 
 # Visual brainstorming companion sessions — local only
 .superpowers/
+
+# Internal design docs — local only, never deploy
+docs/superpowers/
