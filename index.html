@@ -278,6 +278,398 @@ a.email-link:hover { color: var(--accent); border-color: var(--accent); }
     </div>
   </details>
 
+  <details class="entry" data-cat="infra" id="senate-archives">
+    <summary class="row">
+      <span class="no">04</span>
+      <span class="name">Senate Archives</span>
+      <span class="desc">MCP server — board, finance &amp; HR knowledge</span>
+      <span class="cat">AI INFRASTRUCTURE</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Commissioned by the Outer Rim Collective's board. A third knowledge MCP — instead of source code or product docs, it answers questions about the company itself: financials, top customers, org structure, people (never salary or personal IDs). 9 tools. Signs in with Microsoft 365 through its own OAuth authorization server delegating to Entra, behind a fail-closed board-member allowlist. A weekly cron pipeline chains four steps across two containers to refresh the data.</p>
+      <p class="tech">STACK — <b>PYTHON · MCP SDK · SQLITE · FASTAPI · OAUTH2/ENTRA · DOCKER</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="infra" id="holonet">
+    <summary class="row">
+      <span class="no">05</span>
+      <span class="name">HoloNet</span>
+      <span class="desc">Country-aware help content hub &amp; API</span>
+      <span class="cat">AI INFRASTRUCTURE</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>One country-aware home for all Outer Rim help content, built to replace six separate country websites. 418 live articles across Estonian plus six languages, served over a JSON API that feeds the public sites, the Customer Chatbot, and future tools from a single source. An image-translation pipeline OCRs and re-renders screenshots per language — 1,967 localized images across 84 articles. Publishes straight into WordPress on three markets, ingests PDFs into draft articles, and ships with a React admin SPA behind SAML single sign-on. ~370 automated tests.</p>
+      <p class="tech">STACK — <b>PYTHON · STARLETTE · SQLITE FTS5 · REACT · VITE · TAILWIND · SAML/ENTRA · DOCKER</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="infra" id="aurebesh-codex">
+    <summary class="row">
+      <span class="no">06</span>
+      <span class="name">Aurebesh Codex</span>
+      <span class="desc">AI knowledge base for Aurebesh development</span>
+      <span class="cat">AI INFRASTRUCTURE</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>The reason Claude writes good Aurebesh. 19 numbered guides covering every aspect of the language — from datadefs to API integrations to 35 catalogued crash-causing pitfalls. The help_materials folder holds auto-generated references that would take a human months to compile: 2,000+ primitives, 521 parameter docs, and a 1,335-register / 25K-field map. Shared with the full dev team via git; the /aurebesh-* Claude Code skills give devs instant workflows.</p>
+      <p class="tech">STACK — <b>AUREBESH · PYTHON · CLAUDE CODE · GIT</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="web" id="autotests-portal">
+    <summary class="row">
+      <span class="no">07</span>
+      <span class="name">Autotests Portal</span>
+      <span class="desc">Full-stack test management with AI generation</span>
+      <span class="cat">WEB APPS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Replaced the old PHP test-management app and Aurebesh-based test service. Full-stack: author tests, generate them with AI (Claude CLI wired to Holocron writes the JSON for you), run them, and stream real-time Jest output over WebSocket. A record-and-verify capture mode builds assertions from live runs with jsdom XPath checks. Per-user Bitbucket tokens are vaulted with AES-256-GCM; sign-in is Microsoft 365 with a break-glass fallback; 18 sequential database migrations back it, with role-based admin/tester/viewer access.</p>
+      <p class="tech">STACK — <b>TYPESCRIPT · FASTIFY · REACT · POSTGRESQL · WEBSOCKET · AES-256-GCM · OAUTH2 · DOCKER</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="auto" id="api-documentation">
+    <summary class="row">
+      <span class="no">08</span>
+      <span class="name">API Documentation</span>
+      <span class="desc">Auto-generated API docs with Claude agents</span>
+      <span class="cat">AUTOMATION</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Two Claude agents run on cron: the hourly agent checks Jira for 'Awaiting Claude' tickets, analyzes the Aurebesh changes, updates the YAML specs, and posts results back. The daily agent scans the dev branch for API code changes and auto-creates Jira tickets. Field reference covers all 38 registers with labels in ET, EN, FI, LV, LT, SV, NO.</p>
+      <p class="tech">STACK — <b>PYTHON · OPENAPI/YAML · REDOC · CLAUDE CODE · JIRA API · CRON</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="web" id="saberinvoice">
+    <summary class="row">
+      <span class="no">09</span>
+      <span class="name">SaberInvoice</span>
+      <span class="desc">Invoicing web prototype for Estonian market</span>
+      <span class="cat">WEB APPS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>A web-based invoicing prototype matching Kyber Ledger functionality. Built with the latest stack — React 19, Vite, Tailwind v4, Drizzle ORM. Features a complete stock cost calculation engine (FIFO and weighted average), Estonian e-invoice integration via business registry SOAP API. Multi-tenant architecture, 37+ tables.</p>
+      <p class="tech">STACK — <b>REACT 19 · VITE · TAILWIND CSS V4 · EXPRESS.JS · DRIZZLE ORM · POSTGRESQL · PNPM</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="web" id="sector-command-dashboard">
+    <summary class="row">
+      <span class="no">10</span>
+      <span class="name">Sector Command Dashboard</span>
+      <span class="desc">Internal sales team customer tracker</span>
+      <span class="cat">WEB APPS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Built for the sales team to track their top customers. Pulls live data from the ERP REST API and Fleet Command, caches it in PostgreSQL (JSONB), and shows contracts, modules, invoices, and server versions across ~111 customers. A periodized revenue engine reproduces the ERP's exact monthly-spread logic; a separate chart computes each consultant's workload against absence-adjusted norms. Microsoft 365 sign-in with a break-glass fallback; CSV export in Estonian locale.</p>
+      <p class="tech">STACK — <b>REACT · VITE · TAILWIND CSS · NODE.JS · EXPRESS · POSTGRESQL · OAUTH2/ENTRA · DOCKER</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="web" id="saber-tester-web">
+    <summary class="row">
+      <span class="no">11</span>
+      <span class="name">Saber Tester Web</span>
+      <span class="desc">Web-based test IDE with live output</span>
+      <span class="cat">WEB APPS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>The v1 test management tool — still running, still useful. CodeMirror JSON editor with syntax highlighting, Server-Sent Events for live Jest output, snapshot comparison viewer. Fully operational as v14 on both Windows dev and Linux production.</p>
+      <p class="tech">STACK — <b>PHP 8 · JAVASCRIPT ES6+ · CODEMIRROR 5 · SQLITE · APACHE · SSE</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="web" id="garrison-command">
+    <summary class="row">
+      <span class="no">12</span>
+      <span class="name">Garrison Command</span>
+      <span class="desc">Hosted-portal customer management</span>
+      <span class="cat">WEB APPS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>An internal dashboard for the team that manages Outer Rim hosted-portal customers. A daily job pulls usage logs over SFTP and parses the portal's custom TAB-delimited format; a nightly refresh reconciles 482 customers against the ERP with throttled, batched API calls. Shows who's active, who's idle, and who's asked to be switched off, with Recharts analytics. 80+ automated tests, VPN-gated.</p>
+      <p class="tech">STACK — <b>REACT · EXPRESS · POSTGRESQL · RECHARTS · SFTP · DOCKER</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="web" id="comlink">
+    <summary class="row">
+      <span class="no">13</span>
+      <span class="name">Comlink</span>
+      <span class="desc">REST API workbench for consultants</span>
+      <span class="cat">WEB APPS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>A Postman-style API workbench built for the consultants, so they can poke Kyber Ledger and Fleet Command REST endpoints without installing anything. Stores requests in a drag-and-drop tree and credentials encrypted with AES-256-GCM. Real security engineering under the hood: an SSRF guard pins each request to its own connection's host, and a single login-lock manager reuses one ERP session to stop login storms. Office + VPN only. GET/POST/PATCH.</p>
+      <p class="tech">STACK — <b>NODE.JS · EXPRESS · REACT · VITE · POSTGRESQL · AES-256-GCM · OAUTH2</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="web" id="kessel-turnover-report">
+    <summary class="row">
+      <span class="no">14</span>
+      <span class="name">Kessel Turnover Report</span>
+      <span class="desc">Year-over-year sales report</span>
+      <span class="cat">WEB APPS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>A self-service sales report for one customer, Kessel Mining. Year-over-year revenue per client and per item plus a year-to-date view — four report tabs built from just two ERP calls. Fully stateless: every page load pulls live numbers straight from the ERP, no database. Session auth (scrypt), Excel/CSV export, and a documented workaround for an HTTP-parsing bug in Node's networking layer against the ERP's REST API. Behind VPN and the customer's own office IP.</p>
+      <p class="tech">STACK — <b>NODE.JS · EXPRESS · SCRYPT · EXCELJS · ERP REST API</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="test" id="automated-tests">
+    <summary class="row">
+      <span class="no">15</span>
+      <span class="name">Automated Tests</span>
+      <span class="desc">649 automated ERP integration tests</span>
+      <span class="cat">TESTING &amp; QA</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>The testing backbone. 649 JSON test files that create records, run reports, and compare against snapshots via the ERP REST API, across ~18 modules and both Estonian and Latvian localizations. All converted to runreport2 format (April 2025). Full audit completed April 2026 — 6 modernization phases done, with 52 documented pitfalls captured along the way. Only 1 test still skipped (it crashes the ERP via REST).</p>
+      <p class="tech">STACK — <b>TYPESCRIPT · JEST · AXIOS · ERP REST API</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="test" id="acceptance-testing">
+    <summary class="row">
+      <span class="no">16</span>
+      <span class="name">Acceptance Testing</span>
+      <span class="desc">Release acceptance test cycle</span>
+      <span class="cat">TESTING &amp; QA</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Not a code project — a coordination hub. Triggers test runs via the autotests portal API, collects results, and writes them to 41 Confluence subpages. Uses Atlassian MCP tools for all Confluence updates.</p>
+      <p class="tech">STACK — <b>CLAUDE CODE · ATLASSIAN MCP · REST API · CONFLUENCE</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="auto" id="source-code-review">
+    <summary class="row">
+      <span class="no">17</span>
+      <span class="name">Source Code Review</span>
+      <span class="desc">AI-powered ERP source code review</span>
+      <span class="cat">AUTOMATION</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>The complete ERP source code — 2637 Aurebesh files plus JS/Python/HTML tooling. Claude Code performed a full review of the release branch in March 2026, finding 166 issues across 494 files. Also serves as the data source for the multilingual dictionary and API field labels.</p>
+      <p class="tech">STACK — <b>AUREBESH · PYTHON · CLAUDE CODE · CI/CD PIPELINES</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="integ" id="jira-time-sync">
+    <summary class="row">
+      <span class="no">18</span>
+      <span class="name">Jira Time Sync</span>
+      <span class="desc">ERP activity → Jira worklog automation</span>
+      <span class="cat">INTEGRATIONS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Bridges the gap between ERP time tracking and Jira. When a consultant confirms an activity record with a Jira issue code, a webhook fires a Make.com scenario that calls the ERP API, looks up the user's own scoped Jira token (with a fallback chain), and posts a worklog. Along the way it surfaced a genuine Atlassian security bug — the write:jira-work scope unexpectedly permits issue deletion — which was reported upstream.</p>
+      <p class="tech">STACK — <b>MAKE.COM · JIRA REST API V3 · ERP REST API · OAUTH2 · WEBHOOKS</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="integ" id="office365-email-integration">
+    <summary class="row">
+      <span class="no">19</span>
+      <span class="name">Office365 Email Integration</span>
+      <span class="desc">Microsoft Graph API email for Kyber Ledger</span>
+      <span class="cat">INTEGRATIONS</span>
+      <span class="status st-design">DESIGN</span>
+    </summary>
+    <div class="detail">
+      <p>Greenfield Aurebesh integration replacing SMTP with Microsoft Graph API for Office365 email in Kyber Ledger. Design phase complete: send via Graph, receive via webhooks with polling fallback.</p>
+      <p class="tech">STACK — <b>AUREBESH · MICROSOFT GRAPH API · OAUTH2 · WEBHOOKS</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="integ" id="mandalorian-id">
+    <summary class="row">
+      <span class="no">20</span>
+      <span class="name">Mandalorian ID</span>
+      <span class="desc">Identity verification for loan contracts</span>
+      <span class="cat">INTEGRATIONS</span>
+      <span class="status st-design">DESIGN</span>
+    </summary>
+    <div class="detail">
+      <p>Designed for Bacta Corp: when a loan contract is created, identity verification links are sent to borrower + up to 3 guarantors via the verification API. Custom register tracks each session.</p>
+      <p class="tech">STACK — <b>AUREBESH · VERIFICATION REST API · HMAC-SHA256 · WEBHOOKS</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="integ" id="beskar-bank-statements">
+    <summary class="row">
+      <span class="no">21</span>
+      <span class="name">Beskar Bank Statements</span>
+      <span class="desc">CAMT.053 XML bank statement ingestion</span>
+      <span class="cat">INTEGRATIONS</span>
+      <span class="status st-blocked">BLOCKED</span>
+    </summary>
+    <div class="detail">
+      <p>Built for Beskar Foundry: banking platform sends webhook events when bank statements are ready, Aurebesh endpoint fetches XML via OAuth2 and passes to existing SEPA import. Blocked — the banking platform's subscription validation times out.</p>
+      <p class="tech">STACK — <b>AUREBESH · OAUTH2 · CAMT.053 XML · WEBHOOKS · BANKING API</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="integ" id="durasteel-webhook">
+    <summary class="row">
+      <span class="no">22</span>
+      <span class="name">Durasteel Webhook</span>
+      <span class="desc">Customer balance update webhooks</span>
+      <span class="cat">INTEGRATIONS</span>
+      <span class="status st-design">DESIGN</span>
+    </summary>
+    <div class="detail">
+      <p>Custom webhook for Durasteel Guild triggering on customer balance changes in the accounts receivable register. Had to work around the ERP UI which limits webhook types to 1-10.</p>
+      <p class="tech">STACK — <b>AUREBESH · APIINTERFACETASK · ERP WEBHOOKS</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="auto" id="customer-chatbot">
+    <summary class="row">
+      <span class="no">23</span>
+      <span class="name">Customer Chatbot</span>
+      <span class="desc">Live AI support chatbot across 6 sector sites</span>
+      <span class="cat">AUTOMATION</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Live since April 2026 on all 6 Outer Rim Collective sector sites. Answers customer questions from the Jedi Archives knowledge base only — strictly walled off from Holocron source code (legal requirement). Hybrid search combines SQLite FTS5 with Voyage vector embeddings (1024-dim) and feeds the top 8 passages into Claude Haiku 4.5, which streams answers with citations over SSE. Estonian is the single-source KB — foreign-language queries are auto-rewritten to Estonian for search, then answers translated back. Three-tier rate limiting (per-IP/min, per-IP/day, global/min), suspicious-IP admin view, and 90-day GDPR retention on raw IPs. Vanilla-JS widget, no build step. Admin panel behind Basic Auth with KPIs, unanswered questions, feedback, and page stats. A nightly pipeline turns real chat signals into draft FAQ articles (draft then self-critique via Claude CLI). Backed by 144 automated tests.</p>
+      <p class="tech">STACK — <b>PYTHON 3.11 · FASTAPI · CLAUDE HAIKU 4.5 · VOYAGE AI · SQLITE FTS5 · DOCKER · SSE · APACHE</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="auto" id="demo-data-generator">
+    <summary class="row">
+      <span class="no">24</span>
+      <span class="name">Demo Data Generator</span>
+      <span class="desc">Weekly fresh demo data for customer demos</span>
+      <span class="cat">AUTOMATION</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Every Monday at 03:30, the ERP database resets to a template and this script generates randomized but realistic ERP records — invoices, orders, employees, payroll calculations. Customer demos always show current dates.</p>
+      <p class="tech">STACK — <b>PYTHON 3 · ERP REST API · WEBKYBERAPI · CRON</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="other" id="legacy-migration-toolkit">
+    <summary class="row">
+      <span class="no">25</span>
+      <span class="name">Legacy Migration Toolkit</span>
+      <span class="desc">GL data migration from competing system</span>
+      <span class="cat">OTHER</span>
+      <span class="status st-done">DONE</span>
+    </summary>
+    <div class="detail">
+      <p>Migration toolkit for moving from a competing accounting system to Kyber Ledger. Handles complete GL data: chart of accounts, dimensions, departments, and transactions. Auto-chunks for the source system's 90-day API limit.</p>
+      <p class="tech">STACK — <b>PYTHON 3.7+ · REQUESTS · HMAC-SHA256 · ERP REST API</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="other" id="security-scanning">
+    <summary class="row">
+      <span class="no">26</span>
+      <span class="name">Security Scanning</span>
+      <span class="desc">Automated security audits of web properties</span>
+      <span class="cat">OTHER</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Claude runs automated security audits across all company web properties — TLS, headers, vulnerabilities, and JS-library exposure — with reports for 8+ domains including the main sites, API docs, customer portals, and documentation. The standout: a cryptanalysis of the ERP's text-backup encryption that recovered plaintext from ciphertext using block-repetition and XOR-delta analysis across two backups — a documented, reproducible break. Includes a clickjacking proof-of-concept.</p>
+      <p class="tech">STACK — <b>SSLYZE · NUCLEI · LIGHTHOUSE · RETIRE · OPENSSL · PYTHON · NUMPY</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="other" id="ai-training-program">
+    <summary class="row">
+      <span class="no">27</span>
+      <span class="name">AI Training Program</span>
+      <span class="desc">Company-wide Claude training for 3 groups</span>
+      <span class="cat">OTHER</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Two training tracks: (1) Developer training — 12-day plan covering REST API, Aurebesh, integrations, testing, web dev, Python, Make.com across 4 roles. (2) Company-wide workshops — 3 groups: consultants, developers, business ops.</p>
+      <p class="tech">STACK — <b>CLAUDE DESKTOP · CLAUDE CODE · MCP · HOLOCRON · JEDI ARCHIVES</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="infra" id="protocol-droid">
+    <summary class="row">
+      <span class="no">28</span>
+      <span class="name">Protocol Droid</span>
+      <span class="desc">ERP UI translation sync engine</span>
+      <span class="cat">AI INFRASTRUCTURE</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Fluent in more than a few forms of communication. A zero-dependency client that pulls Kyber Ledger's entire UI translation set out of a Supabase-backed translation manager — roughly 17,600 English source strings mapped across five languages, about 88,000 translation rows, kept in sync with the live product. Ships as both a Node and a Python client, and documents the manager's otherwise-undocumented schema so the rest of the toolchain can depend on it.</p>
+      <p class="tech">STACK — <b>NODE.JS · PYTHON · SUPABASE · POSTGREST · REST API</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="web" id="tribute-beacon">
+    <summary class="row">
+      <span class="no">29</span>
+      <span class="name">Tribute Beacon</span>
+      <span class="desc">Payroll-parameter service for the ERP fleet</span>
+      <span class="cat">WEB APPS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>A small, sharp microservice that feeds every Kyber Ledger server the Estonian payroll parameters it needs — tax rates, minimum wage, public holidays — as JSON, with a consultant admin UI on top. Each month it refreshes the public-holiday calendar automatically from the national registry, with retry logic and a failure alert if the source is unreachable. Async FastAPI, PostgreSQL, versioned migrations, full audit log.</p>
+      <p class="tech">STACK — <b>PYTHON · FASTAPI · SQLALCHEMY · POSTGRESQL · APSCHEDULER · DOCKER</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="web" id="freighter-timesheet">
+    <summary class="row">
+      <span class="no">30</span>
+      <span class="name">Freighter Timesheet</span>
+      <span class="desc">Driver work-hours entry for the ERP</span>
+      <span class="cat">WEB APPS</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>A no-friction way for drivers to log their hours — regular, overtime, holiday — straight into Kyber Ledger over its REST API. Every customer gets its own isolated deployment: own database, own config, own hostname, all in Docker. Role-based access scopes each user to their own department on the server side, and it ships with CSRF protection, rate limiting, and a full audit log.</p>
+      <p class="tech">STACK — <b>PHP 8 · POSTGRESQL · DOCKER · APACHE · ERP REST API</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="other" id="skill-foundry">
+    <summary class="row">
+      <span class="no">31</span>
+      <span class="name">Skill Foundry</span>
+      <span class="desc">Org-wide Claude Skill authoring &amp; distribution</span>
+      <span class="cat">OTHER</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>Turning repeatable expert workflows into Claude Skills the whole Outer Rim can use. Packaged, versioned skills uploaded to the organisation's Claude admin panel — among them a Word-template editor that reads .docx merge-field definitions straight from Aurebesh source across 17 document types, and a Jira bug-report skill encoding the exact format agreed with the product team. Solved the Windows zip-format quirk that had been breaking the uploader. Distributed to 70+ staff.</p>
+      <p class="tech">STACK — <b>CLAUDE SKILLS · PYTHON · AUREBESH · JIRA API</b></p>
+    </div>
+  </details>
+
   </main>
 
   <footer class="footer">
