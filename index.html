@@ -24,775 +24,269 @@
 <meta name="twitter:description" content="31 AI and automation projects built with Claude, MCP servers, and a healthy obsession with ERP.">
 <meta name="twitter:image" content="https://2km.ee/og-image.png">
 <meta name="twitter:image:alt" content="Kaupo Karuse — AI &amp; Automation project portfolio.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F52E;</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F4C7;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f4f0e6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16171c" media="(prefers-color-scheme: dark)">
+<script src="/theme.js"></script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg-deep: #241a40;
-  --bg-surface: #2f2350;
-  --purple-core: #a689f2;
-  --purple-light: #ddd0fb;
-  --purple-glow: #9b7cf0;
-  --purple-muted: #6b4bc0;
-  --purple-dim: #4a3288;
-  --text-primary: #f6f3fd;
-  --text-secondary: #c4b2f7;
-  --text-muted: #a08ec6;
-  --glass-bg: rgba(166, 137, 242, 0.12);
-  --glass-border: rgba(166, 137, 242, 0.28);
-  --glass-hover: rgba(166, 137, 242, 0.20);
+  color-scheme: light;
+  --paper: #f4f0e6;
+  --paper-raise: #ece5d4;
+  --ink: #191510;
+  --muted: #57503e;
+  --faint: #6d6656;
+  --hair: #d9d2bf;
+  --accent: #bd3a0e;
+  --live: #1a6b3c;
+  --warn: #8a5f00;
+  --blocked: #8f1d1d;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #16171c;
+    --paper-raise: #1f2027;
+    --ink: #ece7db;
+    --muted: #a49d8c;
+    --faint: #8a8577;
+    --hair: #2e3038;
+    --accent: #f2683c;
+    --live: #4ac97e;
+    --warn: #d8a53a;
+    --blocked: #e25a5a;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #16171c;
+  --paper-raise: #1f2027;
+  --ink: #ece7db;
+  --muted: #a49d8c;
+  --faint: #8a8577;
+  --hair: #2e3038;
+  --accent: #f2683c;
+  --live: #4ac97e;
+  --warn: #d8a53a;
+  --blocked: #e25a5a;
 }
 
-html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--purple-muted) var(--bg-deep); }
+[hidden] { display: none !important; }
 
+html { scrollbar-color: var(--hair) var(--paper); }
 body {
-  font-family: 'DM Sans', -apple-system, sans-serif;
-  background: var(--bg-deep);
-  color: var(--text-primary);
+  font-family: 'Archivo', Helvetica, Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
   min-height: 100vh;
-  overflow-x: hidden;
+  transition: background 0.25s, color 0.25s;
 }
+::selection { background: var(--accent); color: var(--paper); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-/* ── Background ── */
-.bg-grid {
-  position: fixed; inset: 0; z-index: 0;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(124,58,237,0.06) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(76,29,149,0.04) 0%, transparent 70%);
-  animation: bgPulse 12s ease-in-out infinite alternate;
-}
-@keyframes bgPulse { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 28px 32px 64px; }
 
-.floating-shapes { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.shape {
-  position: absolute; border-radius: 50%; opacity: 0.04; background: var(--purple-core);
-  animation: floatShape linear infinite;
+/* ── Topline ── */
+.topline {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'IBM Plex Mono', Consolas, monospace;
+  font-size: 11px; letter-spacing: 0.22em; color: var(--faint);
 }
-@keyframes floatShape {
-  0% { transform: translateY(0) rotate(0deg) scale(1); }
-  33% { transform: translateY(-30px) rotate(120deg) scale(1.05); }
-  66% { transform: translateY(15px) rotate(240deg) scale(0.95); }
-  100% { transform: translateY(0) rotate(360deg) scale(1); }
+.theme-btn {
+  font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 11px; letter-spacing: 0.15em;
+  background: none; border: 1px solid var(--hair); color: var(--muted);
+  padding: 6px 12px; cursor: pointer; transition: border-color 0.2s, color 0.2s;
 }
+.theme-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-.mouse-orb {
-  position: fixed; width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
-  pointer-events: none; z-index: 1; transform: translate(-50%, -50%);
-  transition: left 0.8s cubic-bezier(.23,1,.32,1), top 0.8s cubic-bezier(.23,1,.32,1);
-  will-change: left, top; left: 50%; top: 50%;
+/* ── Masthead ── */
+.masthead { margin-top: 34px; }
+.masthead h1 {
+  font-size: clamp(56px, 9vw, 104px); font-weight: 900;
+  letter-spacing: -0.035em; line-height: 0.92; text-transform: uppercase;
 }
+.masthead-row {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 40px; margin-top: 22px;
+}
+.masthead-intro { font-size: 16px; line-height: 1.55; color: var(--muted); max-width: 540px; }
+.masthead-intro em { font-style: normal; color: var(--ink); font-weight: 600; }
+.masthead-facts {
+  font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 11px; line-height: 2;
+  letter-spacing: 0.12em; color: var(--faint); text-align: right; white-space: nowrap;
+}
+.masthead-facts b { color: var(--accent); font-weight: 600; }
+.rule-heavy { border: 0; border-top: 3px solid var(--ink); margin-top: 26px; }
 
-/* ── Hero ── */
-.hero { position: relative; z-index: 2; text-align: center; padding: 80px 24px 40px; }
-.hero-label {
-  font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600;
-  letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-secondary);
-  margin-bottom: 16px; animation: fadeSlideUp 0.8s 0.2s both;
+/* ── Filters ── */
+.filters {
+  display: flex; flex-wrap: wrap; gap: 4px 26px; padding: 14px 0;
+  border-bottom: 1px solid var(--hair);
 }
-.hero-name {
-  font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 800;
-  letter-spacing: -0.02em; line-height: 1.1;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--purple-light) 50%, var(--purple-core) 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  animation: fadeSlideUp 0.8s 0.4s both, shimmer 6s ease-in-out infinite;
+.fbtn {
+  font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 11px; letter-spacing: 0.14em;
+  background: none; border: 0; padding: 0 0 2px; cursor: pointer; color: var(--faint);
 }
-.hero-subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 300; color: var(--text-muted);
-  margin-top: 16px; animation: fadeSlideUp 0.8s 0.6s both;
-}
-.hero-stats { display: flex; justify-content: center; gap: 48px; margin-top: 40px; animation: fadeSlideUp 0.8s 0.8s both; }
-.stat { text-align: center; }
-.stat-number { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--purple-core); line-height: 1; }
-.stat-label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+.fbtn:hover { color: var(--ink); }
+.fbtn.active { color: var(--accent); border-bottom: 1px solid var(--accent); }
+.fbtn .count { opacity: 0.6; }
 
-@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+/* ── Index ── */
+.colhead {
+  display: grid; grid-template-columns: 52px 240px 1fr 150px 86px;
+  padding: 10px 0; font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 10px;
+  letter-spacing: 0.18em; color: var(--faint); border-bottom: 1px solid var(--hair);
+}
+.colhead .right { text-align: right; }
 
-/* ── Filter bar ── */
-.filter-bar {
-  position: relative; z-index: 2; display: flex; justify-content: center; flex-wrap: wrap;
-  gap: 8px; padding: 20px 24px 40px; animation: fadeSlideUp 0.8s 1s both;
+.entry { border-bottom: 1px solid var(--hair); }
+.row {
+  display: grid; grid-template-columns: 52px 240px 1fr 150px 86px;
+  padding: 14px 0; align-items: baseline; cursor: pointer;
+  list-style: none; transition: background 0.15s;
 }
-.filter-btn {
-  font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500;
-  padding: 8px 18px; border-radius: 100px; border: 1px solid var(--glass-border);
-  background: var(--glass-bg); color: var(--text-muted); cursor: pointer;
-  transition: all 0.3s ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-}
-.filter-btn:hover { border-color: var(--purple-core); color: var(--text-primary); background: var(--glass-hover); }
-.filter-btn.active { border-color: var(--purple-core); background: rgba(139, 92, 246, 0.2); color: var(--text-primary); box-shadow: 0 0 20px rgba(139, 92, 246, 0.15); }
+.row::-webkit-details-marker { display: none; }
+.row:hover, .entry[open] .row { background: var(--paper-raise); }
+.no { font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 12px; color: var(--accent); }
+.name { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; padding-right: 12px; }
+.star { color: var(--accent); font-size: 11px; vertical-align: 2px; }
+.desc { color: var(--muted); font-size: 14px; padding-right: 24px; }
+.cat, .status { font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--faint); }
+.status { text-align: right; }
+.st-live { color: var(--live); }
+.st-design { color: var(--warn); }
+.st-paused { color: var(--faint); }
+.st-blocked { color: var(--blocked); }
+.st-done { color: var(--muted); }
 
-/* ── Bubble grid ── */
-.bubbles-container {
-  position: relative; z-index: 2; max-width: 1400px; margin: 0 auto;
-  padding: 0 24px 100px; display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
+.detail { padding: 6px 0 22px 52px; max-width: 780px; }
+.detail p { font-size: 14.5px; line-height: 1.6; color: var(--muted); }
+.detail .tech {
+  font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 10.5px; letter-spacing: 0.14em;
+  color: var(--faint); margin-top: 14px;
 }
-
-/* ── Project bubble ── */
-.bubble {
-  position: relative; border-radius: 24px; border: 1px solid var(--glass-border);
-  background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  padding: 32px 28px; cursor: pointer;
-  transition: all 0.5s cubic-bezier(.23,1,.32,1);
-  opacity: 1; transform: none;
-  overflow: hidden;
-}
-.js-animated .bubble {
-  opacity: 0; transform: translateY(40px) scale(0.95);
-}
-.js-animated .bubble.visible {
-  opacity: 1; transform: translateY(0) scale(1);
-}
-.bubble.hidden {
-  display: none;
-}
-.bubble::before {
-  content: ''; position: absolute; inset: 0; border-radius: 24px;
-  opacity: 0; transition: opacity 0.5s ease; z-index: 0;
-}
-.bubble:hover {
-  border-color: rgba(139, 92, 246, 0.35);
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.12), 0 0 0 1px rgba(139, 92, 246, 0.1);
-}
-.bubble:hover::before { opacity: 1; }
-
-.bubble-glow {
-  position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px;
-  border-radius: 24px; opacity: 0; transition: opacity 0.5s ease; z-index: 0; pointer-events: none;
-}
-.bubble:hover .bubble-glow { opacity: 1; }
-
-.bubble-header { position: relative; z-index: 1; display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
-.bubble-icon {
-  width: 48px; height: 48px; border-radius: 14px; display: flex;
-  align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.bubble:hover .bubble-icon { transform: scale(1.1) rotate(-3deg); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-.bubble-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
-.bubble-tagline { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
-.bubble-desc { position: relative; z-index: 1; font-size: 0.88rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; }
-
-.bubble-tags { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-.tag {
-  font-size: 0.7rem; font-weight: 500; padding: 3px 10px; border-radius: 100px;
-  border: 1px solid rgba(139, 92, 246, 0.2); background: rgba(139, 92, 246, 0.08);
-  color: var(--purple-light); letter-spacing: 0.02em;
-}
-
-.bubble-footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; }
-.status { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; }
-.status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
-
-.status-active .status-dot { background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.5); animation: pulse 2s ease-in-out infinite; }
-.status-active { color: #10b981; }
-.status-design .status-dot { background: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.4); }
-.status-design { color: #f59e0b; }
-.status-blocked .status-dot { background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.4); }
-.status-blocked { color: #ef4444; }
-.status-complete .status-dot { background: #06b6d4; box-shadow: 0 0 8px rgba(6, 182, 212, 0.4); }
-.status-complete { color: #06b6d4; }
-.status-paused .status-dot { background: #6d5a8f; box-shadow: 0 0 8px rgba(109, 90, 143, 0.3); }
-.status-paused { color: #6d5a8f; }
-
-.category-badge { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 6px; opacity: 0.7; }
-
-@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
-
-.bubble.featured { grid-column: span 2; }
-
-@media (max-width: 768px) {
-  .bubbles-container { grid-template-columns: 1fr; }
-  .bubble.featured { grid-column: span 1; }
-  .hero-stats { gap: 24px; }
-  .stat-number { font-size: 1.6rem; }
-}
-
-/* ── Modal ── */
-.modal-overlay {
-  position: fixed; inset: 0; z-index: 1000; background: rgba(10, 6, 18, 0.85);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none; transition: opacity 0.4s ease; padding: 24px;
-}
-.modal-overlay.open { opacity: 1; pointer-events: all; }
-.modal {
-  background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 24px;
-  max-width: 640px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 40px;
-  transform: translateY(20px) scale(0.95); transition: transform 0.4s cubic-bezier(.23,1,.32,1);
-  scrollbar-width: thin; scrollbar-color: var(--purple-muted) transparent;
-}
-.modal-overlay.open .modal { transform: translateY(0) scale(1); }
-.modal-close {
-  float: right; width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid var(--glass-border); background: var(--glass-bg);
-  color: var(--text-muted); font-size: 1.1rem; cursor: pointer;
-  display: flex; align-items: center; justify-content: center; transition: all 0.2s;
-}
-.modal-close:hover { border-color: var(--purple-core); color: var(--text-primary); }
-.modal-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 20px; }
-.modal-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
-.modal-subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; }
-.modal-body { font-size: 0.92rem; line-height: 1.7; color: var(--text-secondary); }
-.modal-body p { margin-bottom: 12px; }
-.modal-section { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(139, 92, 246, 0.1); }
-.modal-section h3 { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
-.modal-tech { display: flex; flex-wrap: wrap; gap: 6px; }
-.modal-url { display: inline-block; color: var(--purple-light); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid rgba(196, 181, 253, 0.3); transition: border-color 0.2s; }
-.modal-url:hover { border-color: var(--purple-light); }
-
-/* ── Disclaimer ── */
-.disclaimer {
-  position: relative; z-index: 2; text-align: center; padding: 12px 24px;
-  font-size: 0.8rem; font-style: italic; color: var(--text-muted);
-  border-bottom: 1px solid var(--glass-border);
-  background: rgba(139, 92, 246, 0.04);
-}
+.detail .tech b { color: var(--ink); font-weight: 500; }
 
 /* ── Footer ── */
-.footer { position: relative; z-index: 2; text-align: center; padding: 40px 24px 60px; color: var(--text-muted); font-size: 0.8rem; }
-.footer-contact { margin-bottom: 14px; }
-.footer-email, a.footer-email { color: var(--text-secondary); text-decoration: none; letter-spacing: 0.02em; }
-a.footer-email { border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; }
-a.footer-email:hover { color: var(--purple-light); border-color: var(--purple-light); }
+.footer {
+  margin-top: 34px; border-top: 3px solid var(--ink); padding-top: 16px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 10.5px;
+  letter-spacing: 0.15em; color: var(--faint);
+}
+.email-slot { color: var(--muted); }
+a.email-link { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--hair); }
+a.email-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── Mobile ── */
+@media (max-width: 720px) {
+  .wrap { padding: 20px 18px 40px; }
+  .masthead-row { flex-direction: column; align-items: flex-start; }
+  .masthead-facts { text-align: left; }
+  .colhead { display: none; }
+  .row { grid-template-columns: 40px 1fr; row-gap: 4px; }
+  .name, .desc, .cat, .status { grid-column: 2; }
+  .desc { padding-right: 0; }
+  .status { text-align: left; }
+  .detail { padding-left: 40px; }
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://2km.ee/#website","url":"https://2km.ee/","name":"Kaupo Karuse — AI & Automation Projects","description":"Portfolio of AI and automation projects built with Claude, MCP servers, and ERP. Names are anonymized.","inLanguage":"en","author":{"@id":"https://2km.ee/#kaupo"}},{"@type":"Person","@id":"https://2km.ee/#kaupo","name":"Kaupo Karuse","url":"https://2km.ee/","jobTitle":"AI Platform Lead","description":"Builds and runs the Claude / MCP tooling — knowledge servers, a customer chatbot, dashboards, and automated ERP testing — for the Outer Rim Collective.","knowsAbout":["Claude","MCP servers","ERP","Automation","AI infrastructure","Web development","Software testing"]},{"@type":"CollectionPage","@id":"https://2km.ee/#projects","url":"https://2km.ee/","name":"Projects","isPartOf":{"@id":"https://2km.ee/#website"},"about":{"@id":"https://2km.ee/#kaupo"},"mainEntity":{"@type":"ItemList","name":"AI & Automation Projects","numberOfItems":31,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"CreativeWork","name":"Star Forge","headline":"The internal tools server platform","description":"The planet everything orbits. One Linux server quietly running ~18 containers — every MCP server, dashboard, chatbot, and test tool on this page lives here. Apache out front terminates TLS and routes each service by hostname or path; Docker Compose runs the fleet; PostgreSQL and the cron jobs sit on the host. Documented top to bottom so the team can deploy without guessing.","genre":"AI Infrastructure","keywords":"Rocky Linux, Docker Compose, Apache, PostgreSQL, CSF/LFD","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":2,"item":{"@type":"CreativeWork","name":"Holocron","headline":"RAG MCP server — ERP source code knowledge","description":"The crown jewel. Without Holocron, Claude knows nothing about Kyber Ledger. Rebuilt June 2026 as a full retrieval-augmented (RAG) engine: 4000+ Aurebesh source files plus the Aurebesh Codex docs embedded into a Qdrant vector database — roughly 57,700 searchable chunks — with a dedicated reranker for precision. 8 tools over two MCP transports (streamable-HTTP and SSE). Signs in with company Microsoft 365 through its own OAuth authorization server delegating to Entra, alongside a legacy IP-gated key, serving 70+ staff. A nightly job keeps the index in sync with the main repo.","genre":"AI Infrastructure","keywords":"Python, MCP SDK, Qdrant, Infinity embeddings, FastAPI, OAuth2/Entra, Docker, Apache","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":3,"item":{"@type":"CreativeWork","name":"Jedi Archives","headline":"MCP server — product docs & FAQ search","description":"The documentation brain. Crawls five sources into one searchable index — product FAQ (Estonian), the manuals, API docs, website content, and even YouTube tutorial transcripts — roughly 4,000 pages and 2.4M+ words. A PDF pipeline OCRs scanned manuals with vision; the terminology dictionary is auto-generated from Aurebesh source — 3,200+ ERP terms in EN, ET, FI, LV, LT, NO, RU, SV. Claude can search, browse, and read full articles. Syncs daily.","genre":"AI Infrastructure","keywords":"Python 3.11, FastMCP, SQLite FTS5, httpx, BeautifulSoup, PyMuPDF, yt-dlp","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":4,"item":{"@type":"CreativeWork","name":"Senate Archives","headline":"MCP server — board, finance & HR knowledge","description":"Commissioned by the Outer Rim Collective's board. A third knowledge MCP — instead of source code or product docs, it answers questions about the company itself: financials, top customers, org structure, people (never salary or personal IDs). 9 tools. Signs in with Microsoft 365 through its own OAuth authorization server delegating to Entra, behind a fail-closed board-member allowlist. A weekly cron pipeline chains four steps across two containers to refresh the data.","genre":"AI Infrastructure","keywords":"Python, MCP SDK, SQLite, FastAPI, OAuth2/Entra, Docker","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":5,"item":{"@type":"CreativeWork","name":"HoloNet","headline":"Country-aware help content hub & API","description":"One country-aware home for all Outer Rim help content, built to replace six separate country websites. 418 live articles across Estonian plus six languages, served over a JSON API that feeds the public sites, the Customer Chatbot, and future tools from a single source. An image-translation pipeline OCRs and re-renders screenshots per language — 1,967 localized images across 84 articles. Publishes straight into WordPress on three markets, ingests PDFs into draft articles, and ships with a React admin SPA behind SAML single sign-on. ~370 automated tests.","genre":"AI Infrastructure","keywords":"Python, Starlette, SQLite FTS5, React, Vite, Tailwind, SAML/Entra, Docker","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":6,"item":{"@type":"CreativeWork","name":"Aurebesh Codex","headline":"AI knowledge base for Aurebesh development","description":"The reason Claude writes good Aurebesh. 19 numbered guides covering every aspect of the language — from datadefs to API integrations to 35 catalogued crash-causing pitfalls. The help_materials folder holds auto-generated references that would take a human months to compile: 2,000+ primitives, 521 parameter docs, and a 1,335-register / 25K-field map. Shared with the full dev team via git; the /aurebesh-* Claude Code skills give devs instant workflows.","genre":"AI Infrastructure","keywords":"Aurebesh, Python, Claude Code, Git","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":7,"item":{"@type":"CreativeWork","name":"Autotests Portal","headline":"Full-stack test management with AI generation","description":"Replaced the old PHP test-management app and Aurebesh-based test service. Full-stack: author tests, generate them with AI (Claude CLI wired to Holocron writes the JSON for you), run them, and stream real-time Jest output over WebSocket. A record-and-verify capture mode builds assertions from live runs with jsdom XPath checks. Per-user Bitbucket tokens are vaulted with AES-256-GCM; sign-in is Microsoft 365 with a break-glass fallback; 18 sequential database migrations back it, with role-based admin/tester/viewer access.","genre":"Web App","keywords":"TypeScript, Fastify, React, PostgreSQL, WebSocket, AES-256-GCM, OAuth2, Docker","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":8,"item":{"@type":"CreativeWork","name":"API Documentation","headline":"Auto-generated API docs with Claude agents","description":"Two Claude agents run on cron: the hourly agent checks Jira for 'Awaiting Claude' tickets, analyzes the Aurebesh changes, updates the YAML specs, and posts results back. The daily agent scans the dev branch for API code changes and auto-creates Jira tickets. Field reference covers all 38 registers with labels in ET, EN, FI, LV, LT, SV, NO.","genre":"Automation","keywords":"Python, OpenAPI/YAML, Redoc, Claude Code, Jira API, cron","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":9,"item":{"@type":"CreativeWork","name":"SaberInvoice","headline":"Invoicing web prototype for Estonian market","description":"A web-based invoicing prototype matching Kyber Ledger functionality. Built with the latest stack — React 19, Vite, Tailwind v4, Drizzle ORM. Features a complete stock cost calculation engine (FIFO and weighted average), Estonian e-invoice integration via business registry SOAP API. Multi-tenant architecture, 37+ tables.","genre":"Web App","keywords":"React 19, Vite, Tailwind CSS v4, Express.js, Drizzle ORM, PostgreSQL, pnpm","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":10,"item":{"@type":"CreativeWork","name":"Sector Command Dashboard","headline":"Internal sales team customer tracker","description":"Built for the sales team to track their top customers. Pulls live data from the ERP REST API and Fleet Command, caches it in PostgreSQL (JSONB), and shows contracts, modules, invoices, and server versions across ~111 customers. A periodized revenue engine reproduces the ERP's exact monthly-spread logic; a separate chart computes each consultant's workload against absence-adjusted norms. Microsoft 365 sign-in with a break-glass fallback; CSV export in Estonian locale.","genre":"Web App","keywords":"React, Vite, Tailwind CSS, Node.js, Express, PostgreSQL, OAuth2/Entra, Docker","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":11,"item":{"@type":"CreativeWork","name":"Saber Tester Web","headline":"Web-based test IDE with live output","description":"The v1 test management tool — still running, still useful. CodeMirror JSON editor with syntax highlighting, Server-Sent Events for live Jest output, snapshot comparison viewer. Fully operational as v14 on both Windows dev and Linux production.","genre":"Web App","keywords":"PHP 8, JavaScript ES6+, CodeMirror 5, SQLite, Apache, SSE","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":12,"item":{"@type":"CreativeWork","name":"Garrison Command","headline":"Hosted-portal customer management","description":"An internal dashboard for the team that manages Outer Rim hosted-portal customers. A daily job pulls usage logs over SFTP and parses the portal's custom TAB-delimited format; a nightly refresh reconciles 482 customers against the ERP with throttled, batched API calls. Shows who's active, who's idle, and who's asked to be switched off, with Recharts analytics. 80+ automated tests, VPN-gated.","genre":"Web App","keywords":"React, Express, PostgreSQL, Recharts, SFTP, Docker","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":13,"item":{"@type":"CreativeWork","name":"Comlink","headline":"REST API workbench for consultants","description":"A Postman-style API workbench built for the consultants, so they can poke Kyber Ledger and Fleet Command REST endpoints without installing anything. Stores requests in a drag-and-drop tree and credentials encrypted with AES-256-GCM. Real security engineering under the hood: an SSRF guard pins each request to its own connection's host, and a single login-lock manager reuses one ERP session to stop login storms. Office + VPN only. GET/POST/PATCH.","genre":"Web App","keywords":"Node.js, Express, React, Vite, PostgreSQL, AES-256-GCM, OAuth2","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":14,"item":{"@type":"CreativeWork","name":"Kessel Turnover Report","headline":"Year-over-year sales report","description":"A self-service sales report for one customer, Kessel Mining. Year-over-year revenue per client and per item plus a year-to-date view — four report tabs built from just two ERP calls. Fully stateless: every page load pulls live numbers straight from the ERP, no database. Session auth (scrypt), Excel/CSV export, and a documented workaround for an HTTP-parsing bug in Node's networking layer against the ERP's REST API. Behind VPN and the customer's own office IP.","genre":"Web App","keywords":"Node.js, Express, scrypt, ExcelJS, ERP REST API","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":15,"item":{"@type":"CreativeWork","name":"Automated Tests","headline":"649 automated ERP integration tests","description":"The testing backbone. 649 JSON test files that create records, run reports, and compare against snapshots via the ERP REST API, across ~18 modules and both Estonian and Latvian localizations. All converted to runreport2 format (April 2025). Full audit completed April 2026 — 6 modernization phases done, with 52 documented pitfalls captured along the way. Only 1 test still skipped (it crashes the ERP via REST).","genre":"Testing & QA","keywords":"TypeScript, Jest, Axios, ERP REST API","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":16,"item":{"@type":"CreativeWork","name":"Acceptance Testing","headline":"Release acceptance test cycle","description":"Not a code project — a coordination hub. Triggers test runs via the autotests portal API, collects results, and writes them to 41 Confluence subpages. Uses Atlassian MCP tools for all Confluence updates.","genre":"Testing & QA","keywords":"Claude Code, Atlassian MCP, REST API, Confluence","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":17,"item":{"@type":"CreativeWork","name":"Source Code Review","headline":"AI-powered ERP source code review","description":"The complete ERP source code — 2637 Aurebesh files plus JS/Python/HTML tooling. Claude Code performed a full review of the release branch in March 2026, finding 166 issues across 494 files. Also serves as the data source for the multilingual dictionary and API field labels.","genre":"Automation","keywords":"Aurebesh, Python, Claude Code, CI/CD Pipelines","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":18,"item":{"@type":"CreativeWork","name":"Jira Time Sync","headline":"ERP activity → Jira worklog automation","description":"Bridges the gap between ERP time tracking and Jira. When a consultant confirms an activity record with a Jira issue code, a webhook fires a Make.com scenario that calls the ERP API, looks up the user's own scoped Jira token (with a fallback chain), and posts a worklog. Along the way it surfaced a genuine Atlassian security bug — the write:jira-work scope unexpectedly permits issue deletion — which was reported upstream.","genre":"Integration","keywords":"Make.com, Jira REST API v3, ERP REST API, OAuth2, webhooks","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":19,"item":{"@type":"CreativeWork","name":"Office365 Email Integration","headline":"Microsoft Graph API email for Kyber Ledger","description":"Greenfield Aurebesh integration replacing SMTP with Microsoft Graph API for Office365 email in Kyber Ledger. Design phase complete: send via Graph, receive via webhooks with polling fallback.","genre":"Integration","keywords":"Aurebesh, Microsoft Graph API, OAuth2, webhooks","creativeWorkStatus":"Design"}},{"@type":"ListItem","position":20,"item":{"@type":"CreativeWork","name":"Mandalorian ID","headline":"Identity verification for loan contracts","description":"Designed for Bacta Corp: when a loan contract is created, identity verification links are sent to borrower + up to 3 guarantors via the verification API. Custom register tracks each session.","genre":"Integration","keywords":"Aurebesh, Verification REST API, HMAC-SHA256, webhooks","creativeWorkStatus":"Design"}},{"@type":"ListItem","position":21,"item":{"@type":"CreativeWork","name":"Beskar Bank Statements","headline":"CAMT.053 XML bank statement ingestion","description":"Built for Beskar Foundry: banking platform sends webhook events when bank statements are ready, Aurebesh endpoint fetches XML via OAuth2 and passes to existing SEPA import. Blocked — the banking platform's subscription validation times out.","genre":"Integration","keywords":"Aurebesh, OAuth2, CAMT.053 XML, webhooks, Banking API","creativeWorkStatus":"Blocked"}},{"@type":"ListItem","position":22,"item":{"@type":"CreativeWork","name":"Durasteel Webhook","headline":"Customer balance update webhooks","description":"Custom webhook for Durasteel Guild triggering on customer balance changes in the accounts receivable register. Had to work around the ERP UI which limits webhook types to 1-10.","genre":"Integration","keywords":"Aurebesh, APIInterfaceTask, ERP webhooks","creativeWorkStatus":"Design"}},{"@type":"ListItem","position":23,"item":{"@type":"CreativeWork","name":"Customer Chatbot","headline":"Live AI support chatbot across 6 sector sites","description":"Live since April 2026 on all 6 Outer Rim Collective sector sites. Answers customer questions from the Jedi Archives knowledge base only — strictly walled off from Holocron source code (legal requirement). Hybrid search combines SQLite FTS5 with Voyage vector embeddings (1024-dim) and feeds the top 8 passages into Claude Haiku 4.5, which streams answers with citations over SSE. Estonian is the single-source KB — foreign-language queries are auto-rewritten to Estonian for search, then answers translated back. Three-tier rate limiting (per-IP/min, per-IP/day, global/min), suspicious-IP admin view, and 90-day GDPR retention on raw IPs. Vanilla-JS widget, no build step. Admin panel behind Basic Auth with KPIs, unanswered questions, feedback, and page stats. A nightly pipeline turns real chat signals into draft FAQ articles (draft then self-critique via Claude CLI). Backed by 144 automated tests.","genre":"Automation","keywords":"Python 3.11, FastAPI, Claude Haiku 4.5, Voyage AI, SQLite FTS5, Docker, SSE, Apache","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":24,"item":{"@type":"CreativeWork","name":"Demo Data Generator","headline":"Weekly fresh demo data for customer demos","description":"Every Monday at 03:30, the ERP database resets to a template and this script generates randomized but realistic ERP records — invoices, orders, employees, payroll calculations. Customer demos always show current dates.","genre":"Automation","keywords":"Python 3, ERP REST API, WebKyberAPI, cron","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":25,"item":{"@type":"CreativeWork","name":"Legacy Migration Toolkit","headline":"GL data migration from competing system","description":"Migration toolkit for moving from a competing accounting system to Kyber Ledger. Handles complete GL data: chart of accounts, dimensions, departments, and transactions. Auto-chunks for the source system's 90-day API limit.","genre":"Other","keywords":"Python 3.7+, requests, HMAC-SHA256, ERP REST API","creativeWorkStatus":"Complete"}},{"@type":"ListItem","position":26,"item":{"@type":"CreativeWork","name":"Security Scanning","headline":"Automated security audits of web properties","description":"Claude runs automated security audits across all company web properties — TLS, headers, vulnerabilities, and JS-library exposure — with reports for 8+ domains including the main sites, API docs, customer portals, and documentation. The standout: a cryptanalysis of the ERP's text-backup encryption that recovered plaintext from ciphertext using block-repetition and XOR-delta analysis across two backups — a documented, reproducible break. Includes a clickjacking proof-of-concept.","genre":"Other","keywords":"sslyze, nuclei, lighthouse, retire, openssl, Python, NumPy","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":27,"item":{"@type":"CreativeWork","name":"AI Training Program","headline":"Company-wide Claude training for 3 groups","description":"Two training tracks: (1) Developer training — 12-day plan covering REST API, Aurebesh, integrations, testing, web dev, Python, Make.com across 4 roles. (2) Company-wide workshops — 3 groups: consultants, developers, business ops.","genre":"Other","keywords":"Claude Desktop, Claude Code, MCP, Holocron, Jedi Archives","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":28,"item":{"@type":"CreativeWork","name":"Protocol Droid","headline":"ERP UI translation sync engine","description":"Fluent in more than a few forms of communication. A zero-dependency client that pulls Kyber Ledger's entire UI translation set out of a Supabase-backed translation manager — roughly 17,600 English source strings mapped across five languages, about 88,000 translation rows, kept in sync with the live product. Ships as both a Node and a Python client, and documents the manager's otherwise-undocumented schema so the rest of the toolchain can depend on it.","genre":"AI Infrastructure","keywords":"Node.js, Python, Supabase, PostgREST, REST API","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":29,"item":{"@type":"CreativeWork","name":"Tribute Beacon","headline":"Payroll-parameter service for the ERP fleet","description":"A small, sharp microservice that feeds every Kyber Ledger server the Estonian payroll parameters it needs — tax rates, minimum wage, public holidays — as JSON, with a consultant admin UI on top. Each month it refreshes the public-holiday calendar automatically from the national registry, with retry logic and a failure alert if the source is unreachable. Async FastAPI, PostgreSQL, versioned migrations, full audit log.","genre":"Web App","keywords":"Python, FastAPI, SQLAlchemy, PostgreSQL, APScheduler, Docker","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":30,"item":{"@type":"CreativeWork","name":"Freighter Timesheet","headline":"Driver work-hours entry for the ERP","description":"A no-friction way for drivers to log their hours — regular, overtime, holiday — straight into Kyber Ledger over its REST API. Every customer gets its own isolated deployment: own database, own config, own hostname, all in Docker. Role-based access scopes each user to their own department on the server side, and it ships with CSRF protection, rate limiting, and a full audit log.","genre":"Web App","keywords":"PHP 8, PostgreSQL, Docker, Apache, ERP REST API","creativeWorkStatus":"Active"}},{"@type":"ListItem","position":31,"item":{"@type":"CreativeWork","name":"Skill Foundry","headline":"Org-wide Claude Skill authoring & distribution","description":"Turning repeatable expert workflows into Claude Skills the whole Outer Rim can use. Packaged, versioned skills uploaded to the organisation's Claude admin panel — among them a Word-template editor that reads .docx merge-field definitions straight from Aurebesh source across 17 document types, and a Jira bug-report skill encoding the exact format agreed with the product team. Solved the Windows zip-format quirk that had been breaking the uploader. Distributed to 70+ staff.","genre":"Other","keywords":"Claude Skills, Python, Aurebesh, Jira API","creativeWorkStatus":"Active"}}]}}]}</script>
 </head>
 <body>
 
-<div class="bg-grid"></div>
-<div class="floating-shapes" id="shapes">
-  <div class="shape" style="width:280px;height:280px;left:15%;top:10%;animation-duration:22s;animation-delay:-3s;"></div>
-  <div class="shape" style="width:180px;height:180px;left:70%;top:20%;animation-duration:28s;animation-delay:-7s;"></div>
-  <div class="shape" style="width:350px;height:350px;left:40%;top:55%;animation-duration:18s;animation-delay:-1s;"></div>
-  <div class="shape" style="width:150px;height:150px;left:85%;top:70%;animation-duration:32s;animation-delay:-5s;"></div>
-  <div class="shape" style="width:220px;height:220px;left:5%;top:80%;animation-duration:25s;animation-delay:-9s;"></div>
-  <div class="shape" style="width:200px;height:200px;left:55%;top:5%;animation-duration:20s;animation-delay:-4s;"></div>
+<div class="wrap">
+
+  <div class="topline">
+    <span>2KM.EE — AI &amp; AUTOMATION PORTFOLIO</span>
+    <button class="theme-btn" id="theme-toggle" hidden aria-label="Toggle color theme">◑ DARK</button>
+  </div>
+
+  <header class="masthead">
+    <h1>Kaupo<br>Karuse</h1>
+    <div class="masthead-row">
+      <p class="masthead-intro">Thirty-one AI &amp; automation projects built with <em>Claude</em>, <em>MCP servers</em>, and a healthy obsession with ERP. All names are Star Wars codenames. <em>The work is real.</em></p>
+      <div class="masthead-facts">
+        TALLINN, ESTONIA<br>
+        <b>31</b> PROJECTS · <b>26</b> LIVE<br>
+        <span class="email-slot" data-u="opuak" data-d="ee.mk2">KAUPO [AT] 2KM [DOT] EE</span>
+      </div>
+    </div>
+    <hr class="rule-heavy">
+  </header>
+
+  <nav class="filters" id="filters" hidden aria-label="Filter projects by category">
+    <button class="fbtn active" data-f="all">ALL <span class="count">31</span></button>
+    <button class="fbtn" data-f="infra">AI INFRASTRUCTURE <span class="count">7</span></button>
+    <button class="fbtn" data-f="web">WEB APPS <span class="count">9</span></button>
+    <button class="fbtn" data-f="test">TESTING &amp; QA <span class="count">2</span></button>
+    <button class="fbtn" data-f="integ">INTEGRATIONS <span class="count">5</span></button>
+    <button class="fbtn" data-f="auto">AUTOMATION <span class="count">4</span></button>
+    <button class="fbtn" data-f="other">OTHER <span class="count">4</span></button>
+  </nav>
+
+  <div class="colhead" aria-hidden="true">
+    <span>№</span><span>PROJECT</span><span>WHAT IT IS</span><span>CATEGORY</span><span class="right">STATUS</span>
+  </div>
+
+  <main id="index">
+
+  <details class="entry" data-cat="infra" id="star-forge">
+    <summary class="row">
+      <span class="no">01</span>
+      <span class="name">Star Forge <span class="star" title="Featured">★</span></span>
+      <span class="desc">The internal tools server platform</span>
+      <span class="cat">AI INFRASTRUCTURE</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>The planet everything orbits. One Linux server quietly running ~18 containers — every MCP server, dashboard, chatbot, and test tool on this page lives here. Apache out front terminates TLS and routes each service by hostname or path; Docker Compose runs the fleet; PostgreSQL and the cron jobs sit on the host. Documented top to bottom so the team can deploy without guessing.</p>
+      <p class="tech">STACK — <b>ROCKY LINUX · DOCKER COMPOSE · APACHE · POSTGRESQL · CSF/LFD</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="infra" id="holocron">
+    <summary class="row">
+      <span class="no">02</span>
+      <span class="name">Holocron <span class="star" title="Featured">★</span></span>
+      <span class="desc">RAG MCP server — ERP source code knowledge</span>
+      <span class="cat">AI INFRASTRUCTURE</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>The crown jewel. Without Holocron, Claude knows nothing about Kyber Ledger. Rebuilt June 2026 as a full retrieval-augmented (RAG) engine: 4000+ Aurebesh source files plus the Aurebesh Codex docs embedded into a Qdrant vector database — roughly 57,700 searchable chunks — with a dedicated reranker for precision. 8 tools over two MCP transports (streamable-HTTP and SSE). Signs in with company Microsoft 365 through its own OAuth authorization server delegating to Entra, alongside a legacy IP-gated key, serving 70+ staff. A nightly job keeps the index in sync with the main repo.</p>
+      <p class="tech">STACK — <b>PYTHON · MCP SDK · QDRANT · INFINITY EMBEDDINGS · FASTAPI · OAUTH2/ENTRA · DOCKER · APACHE</b></p>
+    </div>
+  </details>
+
+  <details class="entry" data-cat="infra" id="jedi-archives">
+    <summary class="row">
+      <span class="no">03</span>
+      <span class="name">Jedi Archives <span class="star" title="Featured">★</span></span>
+      <span class="desc">MCP server — product docs &amp; FAQ search</span>
+      <span class="cat">AI INFRASTRUCTURE</span>
+      <span class="status st-live">LIVE</span>
+    </summary>
+    <div class="detail">
+      <p>The documentation brain. Crawls five sources into one searchable index — product FAQ (Estonian), the manuals, API docs, website content, and even YouTube tutorial transcripts — roughly 4,000 pages and 2.4M+ words. A PDF pipeline OCRs scanned manuals with vision; the terminology dictionary is auto-generated from Aurebesh source — 3,200+ ERP terms in EN, ET, FI, LV, LT, NO, RU, SV. Claude can search, browse, and read full articles. Syncs daily.</p>
+      <p class="tech">STACK — <b>PYTHON 3.11 · FASTMCP · SQLITE FTS5 · HTTPX · BEAUTIFULSOUP · PYMUPDF · YT-DLP</b></p>
+    </div>
+  </details>
+
+  </main>
+
+  <footer class="footer">
+    <span>KAUPO KARUSE · TALLINN · 2026</span>
+    <span>NAMES ARE STAR WARS CODENAMES · THE WORK IS REAL</span>
+    <span class="email-slot" data-u="opuak" data-d="ee.mk2">KAUPO [AT] 2KM [DOT] EE</span>
+  </footer>
+
 </div>
-<div class="mouse-orb" id="orb"></div>
-
-<!-- Disclaimer banner -->
-<div class="disclaimer">All product and company names on this page have been replaced with Star Wars codenames. The projects are real. The names are not. Unless you work for the Outer Rim Collective.</div>
-
-<!-- Hero -->
-<header class="hero">
-  <div class="hero-label">Outer Rim Collective &middot; AI & Automation</div>
-  <h1 class="hero-name">Kaupo Karuse</h1>
-  <p class="hero-subtitle">30+ projects built with Claude, MCP servers, and a healthy obsession with ERP</p>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-number">31</div><div class="stat-label">Projects</div></div>
-    <div class="stat"><div class="stat-number">6</div><div class="stat-label">Categories</div></div>
-    <div class="stat"><div class="stat-number">26</div><div class="stat-label">Active Now</div></div>
-  </div>
-</header>
-
-<!-- Filter bar -->
-<nav class="filter-bar">
-  <button class="filter-btn active" data-filter="all">All Projects</button>
-  <button class="filter-btn" data-filter="infra">AI Infrastructure</button>
-  <button class="filter-btn" data-filter="web">Web Apps</button>
-  <button class="filter-btn" data-filter="test">Testing & QA</button>
-  <button class="filter-btn" data-filter="integ">Integrations</button>
-  <button class="filter-btn" data-filter="auto">Automation</button>
-  <button class="filter-btn" data-filter="other">Other</button>
-</nav>
-
-<!-- ═══════════════════════════════════════════════════════
-     ALL BUBBLES — static HTML so they render without JS
-     ═══════════════════════════════════════════════════════ -->
-<main class="bubbles-container" id="bubbles">
-
-  <!-- ── Star Forge ── -->
-  <div class="bubble featured" data-cat="infra" data-detail="The planet everything orbits. One Linux server quietly running ~18 containers — every MCP server, dashboard, chatbot, and test tool on this page lives here. Apache out front terminates TLS and routes each service by hostname or path; Docker Compose runs the fleet; PostgreSQL and the cron jobs sit on the host. Documented top to bottom so the team can deploy without guessing." data-alltech="Rocky Linux,Docker Compose,Apache,PostgreSQL,CSF/LFD">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F3ED;</div>
-      <div><div class="bubble-title">Star Forge</div><div class="bubble-tagline">The internal tools server platform</div></div>
-    </div>
-    <div class="bubble-desc">The single Linux host running the whole platform — ~18 Docker containers behind Apache, with PostgreSQL and cron on the host. Every other tool here runs on it.</div>
-    <div class="bubble-tags"><span class="tag">Rocky Linux</span><span class="tag">Docker Compose</span><span class="tag">Apache</span><span class="tag">PostgreSQL</span><span class="tag">+1</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
-    </div>
-  </div>
-
-  <!-- ── Holocron ── -->
-  <div class="bubble featured" data-cat="infra" data-detail="The crown jewel. Without Holocron, Claude knows nothing about Kyber Ledger. Rebuilt June 2026 as a full retrieval-augmented (RAG) engine: 4000+ Aurebesh source files plus the Aurebesh Codex docs embedded into a Qdrant vector database — roughly 57,700 searchable chunks — with a dedicated reranker for precision. 8 tools over two MCP transports (streamable-HTTP and SSE). Signs in with company Microsoft 365 through its own OAuth authorization server delegating to Entra, alongside a legacy IP-gated key, serving 70+ staff. A nightly job keeps the index in sync with the main repo." data-alltech="Python,MCP SDK,Qdrant,Infinity embeddings,FastAPI,OAuth2/Entra,Docker,Apache">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F52E;</div>
-      <div><div class="bubble-title">Holocron</div><div class="bubble-tagline">RAG MCP server — ERP source code knowledge</div></div>
-    </div>
-    <div class="bubble-desc">Custom RAG MCP server giving Claude the entire Kyber Ledger Aurebesh source — ~57,700 Qdrant-embedded chunks + reranker behind 8 tools. Microsoft 365 sign-in via its own OAuth server delegating to Entra, serving 70+ staff.</div>
-    <div class="bubble-tags"><span class="tag">Python</span><span class="tag">Qdrant</span><span class="tag">FastAPI</span><span class="tag">MCP SDK</span><span class="tag">+4</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
-    </div>
-  </div>
-
-  <!-- ── Jedi Archives ── -->
-  <div class="bubble featured" data-cat="infra" data-detail="The documentation brain. Crawls five sources into one searchable index — product FAQ (Estonian), the manuals, API docs, website content, and even YouTube tutorial transcripts — roughly 4,000 pages and 2.4M+ words. A PDF pipeline OCRs scanned manuals with vision; the terminology dictionary is auto-generated from Aurebesh source — 3,200+ ERP terms in EN, ET, FI, LV, LT, NO, RU, SV. Claude can search, browse, and read full articles. Syncs daily." data-alltech="Python 3.11,FastMCP,SQLite FTS5,httpx,BeautifulSoup,PyMuPDF,yt-dlp">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F4DA;</div>
-      <div><div class="bubble-title">Jedi Archives</div><div class="bubble-tagline">MCP server — product docs & FAQ search</div></div>
-    </div>
-    <div class="bubble-desc">~4,000 pages / 2.4M+ words from five crawlers — FAQ, manuals, API docs, website, YouTube transcripts — searchable by Claude, with a PDF vision-OCR pipeline and a 3,200+ term dictionary across 8 languages.</div>
-    <div class="bubble-tags"><span class="tag">Python 3.11</span><span class="tag">FastMCP</span><span class="tag">SQLite FTS5</span><span class="tag">httpx</span><span class="tag">+3</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
-    </div>
-  </div>
-
-  <!-- ── Senate Archives ── -->
-  <div class="bubble" data-cat="infra" data-detail="Commissioned by the Outer Rim Collective's board. A third knowledge MCP — instead of source code or product docs, it answers questions about the company itself: financials, top customers, org structure, people (never salary or personal IDs). 9 tools. Signs in with Microsoft 365 through its own OAuth authorization server delegating to Entra, behind a fail-closed board-member allowlist. A weekly cron pipeline chains four steps across two containers to refresh the data." data-alltech="Python,MCP SDK,SQLite,FastAPI,OAuth2/Entra,Docker">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F3DB;</div>
-      <div><div class="bubble-title">Senate Archives</div><div class="bubble-tagline">MCP server — board, finance &amp; HR knowledge</div></div>
-    </div>
-    <div class="bubble-desc">Board-facing MCP server — company profile, financials, top customers, org and people — answerable by Claude through 9 tools. Microsoft 365 sign-in via its own OAuth server &rarr; Entra, fail-closed board allowlist, weekly data pipeline.</div>
-    <div class="bubble-tags"><span class="tag">Python</span><span class="tag">MCP SDK</span><span class="tag">SQLite</span><span class="tag">FastAPI</span><span class="tag">+2</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
-    </div>
-  </div>
-
-  <!-- ── HoloNet ── -->
-  <div class="bubble" data-cat="infra" data-detail="One country-aware home for all Outer Rim help content, built to replace six separate country websites. 418 live articles across Estonian plus six languages, served over a JSON API that feeds the public sites, the Customer Chatbot, and future tools from a single source. An image-translation pipeline OCRs and re-renders screenshots per language — 1,967 localized images across 84 articles. Publishes straight into WordPress on three markets, ingests PDFs into draft articles, and ships with a React admin SPA behind SAML single sign-on. ~370 automated tests." data-alltech="Python,Starlette,SQLite FTS5,React,Vite,Tailwind,SAML/Entra,Docker">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F310;</div>
-      <div><div class="bubble-title">HoloNet</div><div class="bubble-tagline">Country-aware help content hub &amp; API</div></div>
-    </div>
-    <div class="bubble-desc">Multi-country help-content platform replacing six country sites — 418 articles across 7 languages over a JSON API feeding the website and chatbot. Image-translation pipeline (1,967 localized screenshots), WordPress publishing on 3 markets, React admin + SAML SSO, ~370 tests.</div>
-    <div class="bubble-tags"><span class="tag">Python</span><span class="tag">Starlette</span><span class="tag">SQLite FTS5</span><span class="tag">React</span><span class="tag">+4</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
-    </div>
-  </div>
-
-  <!-- ── Aurebesh Codex ── -->
-  <div class="bubble" data-cat="infra" data-detail="The reason Claude writes good Aurebesh. 19 numbered guides covering every aspect of the language — from datadefs to API integrations to 35 catalogued crash-causing pitfalls. The help_materials folder holds auto-generated references that would take a human months to compile: 2,000+ primitives, 521 parameter docs, and a 1,335-register / 25K-field map. Shared with the full dev team via git; the /aurebesh-* Claude Code skills give devs instant workflows." data-alltech="Aurebesh,Python,Claude Code,Git">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F9E0;</div>
-      <div><div class="bubble-title">Aurebesh Codex</div><div class="bubble-tagline">AI knowledge base for Aurebesh development</div></div>
-    </div>
-    <div class="bubble-desc">19 guides + 2,000+ Aurebesh primitives + 521 parameter docs + a 1,335-register / 25K-field map + 35 documented pitfalls. The definitive AI context for writing correct Aurebesh code.</div>
-    <div class="bubble-tags"><span class="tag">Aurebesh</span><span class="tag">Python</span><span class="tag">Claude Code</span><span class="tag">Git</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
-    </div>
-  </div>
-
-  <!-- ── Protocol Droid ── -->
-  <div class="bubble" data-cat="infra" data-detail="Fluent in more than a few forms of communication. A zero-dependency client that pulls Kyber Ledger's entire UI translation set out of a Supabase-backed translation manager — roughly 17,600 English source strings mapped across five languages, about 88,000 translation rows, kept in sync with the live product. Ships as both a Node and a Python client, and documents the manager's otherwise-undocumented schema so the rest of the toolchain can depend on it." data-alltech="Node.js,Python,Supabase,PostgREST,REST API">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(139,92,246,0.08), 0 0 40px rgba(139,92,246,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(139,92,246,0.15);">&#x1F916;</div>
-      <div><div class="bubble-title">Protocol Droid</div><div class="bubble-tagline">ERP UI translation sync engine</div></div>
-    </div>
-    <div class="bubble-desc">Zero-dependency Node/Python client syncing Kyber Ledger's full UI translation set — ~17,600 source strings &times; 5 languages (~88,000 rows) — from a Supabase-backed translation manager whose schema it reverse-documented.</div>
-    <div class="bubble-tags"><span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">Supabase</span><span class="tag">PostgREST</span><span class="tag">+1</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">AI Infrastructure</span>
-    </div>
-  </div>
-
-  <!-- ── Autotests Portal ── -->
-  <div class="bubble" data-cat="web" data-detail="Replaced the old PHP test-management app and Aurebesh-based test service. Full-stack: author tests, generate them with AI (Claude CLI wired to Holocron writes the JSON for you), run them, and stream real-time Jest output over WebSocket. A record-and-verify capture mode builds assertions from live runs with jsdom XPath checks. Per-user Bitbucket tokens are vaulted with AES-256-GCM; sign-in is Microsoft 365 with a break-glass fallback; 18 sequential database migrations back it, with role-based admin/tester/viewer access." data-alltech="TypeScript,Fastify,React,PostgreSQL,WebSocket,AES-256-GCM,OAuth2,Docker">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F680;</div>
-      <div><div class="bubble-title">Autotests Portal</div><div class="bubble-tagline">Full-stack test management with AI generation</div></div>
-    </div>
-    <div class="bubble-desc">Full-stack test platform — AI test generation (Claude CLI + Holocron), real-time Jest over WebSocket, record-and-verify capture mode, AES-256-GCM per-user token vault, Microsoft 365 auth, role-based access. 18 DB migrations.</div>
-    <div class="bubble-tags"><span class="tag">TypeScript</span><span class="tag">Fastify</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">+4</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
-    </div>
-  </div>
-
-  <!-- ── API Documentation ── -->
-  <div class="bubble" data-cat="auto" data-detail="Two Claude agents run on cron: the hourly agent checks Jira for 'Awaiting Claude' tickets, analyzes the Aurebesh changes, updates the YAML specs, and posts results back. The daily agent scans the dev branch for API code changes and auto-creates Jira tickets. Field reference covers all 38 registers with labels in ET, EN, FI, LV, LT, SV, NO." data-alltech="Python,OpenAPI/YAML,Redoc,Claude Code,Jira API,cron">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(236,72,153,0.08), 0 0 40px rgba(236,72,153,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(236,72,153,0.15);">&#x1F4E1;</div>
-      <div><div class="bubble-title">API Documentation</div><div class="bubble-tagline">Auto-generated API docs with Claude agents</div></div>
-    </div>
-    <div class="bubble-desc">OpenAPI docs for 38 API registers (~3,100 fields) with labels in 7 languages. A Claude agent runs hourly polling Jira for tickets, and a daily scan detects code changes and auto-creates tickets.</div>
-    <div class="bubble-tags"><span class="tag">Python</span><span class="tag">OpenAPI/YAML</span><span class="tag">Redoc</span><span class="tag">Claude Code</span><span class="tag">+2</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(236,72,153,0.12);color:#ec4899;">Automation</span>
-    </div>
-  </div>
-
-  <!-- ── SaberInvoice ── -->
-  <div class="bubble" data-cat="web" data-detail="A web-based invoicing prototype matching Kyber Ledger functionality. Built with the latest stack — React 19, Vite, Tailwind v4, Drizzle ORM. Features a complete stock cost calculation engine (FIFO and weighted average), Estonian e-invoice integration via business registry SOAP API. Multi-tenant architecture, 37+ tables." data-alltech="React 19,Vite,Tailwind CSS v4,Express.js,Drizzle ORM,PostgreSQL,pnpm">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F9FE;</div>
-      <div><div class="bubble-title">SaberInvoice</div><div class="bubble-tagline">Invoicing web prototype for Estonian market</div></div>
-    </div>
-    <div class="bubble-desc">Full FIFO + weighted-average stock cost engine, e-invoice integration (HoloNet Pay, CreditChip, Hyperlane), multi-tenant PostgreSQL. 37+ database tables.</div>
-    <div class="bubble-tags"><span class="tag">React 19</span><span class="tag">Vite</span><span class="tag">Tailwind CSS v4</span><span class="tag">Express.js</span><span class="tag">+3</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
-    </div>
-  </div>
-
-  <!-- ── Sector Command Dashboard ── -->
-  <div class="bubble" data-cat="web" data-detail="Built for the sales team to track their top customers. Pulls live data from the ERP REST API and Fleet Command, caches it in PostgreSQL (JSONB), and shows contracts, modules, invoices, and server versions across ~111 customers. A periodized revenue engine reproduces the ERP's exact monthly-spread logic; a separate chart computes each consultant's workload against absence-adjusted norms. Microsoft 365 sign-in with a break-glass fallback; CSV export in Estonian locale." data-alltech="React,Vite,Tailwind CSS,Node.js,Express,PostgreSQL,OAuth2/Entra,Docker">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F4CA;</div>
-      <div><div class="bubble-title">Sector Command Dashboard</div><div class="bubble-tagline">Internal sales team customer tracker</div></div>
-    </div>
-    <div class="bubble-desc">Sales dashboard over the ERP + Fleet Command APIs for ~111 top customers — contracts, modules, invoices, versions. Periodized monthly-revenue engine mirroring the ERP's spread logic, consultant-workload norms, Microsoft 365 auth.</div>
-    <div class="bubble-tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span><span class="tag">PostgreSQL</span><span class="tag">+4</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
-    </div>
-  </div>
-
-  <!-- ── Saber Tester Web ── -->
-  <div class="bubble" data-cat="web" data-detail="The v1 test management tool — still running, still useful. CodeMirror JSON editor with syntax highlighting, Server-Sent Events for live Jest output, snapshot comparison viewer. Fully operational as v14 on both Windows dev and Linux production." data-alltech="PHP 8,JavaScript ES6+,CodeMirror 5,SQLite,Apache,SSE">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F52C;</div>
-      <div><div class="bubble-title">Saber Tester Web</div><div class="bubble-tagline">Web-based test IDE with live output</div></div>
-    </div>
-    <div class="bubble-desc">PHP + Vanilla JS test management IDE. CodeMirror editor, live SSE output streaming, snapshot diff viewer, module tree.</div>
-    <div class="bubble-tags"><span class="tag">PHP 8</span><span class="tag">JavaScript ES6+</span><span class="tag">CodeMirror 5</span><span class="tag">SQLite</span><span class="tag">+2</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
-    </div>
-  </div>
-
-  <!-- ── Garrison Command ── -->
-  <div class="bubble" data-cat="web" data-detail="An internal dashboard for the team that manages Outer Rim hosted-portal customers. A daily job pulls usage logs over SFTP and parses the portal's custom TAB-delimited format; a nightly refresh reconciles 482 customers against the ERP with throttled, batched API calls. Shows who's active, who's idle, and who's asked to be switched off, with Recharts analytics. 80+ automated tests, VPN-gated." data-alltech="React,Express,PostgreSQL,Recharts,SFTP,Docker">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F39B;</div>
-      <div><div class="bubble-title">Garrison Command</div><div class="bubble-tagline">Hosted-portal customer management</div></div>
-    </div>
-    <div class="bubble-desc">Staff dashboard managing 482 hosted-portal customers — SFTP usage-log ingestion, nightly throttled ERP reconciliation, Recharts analytics, account status and deactivation requests. 80+ tests, behind VPN.</div>
-    <div class="bubble-tags"><span class="tag">React</span><span class="tag">Express</span><span class="tag">PostgreSQL</span><span class="tag">Recharts</span><span class="tag">+2</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
-    </div>
-  </div>
-
-  <!-- ── Comlink ── -->
-  <div class="bubble" data-cat="web" data-detail="A Postman-style API workbench built for the consultants, so they can poke Kyber Ledger and Fleet Command REST endpoints without installing anything. Stores requests in a drag-and-drop tree and credentials encrypted with AES-256-GCM. Real security engineering under the hood: an SSRF guard pins each request to its own connection's host, and a single login-lock manager reuses one ERP session to stop login storms. Office + VPN only. GET/POST/PATCH." data-alltech="Node.js,Express,React,Vite,PostgreSQL,AES-256-GCM,OAuth2">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F4E1;</div>
-      <div><div class="bubble-title">Comlink</div><div class="bubble-tagline">REST API workbench for consultants</div></div>
-    </div>
-    <div class="bubble-desc">Browser-based REST API client for the team — test Kyber Ledger / Fleet Command endpoints, drag-and-drop request tree, AES-256-GCM credential storage. SSRF-guarded, single-session login-lock. GET/POST/PATCH.</div>
-    <div class="bubble-tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">Vite</span><span class="tag">+3</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
-    </div>
-  </div>
-
-  <!-- ── Kessel Turnover Report ── -->
-  <div class="bubble" data-cat="web" data-detail="A self-service sales report for one customer, Kessel Mining. Year-over-year revenue per client and per item plus a year-to-date view — four report tabs built from just two ERP calls. Fully stateless: every page load pulls live numbers straight from the ERP, no database. Session auth (scrypt), Excel/CSV export, and a documented workaround for an HTTP-parsing bug in Node's networking layer against the ERP's REST API. Behind VPN and the customer's own office IP." data-alltech="Node.js,Express,scrypt,ExcelJS,ERP REST API">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F4CA;</div>
-      <div><div class="bubble-title">Kessel Turnover Report</div><div class="bubble-tagline">Year-over-year sales report</div></div>
-    </div>
-    <div class="bubble-desc">Stateless year-over-year sales report for Kessel Mining — revenue per customer and per item, four tabs from two ERP calls, live with no database. scrypt auth, Excel/CSV export.</div>
-    <div class="bubble-tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">scrypt</span><span class="tag">ExcelJS</span><span class="tag">+1</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
-    </div>
-  </div>
-
-  <!-- ── Tribute Beacon ── -->
-  <div class="bubble" data-cat="web" data-detail="A small, sharp microservice that feeds every Kyber Ledger server the Estonian payroll parameters it needs — tax rates, minimum wage, public holidays — as JSON, with a consultant admin UI on top. Each month it refreshes the public-holiday calendar automatically from the national registry, with retry logic and a failure alert if the source is unreachable. Async FastAPI, PostgreSQL, versioned migrations, full audit log." data-alltech="Python,FastAPI,SQLAlchemy,PostgreSQL,APScheduler,Docker">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F4B0;</div>
-      <div><div class="bubble-title">Tribute Beacon</div><div class="bubble-tagline">Payroll-parameter service for the ERP fleet</div></div>
-    </div>
-    <div class="bubble-desc">Microservice serving Estonian payroll parameters — tax rates, minimum wage, public holidays — as JSON to the ERP fleet, with a consultant admin UI. Monthly auto-sync from the national holiday registry with retry + alerting.</div>
-    <div class="bubble-tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLAlchemy</span><span class="tag">PostgreSQL</span><span class="tag">+2</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
-    </div>
-  </div>
-
-  <!-- ── Freighter Timesheet ── -->
-  <div class="bubble" data-cat="web" data-detail="A no-friction way for drivers to log their hours — regular, overtime, holiday — straight into Kyber Ledger over its REST API. Every customer gets its own isolated deployment: own database, own config, own hostname, all in Docker. Role-based access scopes each user to their own department on the server side, and it ships with CSRF protection, rate limiting, and a full audit log." data-alltech="PHP 8,PostgreSQL,Docker,Apache,ERP REST API">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.08), 0 0 40px rgba(6,182,212,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(6,182,212,0.15);">&#x1F69A;</div>
-      <div><div class="bubble-title">Freighter Timesheet</div><div class="bubble-tagline">Driver work-hours entry for the ERP</div></div>
-    </div>
-    <div class="bubble-desc">Web app for drivers to enter work hours (regular / overtime / holiday) into Kyber Ledger via REST. Per-customer isolated Docker deployment, server-side department scoping, CSRF + rate limiting + audit log.</div>
-    <div class="bubble-tags"><span class="tag">PHP 8</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">Apache</span><span class="tag">+1</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;">Web App</span>
-    </div>
-  </div>
-
-  <!-- ── Automated Tests ── -->
-  <div class="bubble" data-cat="test" data-detail="The testing backbone. 649 JSON test files that create records, run reports, and compare against snapshots via the ERP REST API, across ~18 modules and both Estonian and Latvian localizations. All converted to runreport2 format (April 2025). Full audit completed April 2026 — 6 modernization phases done, with 52 documented pitfalls captured along the way. Only 1 test still skipped (it crashes the ERP via REST)." data-alltech="TypeScript,Jest,Axios,ERP REST API">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(16,185,129,0.08), 0 0 40px rgba(16,185,129,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(16,185,129,0.15);">&#x1F9EA;</div>
-      <div><div class="bubble-title">Automated Tests</div><div class="bubble-tagline">649 automated ERP integration tests</div></div>
-    </div>
-    <div class="bubble-desc">Jest-based test framework driving REST API calls against real ERP servers — ~18 modules, EST + LAT localizations, 52 documented pitfalls. Covers Sales, Nominal, Purchase, Logistics, Payroll, CRM, Contracts.</div>
-    <div class="bubble-tags"><span class="tag">TypeScript</span><span class="tag">Jest</span><span class="tag">Axios</span><span class="tag">ERP REST API</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(16,185,129,0.12);color:#10b981;">Testing & QA</span>
-    </div>
-  </div>
-
-  <!-- ── Acceptance Testing ── -->
-  <div class="bubble" data-cat="test" data-detail="Not a code project — a coordination hub. Triggers test runs via the autotests portal API, collects results, and writes them to 41 Confluence subpages. Uses Atlassian MCP tools for all Confluence updates." data-alltech="Claude Code,Atlassian MCP,REST API,Confluence">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(16,185,129,0.08), 0 0 40px rgba(16,185,129,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(16,185,129,0.15);">&#x2705;</div>
-      <div><div class="bubble-title">Acceptance Testing</div><div class="bubble-tagline">Release acceptance test cycle</div></div>
-    </div>
-    <div class="bubble-desc">Operational workspace coordinating 14 test modules. Triggers tests via portal API, writes results to 41 Confluence subpages using Atlassian MCP.</div>
-    <div class="bubble-tags"><span class="tag">Claude Code</span><span class="tag">Atlassian MCP</span><span class="tag">REST API</span><span class="tag">Confluence</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(16,185,129,0.12);color:#10b981;">Testing & QA</span>
-    </div>
-  </div>
-
-  <!-- ── Source Code Review ── -->
-  <div class="bubble" data-cat="auto" data-detail="The complete ERP source code — 2637 Aurebesh files plus JS/Python/HTML tooling. Claude Code performed a full review of the release branch in March 2026, finding 166 issues across 494 files. Also serves as the data source for the multilingual dictionary and API field labels." data-alltech="Aurebesh,Python,Claude Code,CI/CD Pipelines">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(236,72,153,0.08), 0 0 40px rgba(236,72,153,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(236,72,153,0.15);">&#x1F50D;</div>
-      <div><div class="bubble-title">Source Code Review</div><div class="bubble-tagline">AI-powered ERP source code review</div></div>
-    </div>
-    <div class="bubble-desc">Full ERP source review (2637 Aurebesh files). March 2026 review found 166 issues across 494 files.</div>
-    <div class="bubble-tags"><span class="tag">Aurebesh</span><span class="tag">Python</span><span class="tag">Claude Code</span><span class="tag">CI/CD Pipelines</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(236,72,153,0.12);color:#ec4899;">Automation</span>
-    </div>
-  </div>
-
-  <!-- ── Jira Time Sync ── -->
-  <div class="bubble" data-cat="integ" data-detail="Bridges the gap between ERP time tracking and Jira. When a consultant confirms an activity record with a Jira issue code, a webhook fires a Make.com scenario that calls the ERP API, looks up the user's own scoped Jira token (with a fallback chain), and posts a worklog. Along the way it surfaced a genuine Atlassian security bug — the write:jira-work scope unexpectedly permits issue deletion — which was reported upstream." data-alltech="Make.com,Jira REST API v3,ERP REST API,OAuth2,webhooks">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(245,158,11,0.08), 0 0 40px rgba(245,158,11,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(245,158,11,0.15);">&#x23F1;&#xFE0F;</div>
-      <div><div class="bubble-title">Jira Time Sync</div><div class="bubble-tagline">ERP activity &rarr; Jira worklog automation</div></div>
-    </div>
-    <div class="bubble-desc">Make.com automation: confirming an ERP activity with a Jira code posts a worklog via each user's scoped token. Surfaced (and reported) a real Atlassian scope-permission bug.</div>
-    <div class="bubble-tags"><span class="tag">Make.com</span><span class="tag">Jira REST API</span><span class="tag">OAuth2</span><span class="tag">webhooks</span><span class="tag">+1</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(245,158,11,0.12);color:#f59e0b;">Integration</span>
-    </div>
-  </div>
-
-  <!-- ── Office365 Email ── -->
-  <div class="bubble" data-cat="integ" data-detail="Greenfield Aurebesh integration replacing SMTP with Microsoft Graph API for Office365 email in Kyber Ledger. Design phase complete: send via Graph, receive via webhooks with polling fallback." data-alltech="Aurebesh,Microsoft Graph API,OAuth2,webhooks">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(245,158,11,0.08), 0 0 40px rgba(245,158,11,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(245,158,11,0.15);">&#x2709;&#xFE0F;</div>
-      <div><div class="bubble-title">Office365 Email Integration</div><div class="bubble-tagline">Microsoft Graph API email for Kyber Ledger</div></div>
-    </div>
-    <div class="bubble-desc">Architecture designed for sending via Graph API (no SMTP) and receiving via webhooks with 30-min polling fallback.</div>
-    <div class="bubble-tags"><span class="tag">Aurebesh</span><span class="tag">Microsoft Graph API</span><span class="tag">OAuth2</span><span class="tag">webhooks</span></div>
-    <div class="bubble-footer">
-      <div class="status status-design"><span class="status-dot"></span> Design</div>
-      <span class="category-badge" style="background:rgba(245,158,11,0.12);color:#f59e0b;">Integration</span>
-    </div>
-  </div>
-
-  <!-- ── Mandalorian ID ── -->
-  <div class="bubble" data-cat="integ" data-detail="Designed for Bacta Corp: when a loan contract is created, identity verification links are sent to borrower + up to 3 guarantors via the verification API. Custom register tracks each session." data-alltech="Aurebesh,Verification REST API,HMAC-SHA256,webhooks">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(245,158,11,0.08), 0 0 40px rgba(245,158,11,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(245,158,11,0.15);">&#x1FAAA;</div>
-      <div><div class="bubble-title">Mandalorian ID</div><div class="bubble-tagline">Identity verification for loan contracts</div></div>
-    </div>
-    <div class="bubble-desc">Aurebesh integration for identity verification in Bacta Corp loan workflows. Custom session tracking register, HMAC-SHA256 auth.</div>
-    <div class="bubble-tags"><span class="tag">Aurebesh</span><span class="tag">Verification API</span><span class="tag">HMAC-SHA256</span><span class="tag">webhooks</span></div>
-    <div class="bubble-footer">
-      <div class="status status-design"><span class="status-dot"></span> Design</div>
-      <span class="category-badge" style="background:rgba(245,158,11,0.12);color:#f59e0b;">Integration</span>
-    </div>
-  </div>
-
-  <!-- ── Beskar Bank Statements ── -->
-  <div class="bubble" data-cat="integ" data-detail="Built for Beskar Foundry: banking platform sends webhook events when bank statements are ready, Aurebesh endpoint fetches XML via OAuth2 and passes to existing SEPA import. Blocked — the banking platform's subscription validation times out." data-alltech="Aurebesh,OAuth2,CAMT.053 XML,webhooks,Banking API">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(245,158,11,0.08), 0 0 40px rgba(245,158,11,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(245,158,11,0.15);">&#x1F3E6;</div>
-      <div><div class="bubble-title">Beskar Bank Statements</div><div class="bubble-tagline">CAMT.053 XML bank statement ingestion</div></div>
-    </div>
-    <div class="bubble-desc">Aurebesh integration for automated bank statement import for Beskar Foundry. Webhook + OAuth2 + SEPA import.</div>
-    <div class="bubble-tags"><span class="tag">Aurebesh</span><span class="tag">OAuth2</span><span class="tag">CAMT.053 XML</span><span class="tag">Banking API</span></div>
-    <div class="bubble-footer">
-      <div class="status status-blocked"><span class="status-dot"></span> Blocked</div>
-      <span class="category-badge" style="background:rgba(245,158,11,0.12);color:#f59e0b;">Integration</span>
-    </div>
-  </div>
-
-  <!-- ── Durasteel Webhook ── -->
-  <div class="bubble" data-cat="integ" data-detail="Custom webhook for Durasteel Guild triggering on customer balance changes in the accounts receivable register. Had to work around the ERP UI which limits webhook types to 1-10." data-alltech="Aurebesh,APIInterfaceTask,ERP webhooks">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(245,158,11,0.08), 0 0 40px rgba(245,158,11,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(245,158,11,0.15);">&#x1F514;</div>
-      <div><div class="bubble-title">Durasteel Webhook</div><div class="bubble-tagline">Customer balance update webhooks</div></div>
-    </div>
-    <div class="bubble-desc">New webhook type (Type 11) for Durasteel Guild: triggers when customer balance changes on invoice confirm/unconfirm or receipt save/delete.</div>
-    <div class="bubble-tags"><span class="tag">Aurebesh</span><span class="tag">APIInterfaceTask</span><span class="tag">Webhooks</span></div>
-    <div class="bubble-footer">
-      <div class="status status-design"><span class="status-dot"></span> Design</div>
-      <span class="category-badge" style="background:rgba(245,158,11,0.12);color:#f59e0b;">Integration</span>
-    </div>
-  </div>
-
-  <!-- ── Customer Chatbot ── -->
-  <div class="bubble" data-cat="auto" data-detail="Live since April 2026 on all 6 Outer Rim Collective sector sites. Answers customer questions from the Jedi Archives knowledge base only — strictly walled off from Holocron source code (legal requirement). Hybrid search combines SQLite FTS5 with Voyage vector embeddings (1024-dim) and feeds the top 8 passages into Claude Haiku 4.5, which streams answers with citations over SSE. Estonian is the single-source KB — foreign-language queries are auto-rewritten to Estonian for search, then answers translated back. Three-tier rate limiting (per-IP/min, per-IP/day, global/min), suspicious-IP admin view, and 90-day GDPR retention on raw IPs. Vanilla-JS widget, no build step. Admin panel behind Basic Auth with KPIs, unanswered questions, feedback, and page stats. A nightly pipeline turns real chat signals into draft FAQ articles (draft then self-critique via Claude CLI). Backed by 144 automated tests." data-alltech="Python 3.11,FastAPI,Claude Haiku 4.5,Voyage AI,SQLite FTS5,Docker,SSE,Apache">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(236,72,153,0.08), 0 0 40px rgba(236,72,153,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(236,72,153,0.15);">&#x1F4AC;</div>
-      <div><div class="bubble-title">Customer Chatbot</div><div class="bubble-tagline">Live AI support chatbot across 6 sector sites</div></div>
-    </div>
-    <div class="bubble-desc">Hybrid FTS5 + Voyage vector search over the Jedi Archives, Claude Haiku 4.5 streaming answers with citations. Multi-language query rewrite, 3-tier abuse protection, GDPR-compliant IP retention, admin panel, nightly FAQ-authoring pipeline. 144 automated tests.</div>
-    <div class="bubble-tags"><span class="tag">Python 3.11</span><span class="tag">FastAPI</span><span class="tag">Claude Haiku 4.5</span><span class="tag">Voyage AI</span><span class="tag">+4</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(236,72,153,0.12);color:#ec4899;">Automation</span>
-    </div>
-  </div>
-
-  <!-- ── Demo Data Generator ── -->
-  <div class="bubble" data-cat="auto" data-detail="Every Monday at 03:30, the ERP database resets to a template and this script generates randomized but realistic ERP records — invoices, orders, employees, payroll calculations. Customer demos always show current dates." data-alltech="Python 3,ERP REST API,WebKyberAPI,cron">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(236,72,153,0.08), 0 0 40px rgba(236,72,153,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(236,72,153,0.15);">&#x1F3B2;</div>
-      <div><div class="bubble-title">Demo Data Generator</div><div class="bubble-tagline">Weekly fresh demo data for customer demos</div></div>
-    </div>
-    <div class="bubble-desc">Python scripts generating fresh sales, purchasing, and payroll data on the portal demo server every Monday at 03:30.</div>
-    <div class="bubble-tags"><span class="tag">Python 3</span><span class="tag">REST API</span><span class="tag">WebKyberAPI</span><span class="tag">cron</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(236,72,153,0.12);color:#ec4899;">Automation</span>
-    </div>
-  </div>
-
-  <!-- ── Legacy Migration Toolkit ── -->
-  <div class="bubble" data-cat="other" data-detail="Migration toolkit for moving from a competing accounting system to Kyber Ledger. Handles complete GL data: chart of accounts, dimensions, departments, and transactions. Auto-chunks for the source system's 90-day API limit." data-alltech="Python 3.7+,requests,HMAC-SHA256,ERP REST API">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(99,102,241,0.08), 0 0 40px rgba(99,102,241,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(99,102,241,0.15);">&#x1F504;</div>
-      <div><div class="bubble-title">Legacy Migration Toolkit</div><div class="bubble-tagline">GL data migration from competing system</div></div>
-    </div>
-    <div class="bubble-desc">Python scripts migrating chart of accounts, dimensions, departments, and GL transactions. Auto-chunks for 90-day API limit.</div>
-    <div class="bubble-tags"><span class="tag">Python 3.7+</span><span class="tag">HMAC-SHA256</span><span class="tag">REST API</span></div>
-    <div class="bubble-footer">
-      <div class="status status-complete"><span class="status-dot"></span> Complete</div>
-      <span class="category-badge" style="background:rgba(99,102,241,0.12);color:#6366f1;">Other</span>
-    </div>
-  </div>
-
-  <!-- ── Security Scanning ── -->
-  <div class="bubble" data-cat="other" data-detail="Claude runs automated security audits across all company web properties — TLS, headers, vulnerabilities, and JS-library exposure — with reports for 8+ domains including the main sites, API docs, customer portals, and documentation. The standout: a cryptanalysis of the ERP's text-backup encryption that recovered plaintext from ciphertext using block-repetition and XOR-delta analysis across two backups — a documented, reproducible break. Includes a clickjacking proof-of-concept." data-alltech="sslyze,nuclei,lighthouse,retire,openssl,Python,NumPy">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(99,102,241,0.08), 0 0 40px rgba(99,102,241,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(239,68,68,0.15);">&#x1F6E1;&#xFE0F;</div>
-      <div><div class="bubble-title">Security Scanning</div><div class="bubble-tagline">Automated audits + ERP crypto break</div></div>
-    </div>
-    <div class="bubble-desc">Automated security audits across 8+ company domains — TLS (sslyze), vulns (nuclei), best practices (lighthouse), JS libs (retire). Plus a cryptanalytic break of the ERP's backup encryption via block-repetition + XOR-delta analysis.</div>
-    <div class="bubble-tags"><span class="tag">sslyze</span><span class="tag">nuclei</span><span class="tag">lighthouse</span><span class="tag">retire</span><span class="tag">+3</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(99,102,241,0.12);color:#6366f1;">Other</span>
-    </div>
-  </div>
-
-  <!-- ── AI Training Program ── -->
-  <div class="bubble" data-cat="other" data-detail="Two training tracks: (1) Developer training — 12-day plan covering REST API, Aurebesh, integrations, testing, web dev, Python, Make.com across 4 roles. (2) Company-wide workshops — 3 groups: consultants, developers, business ops." data-alltech="Claude Desktop,Claude Code,MCP,Holocron,Jedi Archives">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(99,102,241,0.08), 0 0 40px rgba(99,102,241,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(20,184,166,0.15);">&#x1F393;</div>
-      <div><div class="bubble-title">AI Training Program</div><div class="bubble-tagline">Company-wide Claude training for 3 groups</div></div>
-    </div>
-    <div class="bubble-desc">12-day developer training plan + 3-group workshop series (consultants, developers, business ops). Covers 7 modules, 4 role-based tracks.</div>
-    <div class="bubble-tags"><span class="tag">Claude Desktop</span><span class="tag">Claude Code</span><span class="tag">MCP</span><span class="tag">Holocron</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(99,102,241,0.12);color:#6366f1;">Other</span>
-    </div>
-  </div>
-
-  <!-- ── Skill Foundry ── -->
-  <div class="bubble" data-cat="other" data-detail="Turning repeatable expert workflows into Claude Skills the whole Outer Rim can use. Packaged, versioned skills uploaded to the organisation's Claude admin panel — among them a Word-template editor that reads .docx merge-field definitions straight from Aurebesh source across 17 document types, and a Jira bug-report skill encoding the exact format agreed with the product team. Solved the Windows zip-format quirk that had been breaking the uploader. Distributed to 70+ staff." data-alltech="Claude Skills,Python,Aurebesh,Jira API">
-    <div class="bubble-glow" style="box-shadow: inset 0 0 60px rgba(99,102,241,0.08), 0 0 40px rgba(99,102,241,0.05);"></div>
-    <div class="bubble-header">
-      <div class="bubble-icon" style="background: rgba(99,102,241,0.15);">&#x1F4E6;</div>
-      <div><div class="bubble-title">Skill Foundry</div><div class="bubble-tagline">Org-wide Claude Skill authoring &amp; distribution</div></div>
-    </div>
-    <div class="bubble-desc">Authored, packaged, and distributed Claude Skills to 70+ staff — a Word-template (.docx merge-field) editor generated from Aurebesh source across 17 document types, and a standardized Jira bug-report skill.</div>
-    <div class="bubble-tags"><span class="tag">Claude Skills</span><span class="tag">Python</span><span class="tag">Aurebesh</span><span class="tag">Jira API</span></div>
-    <div class="bubble-footer">
-      <div class="status status-active"><span class="status-dot"></span> Active</div>
-      <span class="category-badge" style="background:rgba(99,102,241,0.12);color:#6366f1;">Other</span>
-    </div>
-  </div>
-
-</main>
-
-<!-- Modal -->
-<div class="modal-overlay" id="modal">
-  <div class="modal">
-    <button class="modal-close" id="modalClose">&times;</button>
-    <div id="modalContent"></div>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="footer-contact"><span id="email" class="footer-email" data-u="opuak" data-d="ee.mk2">kaupo <span aria-hidden="true">[at]</span> 2km <span aria-hidden="true">[dot]</span> ee</span></div>
-  Built by Kaupo Karuse &middot; Outer Rim Collective &middot; 2026<br>
-  <span style="opacity:0.5; font-size: 0.7rem;">This page was generated with Claude Code</span>
-</footer>
-
 <script src="/script.js"></script>
 </body>
 </html>
