@@ -9,7 +9,7 @@
 - Rollback an update by reverting its commit and pushing the revert. Preserve unrelated changes.
 
 ## Editorial direction
-- A paper-and-ink field journal: strong typography, editorial hierarchy, ruled rows, warm light and neutral dark themes. Avoid decorative gradients, glowing effects, and generic card grids.
+- Reference-led design: Barlow Semi Condensed throughout (900 headlines, 700 subheads and emphasis, 400 body). Use a centred hero, open navigation, pill buttons, spacious sections and gently rounded feature panels. Preserve the warm light and neutral dark colour tokens. Do not return to the oversized-name, serif/monospace field-journal treatment; the owner rejected it.
 - Explain the role, business problem, contribution and result. Preserve the distinction between personal contribution, AI-assisted implementation, and team work.
 - Organisations, proprietary products and customers use established Star Wars codenames. Public technology names may remain literal. Do not introduce real private entity names or mappings.
 - Do not invent metrics, awards, client endorsements, adoption, speed improvements or delivery status.

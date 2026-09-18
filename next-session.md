@@ -1,7 +1,13 @@
 # Portfolio refresh — 18 September 2026
 
-## Changes
-- Editorial redesign retained warm paper, neutral dark mode and ruled catalogue rows; added a clear role statement, four selected-work narratives, a complete project index and direct contact links.
+## Latest visual revision
+- Owner rejected the field-journal treatment. Replaced it with reference-led Barlow Semi Condensed typography (400/700/900), a centred hero, open navigation, pill controls and spacious rounded sections. Existing light/dark colour tokens are unchanged.
+- Removed serif headlines, monospaced labels and heavy editorial rules. Kept factual content, all 31 project records and machine-readable metadata intact.
+- Desktop and 390px mobile views inspected; light/dark, filter counts, pressed state, fragment opening and overflow checks passed. Static consistency, contrast and private-reference checks passed. Social preview regenerated at 1200×630.
+- Prior production state: commit 840f119. Rollback this visual revision by reverting its commit and pushing the revert, preserving unrelated work.
+
+## Earlier content changes
+- Added a clear role statement, four selected-work narratives, a complete project index and direct contact links.
 - All 31 project descriptions shortened; removed unverified scale, adoption, performance and security claims. Status labels identify the previous July 2026 snapshot; the invoicing work is labelled a prototype.
 - Added Codex alongside the existing Claude workflow without rewriting historical implementation credit.
 - HTML, JSON-LD, plain text and social preview aligned. Added accessible filter feedback and fragment opening.
