@@ -1,0 +1,10 @@
+.git
+.git/**
+.gitignore
+.assetsignore
+AGENTS.md
+CLAUDE.md
+next-session.md
+docs/**
+.claude/**
+.superpowers/**

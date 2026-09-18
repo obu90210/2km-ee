@@ -31,9 +31,31 @@ if (filters) {
     document.querySelectorAll('.entry').forEach(entry => {
       entry.hidden = want !== 'all' && entry.dataset.cat !== want;
     });
+    const count = document.querySelectorAll('.entry:not([hidden])').length;
+    const feedback = document.getElementById('filter-status');
+    if (feedback) feedback.textContent = `Showing ${count} of ${document.querySelectorAll('.entry').length} projects.`;
   });
   filters.hidden = false;
+  const feedback = document.getElementById('filter-status');
+  if (feedback) feedback.hidden = false;
 }
+
+// Direct project links also open the native details, including after filtering.
+function revealProject() {
+  let id;
+  try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+  const entry = document.getElementById(id);
+  if (!entry || !entry.classList.contains('entry')) return;
+  if (entry.hidden) filters?.querySelector('[data-f="all"]')?.click();
+  entry.open = true;
+  entry.scrollIntoView({ block: 'start' });
+}
+window.addEventListener('hashchange', revealProject);
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href^="#"]');
+  if (link && link.getAttribute('href') === location.hash) revealProject();
+});
+revealProject();
 
 // Assemble the contact email at runtime so it never appears whole in the HTML source.
 document.querySelectorAll('.email-slot').forEach(el => {

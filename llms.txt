@@ -1,63 +1,271 @@
-# Kaupo Karuse — AI & Automation Projects
+# Kaupo Karuse — AI Platform Lead
 
-> Portfolio of 31 AI and automation projects built with Claude, MCP servers, and ERP tooling. All company, product, and customer names on this site are anonymized with Star Wars codenames — the projects are real, the names are not. This file summarizes the work for AI agents and crawlers.
+> Kaupo Karuse, AI Platform Lead in Tallinn, Estonia. ERP expertise turned into MCP knowledge services, AI-assisted development, testing, and business automation.
+
+Canonical portfolio: https://2km.ee/
+GitHub: https://github.com/obu90210
+Contact: kaupo@2km.ee
+Content reviewed: 2026-09-18.
 
 ## About
 
-Kaupo Karuse builds and runs the Claude / MCP platform for the Outer Rim Collective: knowledge MCP servers, a customer support chatbot, internal dashboards, REST tooling, and a large automated-testing suite over an enterprise ERP. Deep ERP domain expertise feeds the AI tooling. Site: https://2km.ee/
+Kaupo brings 20+ years of ERP domain experience to AI platform design, implementation with coding assistants and developers, and operations. His work connects business requirements, MCP knowledge services, RAG, developer workflows, integration testing, and business applications. Claude supported much of the existing work; Codex is now part of his workflow too.
 
-## Projects
+This is an author-maintained portfolio, not independent certification. Organisations, proprietary products, and customers are anonymised with Star Wars codenames. Technology names are literal. Status labels below are the last recorded portfolio statuses from July 2026, not a fresh audit of running services; the invoicing project is explicitly a prototype. No adoption counts, service uptime, or performance improvements are asserted.
 
-### AI Infrastructure
+## Selected work
 
-- **Star Forge** (Active) — The internal tools server platform. One Linux server quietly running ~18 containers — every MCP server, dashboard, chatbot, and test tool on this page lives here. Apache out front terminates TLS and routes each service by hostname or path; Docker Compose runs the fleet; PostgreSQL and the cron jobs sit on the host. Documented top to bottom so the team can deploy without guessing.
-- **Holocron** (Active) — RAG MCP server for ERP source code. 4000+ Aurebesh source files plus docs embedded into a Qdrant vector database — roughly 57,700 searchable chunks — with a dedicated reranker. 8 tools over two MCP transports (streamable-HTTP and SSE). Microsoft 365 sign-in via its own OAuth authorization server delegating to Entra, alongside a legacy IP-gated key, serving 70+ staff. Nightly index sync.
-- **Jedi Archives** (Active) — MCP server for product docs & FAQ search. Crawls five sources into one index — FAQ (Estonian), manuals, API docs, website content, and YouTube tutorial transcripts — roughly 4,000 pages and 2.4M+ words. PDF vision-OCR pipeline; terminology dictionary auto-generated from Aurebesh source (3,200+ terms in EN, ET, FI, LV, LT, NO, RU, SV). Syncs daily.
-- **Senate Archives** (Active) — MCP server for board, finance & HR knowledge. Answers questions about the company itself: financials, top customers, org structure, people (never salary or personal IDs). 9 tools. Microsoft 365 sign-in via its own OAuth authorization server delegating to Entra, behind a fail-closed board-member allowlist. Weekly cron pipeline across two containers refreshes the data.
-- **HoloNet** (Active) — Country-aware help content hub & API, built to replace six country websites. 418 live articles across Estonian plus six languages over a JSON API feeding the public sites and Customer Chatbot. Image-translation pipeline OCRs and re-renders screenshots per language (1,967 localized images across 84 articles). WordPress publishing on three markets, PDF-to-draft ingestion, React admin SPA behind SAML SSO. ~370 automated tests.
-- **Aurebesh Codex** (Active) — AI knowledge base for Aurebesh development. 19 numbered guides plus auto-generated references: 2,000+ primitives, 521 parameter docs, a 1,335-register / 25K-field map, and 35 catalogued crash-causing pitfalls. Shared with the dev team via git; the /aurebesh-* Claude Code skills give devs instant workflows.
-- **Protocol Droid** (Active) — ERP UI translation sync engine. A zero-dependency Node/Python client that pulls Kyber Ledger's entire UI translation set out of a Supabase-backed translation manager — ~17,600 English source strings across five languages (~88,000 rows) — and reverse-documents the manager's otherwise-undocumented schema.
+- [Holocron](https://2km.ee/#holocron): ERP source and conventions are too specialised to leave to a model’s general training. My work brings source retrieval, development documentation, and controlled assistant access into one service. Coding assistants can retrieve relevant domain material before proposing changes. Qdrant and reranking support retrieval; Microsoft 365 sign-in controls access.
+- [Jedi Archives](https://2km.ee/#jedi-archives): Product answers are scattered across manuals, FAQs, API references, and other material. I build and operate the shared knowledge service that makes these sources searchable through MCP. The same documentation can support assistant workflows and grounded product answers, with source articles available for inspection.
+- [Autotests Portal](https://2km.ee/#autotests-portal): Writing a test is only useful if people can run it, inspect the result, and repeat it. My platform work connects test authoring, AI-assisted generation, execution, and result review in a shared portal. Developers and testers have a common workflow for exercising ERP behaviour and investigating regressions.
+- [Customer Chatbot](https://2km.ee/#customer-chatbot): Customers need answers grounded in the product, across languages. I build and operate a support assistant with retrieval, citations, feedback, and a deliberately limited knowledge boundary. Product documentation feeds the assistant. Internal ERP source remains separate. Feedback helps identify where the knowledge needs improvement.
 
-### Web App
+## Full project index
 
-- **Autotests Portal** (Active) — Full-stack test management with AI generation. Author tests, generate them with AI (Claude CLI wired to Holocron writes the JSON), run them, and stream real-time Jest output over WebSocket. Record-and-verify capture mode builds assertions from live runs with jsdom XPath checks. Per-user Bitbucket tokens vaulted with AES-256-GCM; Microsoft 365 sign-in with break-glass fallback; 18 sequential DB migrations; role-based access.
-- **SaberInvoice** (Active) — Invoicing web prototype for the Estonian market. Built with React 19, Vite, Tailwind v4, Drizzle ORM. Complete stock cost calculation engine (FIFO and weighted average), Estonian e-invoice integration via business registry SOAP API. Multi-tenant, 37+ tables.
-- **Sector Command Dashboard** (Active) — Internal sales customer tracker. Live data from the ERP REST API and Fleet Command, cached in PostgreSQL (JSONB), across ~111 customers. Periodized revenue engine reproduces the ERP's exact monthly-spread logic; a chart computes each consultant's workload against absence-adjusted norms. Microsoft 365 sign-in with break-glass fallback; CSV export in Estonian locale.
-- **Saber Tester Web** (Active) — Web-based test IDE with live output. The v1 test management tool — CodeMirror JSON editor, Server-Sent Events for live Jest output, snapshot comparison viewer. Fully operational as v14 on both Windows dev and Linux production.
-- **Garrison Command** (Active) — Hosted-portal customer management. A daily job pulls usage logs over SFTP and parses the portal's custom TAB-delimited format; a nightly refresh reconciles 482 customers against the ERP with throttled, batched API calls. Recharts analytics, account status and deactivation requests. 80+ automated tests, VPN-gated.
-- **Comlink** (Active) — REST API workbench for consultants. Poke Kyber Ledger and Fleet Command REST endpoints without installing anything. Drag-and-drop request tree; credentials encrypted with AES-256-GCM. SSRF guard pins each request to its own connection's host; a single login-lock manager reuses one ERP session to stop login storms. Office + VPN only. GET/POST/PATCH.
-- **Kessel Turnover Report** (Active) — Year-over-year sales report for one customer, Kessel Mining. Revenue per client and per item plus a year-to-date view — four report tabs built from just two ERP calls. Fully stateless, no database. scrypt auth, Excel/CSV export, and a documented workaround for an HTTP-parsing bug in Node's networking layer against the ERP.
-- **Tribute Beacon** (Active) — Payroll-parameter service for the ERP fleet. A microservice serving Estonian payroll parameters (tax rates, minimum wage, public holidays) as JSON to every Kyber Ledger server, with a consultant admin UI. Monthly auto-sync of the public-holiday calendar from the national registry, with retry logic and failure alerting. Async FastAPI, PostgreSQL, versioned migrations, audit log.
-- **Freighter Timesheet** (Active) — Driver work-hours entry for the ERP. Drivers log hours (regular, overtime, holiday) straight into Kyber Ledger over REST. Each customer gets its own isolated Docker deployment (own database, config, hostname); server-side department scoping; CSRF protection, rate limiting, and a full audit log.
+### [Star Forge](https://2km.ee/#star-forge)
 
-### Testing & QA
+AI Infrastructure | Active
 
-- **Automated Tests** (Active) — 649 automated ERP integration tests. JSON test files that create records, run reports, and compare against snapshots via the ERP REST API, across ~18 modules and both Estonian and Latvian localizations. All converted to runreport2 format (April 2025). Full audit completed April 2026 — 6 modernization phases done, 52 documented pitfalls. Only 1 test still skipped (it crashes the ERP via REST).
-- **Acceptance Testing** (Active) — Release acceptance test cycle. A coordination hub: triggers test runs via the autotests portal API, collects results, and writes them to 41 Confluence subpages. Uses Atlassian MCP tools for all Confluence updates.
+Shared infrastructure for an AI tool fleet. A shared Linux platform hosts knowledge services, internal applications, and testing tools. Container deployment, routing, scheduled jobs, and operating documentation make the services maintainable as a connected platform.
 
-### Integration
+Technologies: Rocky Linux, Docker Compose, Apache, PostgreSQL, CSF/LFD.
 
-- **Jira Time Sync** (Active) — ERP activity to Jira worklog automation. Confirming an ERP activity with a Jira issue code fires a Make.com scenario that posts a worklog via each user's own scoped token (with a fallback chain). Surfaced and reported a genuine Atlassian security bug — the write:jira-work scope unexpectedly permits issue deletion.
-- **Office365 Email Integration** (Design) — Microsoft Graph API email for Kyber Ledger. Greenfield Aurebesh integration replacing SMTP with Microsoft Graph. Design phase complete: send via Graph, receive via webhooks with polling fallback.
-- **Mandalorian ID** (Design) — Identity verification for loan contracts. Designed for Bacta Corp: when a loan contract is created, identity verification links are sent to borrower plus up to 3 guarantors via the verification API. Custom register tracks each session.
-- **Beskar Bank Statements** (Blocked) — CAMT.053 XML bank statement ingestion for Beskar Foundry. Banking platform sends webhook events when statements are ready; Aurebesh endpoint fetches XML via OAuth2 and passes to existing SEPA import. Blocked — the banking platform's subscription validation times out.
-- **Durasteel Webhook** (Design) — Customer balance update webhooks for Durasteel Guild, triggering on customer balance changes in the accounts receivable register. Had to work around the ERP UI which limits webhook types to 1-10.
+### [Holocron](https://2km.ee/#holocron)
 
-### Automation
+AI Infrastructure | Active
 
-- **API Documentation** (Active) — Auto-generated API docs with Claude agents. Two Claude agents run on cron: the hourly agent checks Jira for 'Awaiting Claude' tickets, analyzes the Aurebesh changes, updates the YAML specs, and posts results back; the daily agent scans the dev branch for API code changes and auto-creates Jira tickets. Field reference covers all 38 registers (~3,100 fields) with labels in ET, EN, FI, LV, LT, SV, NO.
-- **Source Code Review** (Active) — AI-powered ERP source code review. The complete ERP source — 2637 Aurebesh files plus JS/Python/HTML tooling. Claude Code performed a full review of the release branch in March 2026, finding 166 issues across 494 files. Also the data source for the multilingual dictionary and API field labels.
-- **Customer Chatbot** (Active) — Live AI support chatbot across 6 sector sites. Answers from the Jedi Archives knowledge base only — strictly walled off from Holocron source code (legal requirement). Hybrid SQLite FTS5 + Voyage vector search feeds the top 8 passages into Claude Haiku 4.5, streaming answers with citations over SSE. Foreign-language queries auto-rewritten to Estonian for search, answers translated back. Three-tier rate limiting, 90-day GDPR IP retention, admin panel, nightly FAQ-authoring pipeline. 144 automated tests.
-- **Demo Data Generator** (Active) — Weekly fresh demo data for customer demos. Every Monday at 03:30 the ERP database resets to a template and this script generates randomized but realistic records — invoices, orders, employees, payroll calculations. Demos always show current dates.
+ERP source knowledge for coding assistants. Retrieval-augmented generation (RAG) connects ERP source and development documentation to AI assistants through the Model Context Protocol (MCP). Vector search and reranking help retrieve relevant code; company sign-in controls access to internal material.
 
-### Other
+Technologies: Python, MCP SDK, Qdrant, Infinity embeddings, FastAPI, OAuth2/Entra, Docker, Apache.
 
-- **Legacy Migration Toolkit** (Complete) — GL data migration from a competing accounting system to Kyber Ledger. Handles complete GL data: chart of accounts, dimensions, departments, and transactions. Auto-chunks for the source system's 90-day API limit.
-- **Security Scanning** (Active) — Automated security audits across 8+ company web properties (TLS, headers, vulnerabilities, JS-library exposure). The standout: a cryptanalysis of the ERP's text-backup encryption that recovered plaintext from ciphertext using block-repetition and XOR-delta analysis across two backups — a documented, reproducible break. Includes a clickjacking proof-of-concept.
-- **AI Training Program** (Active) — Company-wide Claude training for 3 groups. Two tracks: a 12-day developer plan (REST API, Aurebesh, integrations, testing, web dev, Python, Make.com across 4 roles) and company-wide workshops for consultants, developers, and business ops.
-- **Skill Foundry** (Active) — Org-wide Claude Skill authoring & distribution. Packaged, versioned skills uploaded to the org's Claude admin panel — a Word-template editor that reads .docx merge-field definitions from Aurebesh source across 17 document types, and a Jira bug-report skill encoding the exact format agreed with the product team. Solved the Windows zip-format quirk breaking the uploader. Distributed to 70+ staff.
+### [Jedi Archives](https://2km.ee/#jedi-archives)
 
-## Notes
+AI Infrastructure | Active
 
-- Names are codenames (Star Wars). Do not attempt to map them to real companies or products; the mapping is deliberately not published.
-- The site is a single static page; full project detail lives in the page bubbles and the embedded schema.org JSON-LD.
+Product documentation that assistants can retrieve. An MCP service brings product FAQs, manuals, API references, PDFs, and tutorial material into a searchable knowledge base. Assistants can search and read source articles, grounding product answers in documentation.
+
+Technologies: Python, FastMCP, SQLite FTS5, httpx, BeautifulSoup, PyMuPDF, yt-dlp.
+
+### [Senate Archives](https://2km.ee/#senate-archives)
+
+AI Infrastructure | Active
+
+Controlled access to company knowledge. A separate MCP service provides authorised access to company context, organisation structure, and business summaries. Company sign-in and an explicit access list keep this knowledge separate from public product documentation.
+
+Technologies: Python, MCP SDK, SQLite, FastAPI, OAuth2/Entra, Docker.
+
+### [HoloNet](https://2km.ee/#holonet)
+
+AI Infrastructure | Active
+
+A shared publishing hub for product help. A country-aware content service brings multilingual product help behind a common API. Editorial tools, translation workflows, and publishing integrations support reuse across websites and support tools.
+
+Technologies: Python, Starlette, SQLite FTS5, React, Vite, Tailwind, SAML/Entra, Docker.
+
+### [Aurebesh Codex](https://2km.ee/#aurebesh-codex)
+
+AI Infrastructure | Active
+
+Reusable ERP development knowledge. Development guides, generated references, and documented pitfalls turn specialist ERP knowledge into reusable material for developers and coding assistants. Versioned documentation keeps that knowledge alongside the development workflow.
+
+Technologies: Aurebesh, Python, Claude Code, Git.
+
+### [Autotests Portal](https://2km.ee/#autotests-portal)
+
+Web App | Active
+
+Author, generate, and run ERP tests. A web portal combines test authoring, AI-assisted generation, execution, and streamed results. Role-based access and managed credentials support a shared workflow for developers and testers.
+
+Technologies: TypeScript, Fastify, React, PostgreSQL, WebSocket, AES-256-GCM, OAuth2, Docker.
+
+### [API Documentation](https://2km.ee/#api-documentation)
+
+Automation | Active
+
+Keep API documentation close to code changes. Scheduled AI-assisted workflows inspect development changes and Jira work, then update API specifications or raise follow-up tasks. The aim is to make documentation maintenance part of the development loop.
+
+Technologies: Python, OpenAPI/YAML, Redoc, Claude Code, Jira API, cron.
+
+### [SaberInvoice](https://2km.ee/#saberinvoice)
+
+Web App | Prototype
+
+Explore a web-based invoicing workflow. An invoicing prototype explores stock costing, tenant separation, and ERP-style document flows in a web application. This is prototype work, not a claim of a production-ready accounting product.
+
+Technologies: React 19, Vite, Tailwind CSS v4, Express.js, Drizzle ORM, PostgreSQL, pnpm.
+
+### [Sector Command Dashboard](https://2km.ee/#sector-command-dashboard)
+
+Web App | Active
+
+Customer context for the sales team. An internal dashboard brings ERP customer, contract, invoice, and server information into one view. Revenue and workload calculations make operational data easier for the team to use.
+
+Technologies: React, Vite, Tailwind CSS, Node.js, Express, PostgreSQL, OAuth2/Entra, Docker.
+
+### [Saber Tester Web](https://2km.ee/#saber-tester-web)
+
+Web App | Active
+
+The earlier web-based test workbench. A browser-based test editor supports execution output and snapshot comparison. It represents the earlier generation of the test tooling, before the newer portal expanded the workflow.
+
+Technologies: PHP 8, JavaScript ES6+, CodeMirror 5, SQLite, Apache, SSE.
+
+### [Garrison Command](https://2km.ee/#garrison-command)
+
+Web App | Active
+
+Understand hosted-portal usage. An internal dashboard combines portal usage logs with ERP customer information. It helps the team review activity and service status without assembling the picture manually.
+
+Technologies: React, Express, PostgreSQL, Recharts, SFTP, Docker.
+
+### [Comlink](https://2km.ee/#comlink)
+
+Web App | Active
+
+An API workbench for consultants. A shared REST workbench lets consultants organise and execute ERP requests. Encrypted credential storage, request-target restrictions, and session reuse address the practical risks of a multi-user API tool.
+
+Technologies: Node.js, Express, React, Vite, PostgreSQL, AES-256-GCM, OAuth2.
+
+### [Kessel Turnover Report](https://2km.ee/#kessel-turnover-report)
+
+Web App | Active
+
+Self-service sales comparisons. A customer-specific reporting application turns ERP data into year-over-year and year-to-date sales views. Spreadsheet exports support further analysis without a separate reporting database.
+
+Technologies: Node.js, Express, scrypt, ExcelJS, ERP REST API.
+
+### [Automated Tests](https://2km.ee/#automated-tests)
+
+Testing & QA | Active
+
+Repeatable ERP integration checks. JSON-based integration tests create ERP records, run reports, and compare results with expected snapshots. The suite covers multiple business modules and localisations, making repeated regression checks practical.
+
+Technologies: TypeScript, Jest, Axios, ERP REST API.
+
+### [Acceptance Testing](https://2km.ee/#acceptance-testing)
+
+Testing & QA | Active
+
+Coordinate release acceptance testing. A release workflow brings together test runs, result collection, and shared documentation. It supports the human coordination needed to turn test output into a release assessment.
+
+Technologies: Claude Code, Atlassian MCP, REST API, Confluence.
+
+### [Source Code Review](https://2km.ee/#source-code-review)
+
+Automation | Active
+
+AI-assisted review of ERP source. A source-review workflow uses AI to inspect ERP code and record potential defects for review. Findings are investigation leads, not a substitute for developer validation or runtime testing.
+
+Technologies: Aurebesh, Python, Claude Code, CI/CD Pipelines.
+
+### [Jira Time Sync](https://2km.ee/#jira-time-sync)
+
+Integration | Active
+
+Connect ERP time records to Jira. An integration maps confirmed ERP activity records to Jira worklogs. Identity mapping, API permissions, and error handling connect two existing workflows rather than asking people to enter time twice.
+
+Technologies: Make.com, Jira REST API v3, ERP REST API, OAuth2, webhooks.
+
+### [Office365 Email Integration](https://2km.ee/#office365-email-integration)
+
+Integration | Design
+
+Design email integration with Microsoft Graph. A design for replacing legacy email transport with Microsoft Graph. The proposed workflow covers OAuth authentication, sending, and receiving through notifications with a polling fallback.
+
+Technologies: Aurebesh, Microsoft Graph API, OAuth2, webhooks.
+
+### [Mandalorian ID](https://2km.ee/#mandalorian-id)
+
+Integration | Design
+
+Design identity checks for contract workflows. A contract-workflow design connects an identity-verification API to borrower and guarantor sessions. A dedicated register tracks verification state alongside the business process.
+
+Technologies: Aurebesh, Verification REST API, HMAC-SHA256, webhooks.
+
+### [Beskar Bank Statements](https://2km.ee/#beskar-bank-statements)
+
+Integration | Blocked
+
+Bring bank statements into the ERP. A banking integration retrieves CAMT.053 statements and passes them to the ERP import workflow. The last recorded blocker was the provider subscription-validation step; current delivery status needs confirmation.
+
+Technologies: Aurebesh, OAuth2, CAMT.053 XML, webhooks, Banking API.
+
+### [Durasteel Webhook](https://2km.ee/#durasteel-webhook)
+
+Integration | Design
+
+Design customer-balance notifications. A webhook design connects changes in ERP customer balances to downstream systems. The work includes adapting to limitations in the ERP configuration interface.
+
+Technologies: Aurebesh, APIInterfaceTask, ERP webhooks.
+
+### [Customer Chatbot](https://2km.ee/#customer-chatbot)
+
+Automation | Active
+
+Ground customer support in product knowledge. A customer-facing assistant retrieves product documentation and returns answers with citations. Multilingual retrieval, feedback, and operational controls support the service; internal source-code knowledge remains outside its knowledge boundary.
+
+Technologies: Python, FastAPI, Claude, Voyage AI, SQLite FTS5, Docker, SSE, Apache.
+
+### [Demo Data Generator](https://2km.ee/#demo-data-generator)
+
+Automation | Active
+
+Keep demonstration data useful. An automated workflow refreshes demonstration ERP records with current dates and realistic business scenarios. It supports repeatable demonstrations without manually rebuilding the dataset each time.
+
+Technologies: Python 3, ERP REST API, WebKyberAPI, cron.
+
+### [Legacy Migration Toolkit](https://2km.ee/#legacy-migration-toolkit)
+
+Other | Complete
+
+Move accounting data between systems. A migration toolkit transforms general-ledger data, account structures, and dimensions for import into the target ERP. Batching works around source API limits.
+
+Technologies: Python, requests, HMAC-SHA256, ERP REST API.
+
+### [Security Scanning](https://2km.ee/#security-scanning)
+
+Other | Active
+
+Review the security of web services. Repeatable checks examine TLS configuration, response headers, exposed components, and application behaviour. Findings and reproduction notes support remediation and developer review.
+
+Technologies: sslyze, nuclei, lighthouse, retire, openssl, Python, NumPy.
+
+### [AI Training Program](https://2km.ee/#ai-training-program)
+
+Other | Active
+
+Help teams adopt AI in their own work. Training material and workshops connect AI tools to the work of consultants, developers, and business operations. The focus is practical workflows, domain knowledge, and verification.
+
+Technologies: Claude Desktop, Claude Code, MCP, Holocron, Jedi Archives.
+
+### [Protocol Droid](https://2km.ee/#protocol-droid)
+
+AI Infrastructure | Active
+
+Synchronise ERP interface translations. Node and Python clients retrieve interface translations from a shared translation manager. Documenting its data model makes the integration reusable by other tools.
+
+Technologies: Node.js, Python, Supabase, PostgREST, REST API.
+
+### [Tribute Beacon](https://2km.ee/#tribute-beacon)
+
+Web App | Active
+
+Distribute payroll parameters to ERP services. A small service supplies payroll parameters and public-holiday data through an API. Administration, refresh jobs, migrations, and audit history support maintenance of changing business rules.
+
+Technologies: Python, FastAPI, SQLAlchemy, PostgreSQL, APScheduler, Docker.
+
+### [Freighter Timesheet](https://2km.ee/#freighter-timesheet)
+
+Web App | Active
+
+Capture driver work hours in the ERP. A web application lets drivers submit work hours through the ERP API. Separate customer deployments and server-side role checks support scoped access and operational isolation.
+
+Technologies: PHP 8, PostgreSQL, Docker, Apache, ERP REST API.
+
+### [Skill Foundry](https://2km.ee/#skill-foundry)
+
+Other | Active
+
+Turn expert workflows into reusable skills. Versioned assistant skills package repeatable work such as document-template editing and structured bug reporting. They make established conventions easier to apply across a team.
+
+Technologies: Claude Skills, Python, Aurebesh, Jira API.
