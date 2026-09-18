@@ -22,6 +22,7 @@
 - `theme.js`: intentionally blocking pre-paint theme choice; retain fallback to system preference.
 - Preserve the strict CSP in `_headers`; executable JavaScript must be same-origin external files.
 - Keep all theme colours in CSS variables and check contrast when changing them.
+- Keep the approved light-blue data artwork in the five major-section banners. Preserve text alignment and typography. Decorative motion must stop for reduced-motion preferences, offscreen/background content and the Pause motion control; without JavaScript banners stay static.
 - `docs/og-card.html` is the source for the 1200×630 `og-image.png`; regenerate and visually inspect after editing social-share copy.
 - Update sitemap date when page content changes.
 

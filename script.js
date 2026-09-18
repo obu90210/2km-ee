@@ -57,6 +57,31 @@ document.addEventListener('click', event => {
 });
 revealProject();
 
+// Decorative motion is opt-in through JS, paused offscreen and in background tabs.
+const banners = [...document.querySelectorAll('.data-banner')];
+const motionToggle = document.getElementById('motion-toggle');
+if (banners.length && 'IntersectionObserver' in window) {
+  const inView = new Set();
+  const syncMotion = () => banners.forEach(banner => {
+    banner.classList.toggle('is-visible', inView.has(banner) && !document.hidden);
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => entry.isIntersecting ? inView.add(entry.target) : inView.delete(entry.target));
+    syncMotion();
+  });
+  banners.forEach(banner => observer.observe(banner));
+  document.addEventListener('visibilitychange', syncMotion);
+  if (motionToggle) {
+    motionToggle.hidden = false;
+    motionToggle.addEventListener('click', () => {
+      const paused = document.documentElement.dataset.motion !== 'paused';
+      document.documentElement.dataset.motion = paused ? 'paused' : 'running';
+      motionToggle.setAttribute('aria-pressed', String(paused));
+      motionToggle.textContent = paused ? 'Resume motion' : 'Pause motion';
+    });
+  }
+}
+
 // Assemble the contact email at runtime so it never appears whole in the HTML source.
 document.querySelectorAll('.email-slot').forEach(el => {
   const rev = s => s.split('').reverse().join('');
