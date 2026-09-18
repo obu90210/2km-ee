@@ -57,6 +57,58 @@ document.addEventListener('click', event => {
 });
 revealProject();
 
+// Share portfolio entries, not private applications. Keep anchors usable without JS.
+document.querySelectorAll('a.permalink').forEach(link => {
+  const entry = link.closest('.entry');
+  if (!entry?.id) return;
+  const name = entry.querySelector('summary .name')?.textContent.trim() || entry.id;
+  const url = new URL('https://2km.ee/');
+  url.hash = entry.id;
+  const group = document.createElement('div');
+  group.className = 'share-entry';
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'permalink';
+  button.textContent = 'Copy link';
+  button.setAttribute('aria-label', `Copy portfolio link for ${name}`);
+  const status = document.createElement('span');
+  status.className = 'share-status';
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  const fallback = document.createElement('label');
+  fallback.className = 'share-fallback';
+  fallback.hidden = true;
+  fallback.textContent = 'Portfolio link — select and copy:';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.readOnly = true;
+  input.value = url.href;
+  fallback.append(input);
+  group.append(button, status, fallback);
+  link.replaceWith(group);
+  let resetLabel;
+  button.addEventListener('click', async () => {
+    clearTimeout(resetLabel);
+    button.disabled = true;
+    status.textContent = '';
+    try {
+      await navigator.clipboard.writeText(url.href);
+      button.textContent = 'Copied!';
+      status.textContent = 'Portfolio link copied.';
+      fallback.hidden = true;
+      resetLabel = setTimeout(() => { button.textContent = 'Copy link'; }, 3000);
+    } catch {
+      button.textContent = 'Copy link';
+      status.textContent = 'Automatic copying is unavailable. Copy the link below.';
+      fallback.hidden = false;
+      input.focus();
+      input.select();
+    } finally {
+      button.disabled = false;
+    }
+  });
+});
+
 // Assemble the contact email at runtime so it never appears whole in the HTML source.
 document.querySelectorAll('.email-slot').forEach(el => {
   const rev = s => s.split('').reverse().join('');

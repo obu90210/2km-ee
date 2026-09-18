@@ -1,5 +1,11 @@
 # Portfolio refresh — 18 September 2026
 
+## Project sharing correction
+- Replaced the misleading “Link to this project” action with a progressively enhanced Copy link button on all 31 entries. It copies the canonical portfolio fragment, confirms success visibly and through an accessible status, and presents a selected read-only URL if copying fails. Without JavaScript, the ordinary anchor reads “Permanent link”.
+- The prior Permissions-Policy blocked clipboard writes. Only clipboard-write now permits self; clipboard reads remain disabled and CSP is unchanged.
+- Verified 31 canonical URLs, success/reset, denied and missing clipboard fallbacks with node tests/sharing.test.mjs; existing geometry and static consistency checks pass. Browser preview confirmed copying and mobile layout without overflow.
+- Prior production state: 121209f. Rollback by reverting the sharing correction commit and pushing the revert to master; preserve unrelated changes.
+
 ## Current expressive redesign
 - Owner rejected the single sticky data strip and authorised a larger redesign, citing scroll-driven storytelling and full-width photography. Real Estonian nature photographs are now used: Viru bog opening and Käsmu coastal interlude. See public photo-credits.html and docs/photography.md for licences.
 - Multiple independent interactions: photo parallax, drawn knowledge-flow path, sticky crossfading project illustrations, a 31-point linked constellation that follows filters, contact line art, and reading progress. The work illustrations are conceptual, not live monitoring.

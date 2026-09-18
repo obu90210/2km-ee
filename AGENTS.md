@@ -18,7 +18,7 @@
 
 ## Implementation
 - `index.html`: layout, inline CSS, static project rows and JSON-LD. The JSON-LD ItemList defines the 31 project records; keep each record's name, description, status and URL aligned with the corresponding native details element and plain-text entry.
-- `script.js`: theme controls, category filters with accessible state, and project-fragment opening. All content and contact links must work without JavaScript.
+- `script.js`: theme controls, category filters, project-fragment opening, and Copy link buttons. Share canonical public portfolio URLs, never private application URLs. Keep ordinary permanent links without JavaScript and a manual-copy fallback when clipboard access fails. Tests: `node tests/sharing.test.mjs`. All content and contact links must work without JavaScript.
 - `theme.js`: intentionally blocking pre-paint theme choice; retain fallback to system preference.
 - Preserve the strict CSP in `_headers`; executable JavaScript must be same-origin external files.
 - Keep all theme colours in CSS variables and check contrast when changing them.

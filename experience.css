@@ -121,3 +121,21 @@ html[data-motion='paused'] .row, html[data-motion='paused'] .fleet-point::before
   .row, .fleet-point::before, .name::after, .contact a { transition: none; }
   .row:hover, .row:focus-visible { padding-left: 16px; }
 }
+/* Project sharing remains readable when clipboard access is unavailable. */
+.share-entry { margin-top: 16px; }
+.share-entry button.permalink {
+  color: inherit; background: transparent; border: 0;
+  border-bottom: 1px solid currentColor; padding: 4px 0;
+  margin-top: 0; font: inherit; font-weight: 700; cursor: pointer;
+}
+.share-entry button.permalink:disabled { cursor: wait; }
+.share-entry button.permalink:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.share-status { display: block; margin-top: 8px; font-size: 16px; }
+.share-status:empty { display: none; }
+.share-fallback { display: block; margin-top: 12px; font-size: 16px; }
+.share-fallback[hidden] { display: none; }
+.share-fallback input {
+  display: block; box-sizing: border-box; width: 100%; max-width: 34rem;
+  margin-top: 6px; padding: 10px; border: 1px solid currentColor;
+  border-radius: 4px; color: inherit; background: transparent; font: inherit;
+}
