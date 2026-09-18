@@ -9,7 +9,7 @@
 - Rollback an update by reverting its commit and pushing the revert. Preserve unrelated changes.
 
 ## Editorial direction
-- Reference-led design: Barlow Semi Condensed throughout (900 headlines, 700 subheads and emphasis, 400 body). Use a centred hero, open navigation, pill buttons, spacious sections and gently rounded feature panels. Preserve the warm light and neutral dark colour tokens. Do not return to the oversized-name, serif/monospace field-journal treatment; the owner rejected it.
+- Barlow Semi Condensed throughout (900 headlines, 700 subheads and emphasis, 400 body), warm light/neutral dark reading surfaces and orange accents. The current direction uses full-width real Estonian landscapes, scroll parallax, distinct project illustrations and a clickable project constellation. The owner rejected both the serif/monospace field journal and repetitive small data banners.
 - Explain the role, business problem, contribution and result. Preserve the distinction between personal contribution, AI-assisted implementation, and team work.
 - Organisations, proprietary products and customers use established Star Wars codenames. Public technology names may remain literal. Do not introduce real private entity names or mappings.
 - Do not invent metrics, awards, client endorsements, adoption, speed improvements or delivery status.
@@ -22,7 +22,8 @@
 - `theme.js`: intentionally blocking pre-paint theme choice; retain fallback to system preference.
 - Preserve the strict CSP in `_headers`; executable JavaScript must be same-origin external files.
 - Keep all theme colours in CSS variables and check contrast when changing them.
-- Use one persistent scroll-driven data scene, not repeated looping banners. Preserve typography and text alignment. Keep normal browser scrolling, deterministic reversible geometry, a Pause motion control, and reduced-motion/static no-JavaScript fallbacks. The original approved data artwork is the no-JavaScript background.
+- `experience.js`, `experience-geometry.js` and `experience.css` implement the independent photo, knowledge-flow, project showcase and constellation interactions. Use normal browser scrolling, bounded/reversible transitions, Pause motion and reduced-motion fallbacks. Never hide substantive content behind animation or JavaScript. Tests: `node tests/experience.test.mjs`.
+- Keep the landscape author/source/licence credits in `photo-credits.html` and `docs/photography.md`. These are licensed photographs, not AI images; do not remove attribution when reusing or adapting them.
 - `docs/og-card.html` is the source for the 1200×630 `og-image.png`; regenerate and visually inspect after editing social-share copy.
 - Update sitemap date when page content changes.
 

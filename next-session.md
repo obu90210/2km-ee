@@ -1,10 +1,12 @@
 # Portfolio refresh — 18 September 2026
 
-## Scroll-driven data journey
-- Replaced the rejected five looping banners with one sticky canvas: scattered bits → streams → branching systems → network → converged signal. Ordinary page scrolling scrubs the transformation in either direction, anchored to the four main sections. No scroll interception or continuous animation loop.
-- Geometry lives in journey-geometry.js; rendering, scroll tracking and accessibility controls in journey.js. Existing copy, typography and theme colours remain unchanged.
-- Pause control freezes the scene. Reduced motion gives a static non-sticky network; no JavaScript retains assets/data-stream.png as the static fallback. Native content and links remain accessible.
-- Pre-change production commit: 68967e3. Rollback by reverting this change and pushing the revert; preserve unrelated work.
+## Current expressive redesign
+- Owner rejected the single sticky data strip and authorised a larger redesign, citing scroll-driven storytelling and full-width photography. Real Estonian nature photographs are now used: Viru bog opening and Käsmu coastal interlude. See public photo-credits.html and docs/photography.md for licences.
+- Multiple independent interactions: photo parallax, drawn knowledge-flow path, sticky crossfading project illustrations, a 31-point linked constellation that follows filters, contact line art, and reading progress. The work illustrations are conceptual, not live monitoring.
+- experience.js, experience-geometry.js and experience.css replace the old journey modules. No continuous animation loop, scroll interception, framework or new dependency. Canvas work is skipped offscreen.
+- Normal reading, native project details and contact links work without JavaScript. Reduced motion disables parallax and sticky illustration tracking; Pause motion freezes scroll-linked artwork.
+- Verified desktop/mobile in both themes, 31-point/category count agreement, native project opening from a constellation link, no horizontal overflow, no console errors and a no-JavaScript preview. Geometry/markup tests: node tests/experience.test.mjs. Static data/metadata checks remain unchanged.
+- Pre-change production commit: f1ed726. Rollback by reverting this redesign commit and pushing the revert, preserving unrelated work.
 
 ## Latest visual revision
 - Owner rejected the field-journal treatment. Replaced it with reference-led Barlow Semi Condensed typography (400/700/900), a centred hero, open navigation, pill controls and spacious rounded sections. Existing light/dark colour tokens are unchanged.
