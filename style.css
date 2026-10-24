@@ -29,25 +29,6 @@
   --photo-credit-bg: #151f2be6;
   --hero-shade: linear-gradient(#151f2bd9 0%, #151f2bc9 56%, #151f2b20 82%, #151f2b66 100%);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --paper: #151f2b;
-    --paper-raise: #1e2c3b;
-    --ink: #f6eee1;
-    --muted: #bfcbd5;
-    --faint: #b0c0cf;
-    --hair: #667b8d;
-    --accent: #e7a46e;
-    --live: #9de0b7;
-    --warn: #efc777;
-    --blocked: #ffb7ad;
-    --action: #e7a46e;
-    --action-ink: #1d2732;
-    --action-border: #e7a46e;
-    --focus: #f6d38c;
-  }
-}
 :root[data-theme="dark"] {
   color-scheme: dark;
   --paper: #151f2b;

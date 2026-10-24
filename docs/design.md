@@ -15,7 +15,7 @@ The Midnight & copper foundation uses navy `#151f2b`, linen `#f6eee1` and copper
 
 One short vertical accent sits beside the wordmark. Avoid patterned horizontal bands, repeated vertical rails, and decorative marks on every card. The design takes colour cues from Mihkli clothing and the local landscape; it does not reproduce a historical costume pattern or claim a traditional pattern as a new invention.
 
-`tests/design.test.mjs` verifies text/status contrast of at least 4.5:1 and control/focus contrast of at least 3:1 on both reading surfaces. Theme selection still follows the saved preference, falling back to the system setting. The landscape scenes retain their own dark surface and light text in both themes.
+`tests/design.test.mjs` verifies text/status contrast of at least 4.5:1 and control/focus contrast of at least 3:1 on both reading surfaces. Theme selection honours a valid saved preference and otherwise defaults to light, regardless of the operating-system theme. Light also applies when storage is unavailable or JavaScript is disabled. The landscape scenes retain their own dark surface and light text in both themes.
 
 ## Motion, sharing and maintenance
 

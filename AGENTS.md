@@ -20,7 +20,7 @@
 ## Implementation
 - `index.html`: layout, static project rows and JSON-LD; base styles are in `style.css`. The JSON-LD ItemList defines the 31 project records; keep each record's name, description, status and URL aligned with the corresponding native details element and plain-text entry.
 - `script.js`: theme controls, category filters, project-fragment opening, and Copy link buttons. Share canonical public portfolio URLs, never private application URLs. Keep ordinary permanent links without JavaScript and a manual-copy fallback when clipboard access fails. Tests: `node tests/sharing.test.mjs`. All content and contact links must work without JavaScript.
-- `theme.js`: intentionally blocking pre-paint theme choice; retain fallback to system preference.
+- `theme.js`: intentionally blocking pre-paint theme choice; honour valid saved choices and default to light, including when storage is blocked or JavaScript is unavailable.
 - Preserve the strict CSP in `_headers`; executable JavaScript must be same-origin external files.
 - All served scripts, styles, fonts and images are first-party. Never add inline styles/handlers, remote runtime resources or unsafe CSP exceptions. `fonts.css` references licensed local Barlow and Atkinson subsets. `docs/og-card.html` uses local `og-card.css` and the same fonts.
 - Keep all theme colours in CSS variables and check contrast when changing them.

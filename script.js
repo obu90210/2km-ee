@@ -1,12 +1,12 @@
 // Progressive enhancement. The page renders complete without JS:
-// entries visible, native <details> expansion, theme from prefers-color-scheme.
+// entries visible, native <details> expansion, light theme by default.
 
 // Theme toggle (initial theme already applied by theme.js)
 const themeBtn = document.getElementById('theme-toggle');
 if (themeBtn) {
   const current = () =>
     document.documentElement.dataset.theme ||
-    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    'light';
   const setLabel = () => { themeBtn.textContent = current() === 'dark' ? '◐ LIGHT' : '◑ DARK'; };
   themeBtn.addEventListener('click', () => {
     const next = current() === 'dark' ? 'light' : 'dark';
