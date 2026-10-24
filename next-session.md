@@ -1,5 +1,9 @@
 # Portfolio handover — 24 October 2026
 
+## Published and verified
+
+Code release `acf551f4bc19775f417f4f3e59f5743c64e87f5f` is pushed to `master` and verified live. Mozilla Observatory: A+ / 145, 12 passed, 0 failed (scan 130637628). Actual production checks passed for content/CSP, 16 public assets, 12 denied private paths, four crawler agents and seven browser configurations. Full verification and the remaining account-level TLS action: `docs/release-2026-10-24.md`. Owner archive/gate files remain unchanged and outside the release. The local master matches the remote after the release.
+
 ## Current refresh
 
 - Final owner boundary: public development narratives describe guides, conventions, references and workflows. Updated matching metadata/diagram labels; renamed project 17 to Development Review (`#development-review`). The prior entry name/fragment was deliberately removed rather than retained as a public alias. Shared instructions and the content check prevent restoring the restricted wording.

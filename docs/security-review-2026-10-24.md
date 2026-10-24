@@ -21,6 +21,8 @@ The existing photo archive and its unfinished Worker feature are outside this re
 
 ## Verification and limitations
 
+Post-deployment results are recorded in `release-2026-10-24.md`: live checks passed and Mozilla Observatory reported A+ / 145 (12 passed, 0 failed). The separate account-level TLS action remains explicitly pending there.
+
 - `node tools/check.mjs`: project/evidence/metadata consistency, restricted public wording, scripts, fragments and packaging.
 - `node tests/security.test.mjs`: public manifest, local font signatures/licence, external/inline resource restrictions, CSP/Trusted Types and disclosure metadata.
 - Existing experience/sharing checks plus preview HTTP tests: rendering geometry, sharing/fallback behavior, private paths, method restrictions, headers and hostile Host requests.
