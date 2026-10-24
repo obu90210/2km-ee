@@ -1,24 +1,41 @@
 # Kaupo Karuse — AI Platform Lead
 
-> Kaupo Karuse, AI Platform Lead in Tallinn, Estonia. ERP expertise turned into MCP knowledge services, AI-assisted development, testing, and business automation.
+> Kaupo Karuse, AI Platform Lead in Tallinn. 20+ years of ERP expertise applied to AI knowledge services, customer support, and developer tools. Explore the work and measured results.
 
 Canonical portfolio: https://2km.ee/
 GitHub: https://github.com/obu90210
 Contact: kaupo@2km.ee
-Content reviewed: 2026-09-18.
+Content reviewed: 2026-10-24.
 
 ## About
 
-Kaupo brings 20+ years of ERP domain experience to AI platform design, implementation with coding assistants and developers, and operations. His work connects business requirements, MCP knowledge services, RAG, developer workflows, integration testing, and business applications. Claude supported much of the existing work; Codex is now part of his workflow too.
+Kaupo brings 20+ years of ERP domain experience to AI platform design, implementation with coding assistants and developers, and operations. His work connects business requirements, MCP knowledge services, RAG, developer workflows, integration testing, and business applications. Claude supported much of the existing work; Codex is now part of his workflow too. He also uses a shared GPU AI box and runs models entirely locally on his own PC’s graphics card. He works across macOS, Windows, and Linux every day.
 
-This is an author-maintained portfolio, not independent certification. Organisations, proprietary products, and customers are anonymised with Star Wars codenames. Technology names are literal. Status labels below are the last recorded portfolio statuses from July 2026, not a fresh audit of running services; the invoicing project is explicitly a prototype. No adoption counts, service uptime, or performance improvements are asserted.
+This is an author-maintained portfolio, not independent certification. Organisations, proprietary products, and customers are anonymised with Star Wars codenames. Technology names are literal. Customer Chatbot and Jedi Archives were reviewed against October 2026 operating records. Other project statuses remain a July 2026 snapshot; the invoicing project is explicitly a prototype. Usage figures below are dated observations, not current totals or claims of support resolution, satisfaction, or uptime.
+
+## Website security
+
+The portfolio is static, with first-party scripts, styles, fonts and images. It has no visitor accounts, submission forms or third-party analytics. Content is available without JavaScript. Browser policies restrict inline execution, framing and application network connections. Security design and reporting: https://2km.ee/security.html. Machine-readable contact: https://2km.ee/.well-known/security.txt. These are implemented controls, not a security certification.
+
+## Recorded results
+
+The shared product knowledge service and customer chatbot are the lead case study: specialist ERP knowledge becomes searchable context and cited customer answers; usage and feedback guide improvements.
+
+- 1,142 public chat turns, 25 September 2026 at 15:00 to approximately 8 October 2026 at 13:00. Public, non-junk scope; staff and evaluation traffic excluded. A turn is one question or lookup, not a unique user or resolved support case.
+- 320 turns included a source click, approximately 28%. Source clicks measure engagement, not answer accuracy or avoided support tickets.
+- Median answer completion: 10.3 seconds; median first token: 5.8 seconds in that chatbot window.
+- 43,583 indexed knowledge records, recorded 20 October 2026. This separate snapshot counts records, which can include document sections rather than unique original articles.
+
+These figures were recorded in project operations and are historical snapshots, not live counters. The self-selected rating sample does not support a customer-satisfaction percentage.
+
+The improvement workflow: maintain sources, retrieve relevant context, answer with citations, review real questions and feedback, then improve the knowledge and retrieval.
 
 ## Selected work
 
-- [Holocron](https://2km.ee/#holocron): ERP source and conventions are too specialised to leave to a model’s general training. My work brings source retrieval, development documentation, and controlled assistant access into one service. Coding assistants can retrieve relevant domain material before proposing changes. Qdrant and reranking support retrieval; Microsoft 365 sign-in controls access.
-- [Jedi Archives](https://2km.ee/#jedi-archives): Product answers are scattered across manuals, FAQs, API references, and other material. I build and operate the shared knowledge service that makes these sources searchable through MCP. The same documentation can support assistant workflows and grounded product answers, with source articles available for inspection.
-- [Autotests Portal](https://2km.ee/#autotests-portal): Writing a test is only useful if people can run it, inspect the result, and repeat it. My platform work connects test authoring, AI-assisted generation, execution, and result review in a shared portal. Developers and testers have a common workflow for exercising ERP behaviour and investigating regressions.
-- [Customer Chatbot](https://2km.ee/#customer-chatbot): Customers need answers grounded in the product, across languages. I build and operate a support assistant with retrieval, citations, feedback, and a deliberately limited knowledge boundary. Product documentation feeds the assistant. Internal ERP source remains separate. Feedback helps identify where the knowledge needs improvement.
+- [Customer Chatbot](https://2km.ee/#customer-chatbot): Customers know the problem they are trying to solve. They should not need to know which manual, article, or ERP term contains the answer. I build and operate a support assistant around the product knowledge base: retrieval, source citations, multilingual support, feedback, and the controls needed for a public service. The recorded September–October window contains 1,142 public chat turns; 28% included a source click. Those signals help me see what people ask and where the guidance needs work.
+- [Jedi Archives](https://2km.ee/#jedi-archives): Useful product knowledge is spread across FAQs, manuals, references, and support material. It needs to be searchable and maintained before an assistant can use it well. I build and operate the shared knowledge service, from source ingestion and terminology to search and article retrieval through the Model Context Protocol (MCP). The index held 43,583 records in the 20 October snapshot. The same knowledge foundation supports assistant workflows and the customer chatbot. Customer answers stay within the product-support knowledge base.
+- [Holocron](https://2km.ee/#holocron): Specialist ERP development conventions and guides need to be available when a developer or coding assistant needs them. My work brings development documentation, reusable reference material, and controlled assistant access into one service for the development workflow. Coding assistants can retrieve relevant domain material before proposing changes. Vector search and reranking support retrieval; company sign-in controls access to internal material.
+- [Autotests Portal](https://2km.ee/#autotests-portal): Generating a test is only useful if people can run it, inspect the result, and repeat it. My platform work connects test authoring, AI-assisted generation, execution, and result review in a shared portal. Developers and testers have a common workflow for exercising ERP behaviour and investigating regressions. The test run gives the team evidence to review alongside generated code.
 
 ## Full project index
 
@@ -34,7 +51,7 @@ Technologies: Rocky Linux, Docker Compose, Apache, PostgreSQL, CSF/LFD.
 
 AI Infrastructure | Active
 
-ERP source knowledge for coding assistants. Retrieval-augmented generation (RAG) connects ERP source and development documentation to AI assistants through the Model Context Protocol (MCP). Vector search and reranking help retrieve relevant code; company sign-in controls access to internal material.
+Development knowledge for coding assistants. A controlled knowledge service brings development guides, conventions, and reusable reference material to AI coding assistants through the Model Context Protocol (MCP). Search and reranking help assistants retrieve relevant context; company sign-in controls access to internal material.
 
 Technologies: Python, MCP SDK, Qdrant, Infinity embeddings, FastAPI, OAuth2/Entra, Docker, Apache.
 
@@ -42,7 +59,7 @@ Technologies: Python, MCP SDK, Qdrant, Infinity embeddings, FastAPI, OAuth2/Entr
 
 AI Infrastructure | Active
 
-Product documentation that assistants can retrieve. An MCP service brings product FAQs, manuals, API references, PDFs, and tutorial material into a searchable knowledge base. Assistants can search and read source articles, grounding product answers in documentation.
+Shared product knowledge for assistants and customers. A maintained knowledge service brings product FAQs, manuals, reference material, and support knowledge into one searchable index. It supports assistant workflows through MCP and the customer chatbot. A 20 October 2026 operations snapshot recorded 43,583 indexed records, including document sections rather than necessarily unique articles.
 
 Technologies: Python, FastMCP, SQLite FTS5, httpx, BeautifulSoup, PyMuPDF, yt-dlp.
 
@@ -150,11 +167,11 @@ Coordinate release acceptance testing. A release workflow brings together test r
 
 Technologies: Claude Code, Atlassian MCP, REST API, Confluence.
 
-### [Source Code Review](https://2km.ee/#source-code-review)
+### [Development Review](https://2km.ee/#development-review)
 
 Automation | Active
 
-AI-assisted review of ERP source. A source-review workflow uses AI to inspect ERP code and record potential defects for review. Findings are investigation leads, not a substitute for developer validation or runtime testing.
+AI-assisted development quality review. An AI-assisted development review workflow records potential defects and follow-up items for developer assessment. Findings are investigation leads, checked through developer review and runtime testing.
 
 Technologies: Aurebesh, Python, Claude Code, CI/CD Pipelines.
 
@@ -202,7 +219,7 @@ Technologies: Aurebesh, APIInterfaceTask, ERP webhooks.
 
 Automation | Active
 
-Ground customer support in product knowledge. A customer-facing assistant retrieves product documentation and returns answers with citations. Multilingual retrieval, feedback, and operational controls support the service; internal source-code knowledge remains outside its knowledge boundary.
+Customer support grounded in shared product knowledge. A customer-facing assistant retrieves product guidance and answers with citations. Multilingual retrieval, source-click tracking, feedback, and operational controls support ongoing improvement. The public, non-junk window from 25 September to 8 October 2026 recorded 1,142 chat turns; 320 (28%) included a source click. These are usage and engagement measures, not a support-resolution rate. Answers stay within the product-support knowledge base.
 
 Technologies: Python, FastAPI, Claude, Voyage AI, SQLite FTS5, Docker, SSE, Apache.
 

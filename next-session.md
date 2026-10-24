@@ -1,4 +1,43 @@
-# Portfolio refresh — 18 September 2026
+# Portfolio handover — 24 October 2026
+
+## Current refresh
+
+- Final owner boundary: public development narratives describe guides, conventions, references and workflows. Updated matching metadata/diagram labels; renamed project 17 to Development Review (`#development-review`). The prior entry name/fragment was deliberately removed rather than retained as a public alias. Shared instructions and the content check prevent restoring the restricted wording.
+
+- Owner follow-up: added daily macOS, Windows and Linux use to About, Person metadata, `llms.txt` and the project-local `CLAUDE.md`.
+
+- Owner follow-up: added use of a shared GPU AI box and fully local models on his own PC's graphics card to the About section, Person metadata and `llms.txt`; project-local `CLAUDE.md` records this too. No model brands, hardware specifications or internal addresses were inferred.
+
+- This checkout is based on the September design (`ae7fb61`); it was fast-forwarded from the stale July version after checkpointing the owner's work. The owner explicitly authorised commit/push to `master` for the existing Cloudflare deployment, with security review/hardening included before release. Git records the final release revision; validate the current live page rather than assuming rollout from a push alone.
+- Security hardening: locally hosted licensed Barlow subsets; external stylesheets; same-origin CSP with no inline exceptions and Trusted Types; default-deny public-asset manifest; preview Host validation; personal-domain security contact and a plain-language security page. Independent code review found no DOM injection issue or remaining material finding. Details, commands and rollback: `docs/security-review-2026-10-24.md`.
+- Account action: the public TLS probe accepted legacy 1.0/1.1 as well as 1.2/1.3. The owner was asked to set Cloudflare's minimum to 1.2; this session has no Cloudflare credentials or signed-in account connection. Do not treat code tests or an HTTP-header scan grade as proof that this separate setting has been corrected. Re-probe after the owner changes it.
+- The knowledge service and customer chatbot now lead the portfolio. Added native HTML results cards, measurement definitions, and the knowledge → retrieval → cited answer → review workflow. Selected stories now run Customer Chatbot, Jedi Archives, Holocron, Autotests Portal; illustration labels/rendering follow each story's attributes.
+- Figures are separately dated historical operations snapshots: 1,142 public turns / 320 source-click turns (28%) over 25 September–8 October; 43,583 indexed records on 20 October. Definitions and update procedure: `docs/evidence.md`. No fresh production aggregate query succeeded during the assessment; do not describe these as current/live figures. No visitor conversations or identifiers were inspected.
+- HTML, JSON-LD, `llms.txt`, social-card source/image, and sitemap were aligned. Other project delivery statuses remain explicitly historical. Codenames, photography credits, permanent project IDs, strict CSP and no-JavaScript reading remain.
+- Added `README.md`, `tools/check.mjs`, `tools/preview.mjs` and preview tests. Preview binds loopback and only serves public assets; repository notes, scan reports, gate/config and photo archive return 404. `.assetsignore` preserves the owner's earlier exclusions and adds local tooling/documentation exclusions.
+- Project-local `CLAUDE.md` was updated, with its private legend preserved and contradictory instructions removed. Global assistant instructions were not changed. Superseded local June/July notes moved into ignored `docs/superpowers/archive/`.
+
+## Verification for this refresh
+
+- Content check passed for 31 records, category counts, matching descriptions/statuses, IDs/assets, evidence values/dates, scene mapping, CSP-compatible scripts and packaging exclusions.
+- Existing experience geometry and sharing tests passed; preview server tests passed for public assets, private-path blocking, common security headers, HEAD and method restrictions. Archive-specific noindex headers are not applied to the preview homepage.
+- Isolated Chrome checks passed for seven combinations: desktop light/dark (1440px), phone light/dark (390px), small phone with reduced motion (320px), desktop reduced motion, and phone without JavaScript. Verified no horizontal overflow, all 31 entries and evidence available, contact links, correct theme and normal-motion scene tracking, and no browser runtime/resource errors.
+- Fixed the 320px About flow overflow by stacking its steps at very small widths. Desktop/mobile hero/results and dark selected-work screenshots were visually inspected. Social preview regenerated and inspected at 1200×630.
+- Browser interaction confirmed Automation filter shows 4 projects with correct pressed state; a direct Jedi Archives link restores all 31 and opens the target. Sharing success/denied/missing clipboard paths remain covered by the existing tests.
+- An independent read-only review found no material implementation or data issues. Review requested regeneration/visual checks, which were subsequently completed.
+- All 258 existing owner archive/gate files matched their pre-sync SHA-256 hashes. Existing crawler restrictions and archive-only header changes were preserved.
+
+## Release scope and continuity
+
+- Portfolio changes: `.assetsignore`, `AGENTS.md`, `README.md`, `index.html`, `experience.css`, `experience.js`, `llms.txt`, `sitemap.xml`, `og-image.png`, `docs/og-card.html`, `docs/evidence.md`, `next-session.md`, `tools/`, `tests/preview.test.mjs`.
+- Separate existing owner work: `2002/`, `gate/`, `wrangler.toml`, plus the archive changes in `_headers` and `robots.txt`. Do not stage everything together or incidentally publish the archive feature. Retain its configuration/secret checks as a separate release.
+- The project-local private `CLAUDE.md` stays ignored and was updated for this release; do not commit it. Public instructions live in `AGENTS.md`; update that file for durable shared rules.
+- `node tools/preview.mjs` starts a local public-assets-only preview. A preview may already be running at `http://127.0.0.1:8123/` from this session.
+- Cloudflare publishes pushes to `master`; the owner has authorised this release. Review the exact staged paths and run the five checks before pushing. `_headers` has security changes plus the owner's separate archive stanza: stage only the security changes, retaining the archive stanza locally. Roll back by reverting only the release commit; do not reset the owner's parallel work.
+
+---
+
+## Previous handover — 18 September 2026
 
 ## Project sharing correction
 - Replaced the misleading “Link to this project” action with a progressively enhanced Copy link button on all 31 entries. It copies the canonical portfolio fragment, confirms success visibly and through an accessible status, and presents a selected read-only URL if copying fails. Without JavaScript, the ordinary anchor reads “Permanent link”.

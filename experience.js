@@ -16,8 +16,8 @@ const fleetCaption = document.getElementById('fleet-caption-detail');
 const scenes = [...document.querySelectorAll('canvas[data-scene]')].map(canvas => ({canvas, ctx: canvas.getContext('2d'), name: canvas.dataset.scene})).filter(x => x.ctx);
 let paused = false, queued = 0, pointer = 0, selectedPoint = -1, lastScroll = scrollY;
 let workIndex = 0, workProgress = 0, workBlend = 0;
-const names = ['Holocron', 'Jedi Archives', 'Autotests Portal', 'Customer Chatbot'];
-const descriptions = ['Source knowledge → relevant context', 'Documentation → answers with sources', 'Generate → run → inspect → repeat', 'Product knowledge → customer answers'];
+const names = stories.map(story => story.querySelector('.eyebrow').textContent.trim());
+const descriptions = stories.map(story => story.dataset.caption);
 const progressRail = document.createElement('div');
 progressRail.className = 'reading-progress'; progressRail.setAttribute('aria-hidden', 'true'); document.body.append(progressRail);
 
@@ -74,10 +74,11 @@ function drawWork({c,w,h}, idx, p) {
   const cy=mobile?235:310, drift=(p-.5)*22;
   c.translate(pointer*8,drift);
   for(let i=0;i<45;i++)dot(c,40+(i*83)%520,80+(i*97)%(mobile?330:410),.7,'#7399ad55');
-  if(idx===0) {
-    // Source fragments fan into a retrieval core and become context.
+  const illustration = stories[idx].dataset.illustration;
+  if(illustration==='development') {
+    // Development guides feed a retrieval core and become context.
     for(let j=0;j<5;j++) {
-      const y=cy-145+j*66;box(c,35,y,115,48,'SOURCE '+String(j+1).padStart(2,'0'));
+      const y=cy-145+j*66;box(c,35,y,115,48,'GUIDE '+String(j+1).padStart(2,'0'));
       line(c,[[150,y+24],[210,y+24],[255,cy]],'#81c5ed70');
       const t=(p*1.5+j*.17)%1;dot(c,150+t*105,(y+24)*(1-t)+cy*t,3);
     }
@@ -85,7 +86,7 @@ function drawWork({c,w,h}, idx, p) {
     for(let ring=0;ring<4;ring++){c.beginPath();c.ellipse(305,cy,45+ring*12,45+ring*12,.35+p*.7,0,Math.PI*2);c.stroke();}
     text(c,'RETRIEVE',275,cy+5,12);line(c,[[380,cy],[440,cy]],'#9dd5f5');
     box(c,442,cy-55,120,110,'CONTEXT');for(let j=0;j<4;j++)line(c,[[454,cy-15+j*17],[540-(j%2)*18,cy-15+j*17]],'#b4dfff88');
-  } else if(idx===1) {
+  } else if(illustration==='knowledge') {
     for(let j=0;j<6;j++) {
       const angle=j*Math.PI/3+p*.25;const x=300+Math.cos(angle)*175,y=cy+Math.sin(angle)*130;
       line(c,[[x,y],[300,cy]],'#73b9e855');box(c,x-47,y-36,94,72,['MANUAL','FAQ','GUIDE','ARTICLE','REFERENCE','HELP'][j]);
@@ -93,7 +94,7 @@ function drawWork({c,w,h}, idx, p) {
     }
     c.fillStyle='#233d4f';c.beginPath();c.arc(300,cy,50,0,Math.PI*2);c.fill();
     c.strokeStyle='#bde6ff';c.lineWidth=2;c.beginPath();c.arc(295,cy-5,17,0,Math.PI*2);c.stroke();line(c,[[307,cy+8],[325,cy+26]],'#bde6ff',2);
-  } else if(idx===2) {
+  } else if(illustration==='testing') {
     const labels=['AUTHOR','GENERATE','RUN','REVIEW'];
     labels.forEach((s,j)=>{const x=52+j*135;box(c,x,cy-55,100,85,s);if(j<3)line(c,[[x+100,cy-10],[x+135,cy-10]],'#92d1f2');dot(c,x+50,cy+3,6,j<=Math.floor(p*4)?'#bde6ff':'#405b6c');});
     line(c,[[507,cy+40],[507,cy+108],[102,cy+108],[102,cy+40]],'#75b7de88');

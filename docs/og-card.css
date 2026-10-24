@@ -1,0 +1,7 @@
+body { margin:0; width:1200px; height:630px; box-sizing:border-box; padding:48px 64px; background:#f4f0e6; color:#191510; font-family:'Barlow Semi Condensed',Arial,sans-serif; }
+.top { display:flex; justify-content:space-between; align-items:center; font-size:24px; }
+.top b { font-size:40px; font-weight:900; color:#b73809; }
+main { text-align:center; padding-top:66px; }
+h1 { font-size:80px; font-weight:900; line-height:1.1; margin:0 0 16px; }
+h2 { font-size:52px; font-weight:900; line-height:1.1; margin:0 0 32px; color:#b73809; }
+p { font-size:28px; line-height:1.5; margin:0; }
