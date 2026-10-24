@@ -18,3 +18,9 @@ The 31 project records, measurement definitions, photography, interaction and an
 ## Publication and rollback
 
 The previous published revision is `3743e474267876f29fca797e6e147bdd35826a52`. Publish only the reviewed design paths through the existing GitHub `master` deployment. After publishing, verify live assets, typography, social image and security headers. To roll back, revert only the design release commit and push the revert; retain unrelated owner work.
+
+## Live verification
+
+Design commit `c5f9019` was pushed to `master`. The deployed homepage, styles, all four existing scripts, credits/security pages and social image match the reviewed release (normalising text line endings). New font subsets and crawler metadata respond successfully. The image is served as `image/png`. CSP, HSTS, nosniff and referrer policy remain present. Browser inspection confirms Atkinson at 20px, the Kidise kange footer credit, 31 project entries and no horizontal overflow or console warnings/errors.
+
+A Python urllib request received HTTP 403 while the browser and Windows HTTP client succeeded. The specific edge policy is unverified; this is not evidence that all crawlers are blocked. No Cloudflare settings were changed by this design release.
