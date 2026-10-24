@@ -9,7 +9,7 @@
 - Rollback an update by reverting its commit and pushing the revert. Preserve unrelated changes.
 
 ## Editorial direction
-- Barlow Semi Condensed throughout (900 headlines, 700 subheads and emphasis, 400 body), warm light/neutral dark reading surfaces and orange accents. The current direction uses full-width real Estonian landscapes, scroll parallax, distinct project illustrations and a clickable project constellation. The owner rejected both the serif/monospace field journal and repetitive small data banners.
+- Kidise kange: Barlow Semi Condensed 900 headings/figures and 700 project names; Atkinson Hyperlegible Next 400 body and 600 emphasis. Midnight/copper with a matching linen light theme. Body 20px, supporting text at least 18px, photo credits 16px. One short vertical wordmark accent; no patterned horizontal bands or repeated decorative rails. See `docs/design.md`. The current direction uses full-width real Estonian landscapes, scroll parallax, distinct project illustrations and a clickable project constellation. The owner rejected both the serif/monospace field journal and repetitive small data banners.
 - Explain the role, business problem, contribution and result. Preserve the distinction between personal contribution, AI-assisted implementation, and team work.
 - Organisations, proprietary products and customers use established Star Wars codenames. Public technology names may remain literal. Do not introduce real private entity names or mappings.
 - Do not invent metrics, awards, client endorsements, adoption, speed improvements or delivery status.
@@ -22,14 +22,14 @@
 - `script.js`: theme controls, category filters, project-fragment opening, and Copy link buttons. Share canonical public portfolio URLs, never private application URLs. Keep ordinary permanent links without JavaScript and a manual-copy fallback when clipboard access fails. Tests: `node tests/sharing.test.mjs`. All content and contact links must work without JavaScript.
 - `theme.js`: intentionally blocking pre-paint theme choice; retain fallback to system preference.
 - Preserve the strict CSP in `_headers`; executable JavaScript must be same-origin external files.
-- All served scripts, styles, fonts and images are first-party. Never add inline styles/handlers, remote runtime resources or unsafe CSP exceptions. `fonts.css` references licensed local Barlow subsets. `docs/og-card.html` uses local `og-card.css` and the same fonts.
+- All served scripts, styles, fonts and images are first-party. Never add inline styles/handlers, remote runtime resources or unsafe CSP exceptions. `fonts.css` references licensed local Barlow and Atkinson subsets. `docs/og-card.html` uses local `og-card.css` and the same fonts.
 - Keep all theme colours in CSS variables and check contrast when changing them.
 - `experience.js`, `experience-geometry.js` and `experience.css` implement the independent photo, knowledge-flow, project showcase and constellation interactions. Use normal browser scrolling, bounded/reversible transitions, Pause motion and reduced-motion fallbacks. Never hide substantive content behind animation or JavaScript. Tests: `node tests/experience.test.mjs`.
 - Keep the landscape author/source/licence credits in `photo-credits.html` and `docs/photography.md`. These are licensed photographs, not AI images; do not remove attribution when reusing or adapting them.
 - `docs/og-card.html` is the source for the 1200×630 `og-image.png`; regenerate and visually inspect after editing social-share copy.
 - Update sitemap date when page content changes.
 - `tools/preview.mjs` serves public assets only on loopback, with the common security headers. Use it instead of serving the repository root. The `2002/` archive is intentionally unavailable in this preview.
-- `tools/check.mjs` validates all project representations, evidence, links and packaging. Run it plus the experience, sharing, preview and security tests (commands in README).
+- `tools/check.mjs` validates all project representations, evidence, links and packaging. Run it plus the experience, sharing, preview, security and design tests (commands in README).
 - `tools/public-files.mjs` is the public asset allowlist; `.assetsignore` defaults to deny and must match it. Add new public files deliberately and regenerate/verify the ignore file. Docs, tooling and the separate archive/gate are excluded; review that feature's asset and Worker response policies before a future archive release.
 
 ## Verification

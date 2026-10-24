@@ -19,12 +19,14 @@
 !sitemap.xml
 !llms.txt
 !.well-known/security.txt
+!assets/atkinson-hyperlegible-next-license.txt
+!assets/atkinsonhyperlegiblenext-400-latin.woff2
+!assets/atkinsonhyperlegiblenext-400-latin-ext.woff2
+!assets/atkinsonhyperlegiblenext-600-latin.woff2
+!assets/atkinsonhyperlegiblenext-600-latin-ext.woff2
 !assets/viru-bog.jpg
 !assets/kasmu-coast.jpg
 !assets/barlow-semi-condensed-license.txt
-!assets/barlow-semi-condensed-400-latin.woff2
-!assets/barlow-semi-condensed-400-latin-ext.woff2
-!assets/barlow-semi-condensed-400-vietnamese.woff2
 !assets/barlow-semi-condensed-700-latin.woff2
 !assets/barlow-semi-condensed-700-latin-ext.woff2
 !assets/barlow-semi-condensed-700-vietnamese.woff2

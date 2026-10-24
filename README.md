@@ -20,6 +20,7 @@ node tests/experience.test.mjs
 node tests/sharing.test.mjs
 node tests/preview.test.mjs
 node tests/security.test.mjs
+node tests/design.test.mjs
 ```
 
 The content check compares all 31 HTML project entries with JSON-LD and `llms.txt`, verifies dated measurements, counts, fragment links, local assets, story mappings, and packaging exclusions. The tests cover scroll geometry, project sharing/fallbacks, and private-path protection in the preview server. Inspect desktop and phone layouts in both themes before publishing; also check reduced motion and reading without JavaScript.
@@ -29,12 +30,13 @@ The content check compares all 31 HTML project entries with JSON-LD and `llms.tx
 | Location | Purpose |
 | --- | --- |
 | `index.html`, `style.css` | Accessible page content, base styles, project index and structured data |
-| `fonts.css`, `assets/*.woff2` | Locally hosted Barlow font subsets and licence |
+| `fonts.css`, `assets/*.woff2` | Locally hosted Barlow and Atkinson font subsets and licences |
 | `experience.css` | Photography, selected-work scenes, results, responsive layouts |
 | `script.js`, `theme.js` | Theme, filters, project links and sharing |
 | `experience.js`, `experience-geometry.js` | Scroll-linked illustrations and project constellation |
 | `assets/`, `photo-credits.html` | Locally served visuals and required photo attribution |
 | `llms.txt`, `sitemap.xml`, `og-image.png` | Plain-text portfolio, crawler and sharing metadata |
+| `docs/design.md` | Kidise kange typography, colour roles and visual rules |
 | `docs/evidence.md` | Public measurement definitions and update procedure |
 | `security.html`, `.well-known/security.txt` | Security design and vulnerability reporting |
 | `docs/photography.md`, `docs/og-card.html` | Photo provenance and social-card source |

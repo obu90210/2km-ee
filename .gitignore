@@ -6,6 +6,7 @@
 !robots.txt
 !llms.txt
 !assets/barlow-semi-condensed-license.txt
+!assets/atkinson-hyperlegible-next-license.txt
 
 # Scan reports
 *-scan-*.md
