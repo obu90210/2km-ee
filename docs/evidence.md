@@ -1,6 +1,6 @@
 # Portfolio evidence
 
-Page updated 24 October 2026. Figures below are historical observations recorded in the maintainer’s project operations. They are not independently audited or automatically refreshed.
+Page updated 29 October 2026. Figures below are historical observations recorded in the maintainer’s project operations. They are not independently audited or automatically refreshed.
 
 | Measure | Value | Observation period |
 | --- | --- | --- |
@@ -24,3 +24,7 @@ The rating sample is small and self-selected. The page makes no satisfaction, su
 4. Update review/sitemap dates and run `node tools/check.mjs`. Inspect the page and social preview, then publish only within the owner's authorised scope.
 
 Case-study order is deliberate: Customer Chatbot, Jedi Archives, Holocron, Autotests Portal. It moves from customer use through the shared knowledge foundation to developer context and verification. Customer answers remain within the product-support knowledge base.
+
+## Migration development evidence — 29 October 2026
+
+Hyperspace Migration is listed as In development. A read-only implementation review and the project's recorded manual verification support the description: a 486-record test-company rehearsal completed, including recovery after a saved record's API response was lost. This is a controlled test rehearsal, not a customer migration or production-readiness claim. Automated reconciliation and final cut-over work remain in development. The public entry includes no customer data, private product names or internal system locations.

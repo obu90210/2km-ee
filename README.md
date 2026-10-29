@@ -23,7 +23,7 @@ node tests/security.test.mjs
 node tests/design.test.mjs
 ```
 
-The content check compares all 31 HTML project entries with JSON-LD and `llms.txt`, verifies dated measurements, counts, fragment links, local assets, story mappings, and packaging exclusions. The tests cover scroll geometry, project sharing/fallbacks, and private-path protection in the preview server. Inspect desktop and phone layouts in both themes before publishing; also check reduced motion and reading without JavaScript.
+The content check compares all 32 HTML project entries with JSON-LD and `llms.txt`, verifies dated measurements, counts, fragment links, local assets, story mappings, and packaging exclusions. The tests cover scroll geometry, project sharing/fallbacks, and private-path protection in the preview server. Inspect desktop and phone layouts in both themes before publishing; also check reduced motion and reading without JavaScript.
 
 ## Files
 

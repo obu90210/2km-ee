@@ -5,8 +5,8 @@ import { runInNewContext } from 'node:vm';
 const source = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const ids = [...html.matchAll(/<details class="entry"[^>]* id="([^"]+)"/g)].map(m => m[1]);
-assert.equal(ids.length, 31);
-assert.equal((html.match(/>Permanent link<\/a>/g) || []).length, 31);
+assert.equal(ids.length, 32);
+assert.equal((html.match(/>Permanent link<\/a>/g) || []).length, 32);
 assert.ok(!html.includes('Link to this project'));
 assert.match(readFileSync(new URL('../_headers', import.meta.url), 'utf8'), /clipboard-write=\(self\)/);
 
@@ -68,4 +68,4 @@ for (const clipboard of [undefined, { writeText: async () => { throw new Error('
   assert.equal(input.readOnly, true);
   assert.ok(input.focused && input.selected);
 }
-console.log('PASS: 31 canonical share URLs, confirmation and reset, denied/missing clipboard fallback, no-JS anchors and write policy');
+console.log('PASS: 32 canonical share URLs, confirmation and reset, denied/missing clipboard fallback, no-JS anchors and write policy');

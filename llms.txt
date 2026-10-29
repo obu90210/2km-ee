@@ -5,13 +5,13 @@
 Canonical portfolio: https://2km.ee/
 GitHub: https://github.com/obu90210
 Contact: kaupo@2km.ee
-Content reviewed: 2026-10-24.
+Content reviewed: 2026-10-29.
 
 ## About
 
 Kaupo brings 20+ years of ERP domain experience to AI platform design, implementation with coding assistants and developers, and operations. His work connects business requirements, MCP knowledge services, RAG, developer workflows, integration testing, and business applications. Claude supported much of the existing work; Codex is now part of his workflow too. He also uses a shared GPU AI box and runs models entirely locally on his own PC’s graphics card. He works across macOS, Windows, and Linux every day.
 
-This is an author-maintained portfolio, not independent certification. Organisations, proprietary products, and customers are anonymised with Star Wars codenames. Technology names are literal. Customer Chatbot and Jedi Archives were reviewed against October 2026 operating records. Other project statuses remain a July 2026 snapshot; the invoicing project is explicitly a prototype. Usage figures below are dated observations, not current totals or claims of support resolution, satisfaction, or uptime.
+This is an author-maintained portfolio, not independent certification. Organisations, proprietary products, and customers are anonymised with Star Wars codenames. Technology names are literal. Customer Chatbot and Jedi Archives were reviewed against October 2026 operating records. Hyperspace Migration reflects a 29 October 2026 development and test-rehearsal review. Other project statuses remain a July 2026 snapshot; the invoicing project is explicitly a prototype. Usage figures below are dated observations, not current totals or claims of support resolution, satisfaction, or uptime.
 
 ## Website security
 
@@ -286,3 +286,11 @@ Other | Active
 Turn expert workflows into reusable skills. Versioned assistant skills package repeatable work such as document-template editing and structured bug reporting. They make established conventions easier to apply across a team.
 
 Technologies: Claude Skills, Python, Aurebesh, Jira API.
+
+### [Hyperspace Migration](https://2km.ee/#hyperspace-migration)
+
+Web App | In development
+
+Move accounting history with traceable decisions. Moving a company between accounting systems means preserving balances, open invoices, payments, VAT and currency differences. I define the accounting rules, migration safeguards and consultant workflow, and guide implementation with AI coding assistants. The application preserves raw extracts, records mapping decisions, verifies target settings and loads a frozen plan with recovery after interrupted requests. A 486-record test-company rehearsal completed, including recovery after a lost API response. Automated reconciliation and final cut-over remain in development.
+
+Technologies: TypeScript, Fastify, React, PostgreSQL, REST APIs, Docker.
