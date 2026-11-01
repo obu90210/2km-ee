@@ -20,4 +20,8 @@ Isolated HTTP browser QA passed seven desktop/mobile, light/dark, reduced-motion
 
 The 263 pre-existing archive/config/older documentation files captured before implementation were byte-identical after the work. Existing archive/gate, header/crawler, older documentation and unrelated handover edits are excluded from the release. Only this change's handover is staged.
 
-Independent read-only review found no actionable issues and approved the scoped change for publication. It confirmed that all 32 native project entries, project metadata and dated results are unchanged, reviewed the small-screen/no-JavaScript layouts and social image, and independently passed the content check. Final staging and live deployment verification remain executor checks. Live results will be recorded after push.
+Independent read-only review found no actionable issues and approved the scoped change for publication. It confirmed that all 32 native project entries, project metadata and dated results are unchanged, reviewed the small-screen/no-JavaScript layouts and social image, and independently passed the content check. Final staging excluded unrelated files and passed whitespace/credential-pattern checks.
+
+## Publication verified
+
+Content release `cc6cd0421b9e4742f3853e838286089cf013d00d` was pushed to GitHub master and verified live on 1 November 2026. The canonical homepage, focused pilot offering, industry examples, plain text, structured data and sitemap match the release. All 31 public assets passed verification, including the updated social PNG. Published crawler rules and CSP/HSTS/nosniff/referrer headers match the captured prior state. GPTBot, ClaudeBot, Googlebot and bingbot received the updated plain-text summary with HTTP 200. Eleven private/documentation/archive/gate paths remained unavailable (403/404). All 263 protected pre-existing files remained byte-identical after publication. Visual checks used the byte-matching local HTTP preview.
