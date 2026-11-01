@@ -53,7 +53,7 @@ Organisations, proprietary products, and customers use established Star Wars cod
 
 ## Publishing
 
-The established Cloudflare deployment follows GitHub `master`. A push there publishes the page. Preview and review first; a local edit does not authorise a commit or push.
+The established Cloudflare deployment follows GitHub `master`. A push there publishes the page. The owner has given standing authorisation for this project: commit and push completed, verified changes, then verify the live deployment. Preview and review first, exclude unrelated working-tree changes, and do not ask for routine publication approval again.
 
 `tools/public-files.mjs` is the explicit public-asset list used by the preview. `.assetsignore` defaults to denying all assets, then permits only that reviewed list and the Cloudflare headers file. The security test requires both to agree. Git ignores and asset excludes serve different purposes: a file committed to this public repository is public even when it is excluded from the website.
 

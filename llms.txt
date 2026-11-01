@@ -5,13 +5,13 @@
 Canonical portfolio: https://2km.ee/
 GitHub: https://github.com/obu90210
 Contact: kaupo@2km.ee
-Content reviewed: 2026-10-29.
+Content reviewed: 2026-11-01.
 
 ## About
 
 Kaupo brings 20+ years of ERP domain experience to AI platform design, implementation with coding assistants and developers, and operations. His work connects business requirements, MCP knowledge services, RAG, developer workflows, integration testing, and business applications. Claude supported much of the existing work; Codex is now part of his workflow too. He also uses a shared GPU AI box and runs models entirely locally on his own PC’s graphics card. He works across macOS, Windows, and Linux every day.
 
-This is an author-maintained portfolio, not independent certification. Organisations, proprietary products, and customers are anonymised with Star Wars codenames. Technology names are literal. Customer Chatbot and Jedi Archives were reviewed against October 2026 operating records. Hyperspace Migration reflects a 29 October 2026 development and test-rehearsal review. Other project statuses remain a July 2026 snapshot; the invoicing project is explicitly a prototype. Usage figures below are dated observations, not current totals or claims of support resolution, satisfaction, or uptime.
+This is an author-maintained portfolio, not independent certification. Organisations, proprietary products, and customers are anonymised with Star Wars codenames. Technology names are literal. Customer Chatbot was reviewed against 1 November 2026 operating records; Jedi Archives retains its 20 October snapshot. Hyperspace Migration reflects a 29 October 2026 development and test-rehearsal review. Other project statuses remain a July 2026 snapshot; the invoicing project is explicitly a prototype. Usage figures below are dated observations, not current totals or claims of support resolution, satisfaction, or uptime.
 
 ## Website security
 
@@ -21,9 +21,9 @@ The portfolio is static, with first-party scripts, styles, fonts and images. It 
 
 The shared product knowledge service and customer chatbot are the lead case study: specialist ERP knowledge becomes searchable context and cited customer answers; usage and feedback guide improvements.
 
-- 1,142 public chat turns, 25 September 2026 at 15:00 to approximately 8 October 2026 at 13:00. Public, non-junk scope; staff and evaluation traffic excluded. A turn is one question or lookup, not a unique user or resolved support case.
-- 320 turns included a source click, approximately 28%. Source clicks measure engagement, not answer accuracy or avoided support tickets.
-- Median answer completion: 10.3 seconds; median first token: 5.8 seconds in that chatbot window.
+- 4,249 public chat turns, 25 September 2026 at 00:00 UTC to 1 November 2026 at 20:04 UTC (22:04 in Tallinn; final day partial). Public, non-junk scope; staff and evaluation traffic excluded. A turn is one question or lookup, not a unique user or resolved support case.
+- 1,130 turns included a source click, approximately 26.6% of all public turns. Source clicks measure engagement, not answer accuracy or avoided support tickets.
+- Median answer completion: 10.4 seconds across all 4,249 turns; median first token: 6.0 seconds across the 4,183 turns with a recorded first-token timing in that chatbot window.
 - 43,583 indexed knowledge records, recorded 20 October 2026. This separate snapshot counts records, which can include document sections rather than unique original articles.
 
 These figures were recorded in project operations and are historical snapshots, not live counters. The self-selected rating sample does not support a customer-satisfaction percentage.
@@ -32,7 +32,7 @@ The improvement workflow: maintain sources, retrieve relevant context, answer wi
 
 ## Selected work
 
-- [Customer Chatbot](https://2km.ee/#customer-chatbot): Customers know the problem they are trying to solve. They should not need to know which manual, article, or ERP term contains the answer. I build and operate a support assistant around the product knowledge base: retrieval, source citations, multilingual support, feedback, and the controls needed for a public service. The recorded September–October window contains 1,142 public chat turns; 28% included a source click. Those signals help me see what people ask and where the guidance needs work.
+- [Customer Chatbot](https://2km.ee/#customer-chatbot): Customers know the problem they are trying to solve. They should not need to know which manual, article, or ERP term contains the answer. I build and operate a support assistant around the product knowledge base: retrieval, source citations, multilingual support, feedback, and the controls needed for a public service. The recorded 25 September–1 November 2026 window contains 4,249 public chat turns; 26.6% included a source click. Those signals help me see what people ask and where the guidance needs work.
 - [Jedi Archives](https://2km.ee/#jedi-archives): Useful product knowledge is spread across FAQs, manuals, references, and support material. It needs to be searchable and maintained before an assistant can use it well. I build and operate the shared knowledge service, from source ingestion and terminology to search and article retrieval through the Model Context Protocol (MCP). The index held 43,583 records in the 20 October snapshot. The same knowledge foundation supports assistant workflows and the customer chatbot. Customer answers stay within the product-support knowledge base.
 - [Holocron](https://2km.ee/#holocron): Specialist ERP development conventions and guides need to be available when a developer or coding assistant needs them. My work brings development documentation, reusable reference material, and controlled assistant access into one service for the development workflow. Coding assistants can retrieve relevant domain material before proposing changes. Vector search and reranking support retrieval; company sign-in controls access to internal material.
 - [Autotests Portal](https://2km.ee/#autotests-portal): Generating a test is only useful if people can run it, inspect the result, and repeat it. My platform work connects test authoring, AI-assisted generation, execution, and result review in a shared portal. Developers and testers have a common workflow for exercising ERP behaviour and investigating regressions. The test run gives the team evidence to review alongside generated code.
@@ -219,7 +219,7 @@ Technologies: Aurebesh, APIInterfaceTask, ERP webhooks.
 
 Automation | Active
 
-Customer support grounded in shared product knowledge. A customer-facing assistant retrieves product guidance and answers with citations. Multilingual retrieval, source-click tracking, feedback, and operational controls support ongoing improvement. The public, non-junk window from 25 September to 8 October 2026 recorded 1,142 chat turns; 320 (28%) included a source click. These are usage and engagement measures, not a support-resolution rate. Answers stay within the product-support knowledge base.
+Customer support grounded in shared product knowledge. A customer-facing assistant retrieves product guidance and answers with citations. Multilingual retrieval, source-click tracking, feedback, and operational controls support ongoing improvement. The public, non-junk window from 25 September to 1 November 2026 recorded 4,249 chat turns; 1,130 (26.6%) included a source click. These are usage and engagement measures, not a support-resolution rate. Answers stay within the product-support knowledge base.
 
 Technologies: Python, FastAPI, Claude, Voyage AI, SQLite FTS5, Docker, SSE, Apache.
 

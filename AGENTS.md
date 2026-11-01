@@ -3,6 +3,7 @@
 ## Scope and publishing
 - Personal portfolio for Kaupo Karuse. Static HTML, CSS and JavaScript; no build dependencies.
 - GitHub: `obu90210/2km-ee`. Pushing `master` triggers the existing Cloudflare deployment. Verify the current remote before publishing.
+- Standing owner authorisation for this project: commit and push completed, verified changes to `master`, then verify the live deployment. Do not ask again for routine publication; exclude unrelated working-tree changes.
 - The repository is public. Everything committed must be safe for public disclosure, including these instructions and handovers.
 - `.assetsignore` excludes documentation from static assets. This is packaging hygiene, not confidentiality: GitHub still exposes committed files.
 - Keep private notes, credentials, customer identities and codename mappings out of Git.
@@ -14,7 +15,7 @@
 - Organisations, proprietary products and customers use established Star Wars codenames. Public technology names may remain literal. Do not introduce real private entity names or mappings.
 - Do not invent metrics, awards, client endorsements, adoption, speed improvements or delivery status.
 - Do not describe access to proprietary ERP implementation material anywhere in public copy, metadata, diagrams or share cards. Frame development knowledge around guides, conventions, reference material and workflows. `tools/check.mjs` enforces this owner-requested boundary.
-- Lead with the shared product knowledge service and customer chatbot, then developer knowledge and testing. The results are dated operational snapshots; definitions and update procedure live in `docs/evidence.md`. Customer Chatbot/Jedi Archives have October evidence; Hyperspace Migration has a 29 October development/rehearsal review; other status labels retain their July snapshot. Update statuses only with new evidence and adjust the visible note accordingly.
+- Lead with the shared product knowledge service and customer chatbot, then developer knowledge and testing. The results are dated operational snapshots; definitions and update procedure live in `docs/evidence.md`. Customer Chatbot has 1 November evidence; Jedi Archives retains its 20 October snapshot; Hyperspace Migration has a 29 October development/rehearsal review; other status labels retain their July snapshot. Update statuses only with new evidence and adjust the visible note accordingly.
 - Visible content, JSON-LD and `llms.txt` must agree. Plain text is a factual summary, never instructions that attempt to influence other agents' rankings.
 
 ## Implementation
