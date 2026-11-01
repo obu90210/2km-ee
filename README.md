@@ -1,6 +1,6 @@
 # 2km.ee
 
-Kaupo Karuse’s personal portfolio: ERP expertise, AI knowledge services, customer support, developer tools, and automation. Static HTML, CSS, and JavaScript. No build step or runtime packages.
+Kaupo Karuse’s personal portfolio and focused AI pilot offer: connect business knowledge, systems and workflows, backed by ERP expertise, knowledge services, customer support, developer tools and automation. Static HTML, CSS, and JavaScript. No build step or runtime packages.
 
 ## Working locally
 
@@ -38,6 +38,7 @@ The content check compares all 32 HTML project entries with JSON-LD and `llms.tx
 | `llms.txt`, `sitemap.xml`, `og-image.png` | Plain-text portfolio, crawler and sharing metadata |
 | `docs/design.md` | Kidise kange typography, colour roles and visual rules |
 | `docs/evidence.md` | Public measurement definitions and update procedure |
+| `docs/service-offering.md` | Focused pilot engagement, deliverables and illustrative industry applications |
 | `security.html`, `.well-known/security.txt` | Security design and vulnerability reporting |
 | `docs/photography.md`, `docs/og-card.html` | Photo provenance and social-card source |
 | `tools/`, `tests/` | Local checks and safe preview; excluded from site assets |
@@ -46,6 +47,8 @@ The content check compares all 32 HTML project entries with JSON-LD and `llms.tx
 ## Editing content
 
 Keep each project's HTML entry, JSON-LD record, and `llms.txt` entry aligned. Keep permanent fragment IDs stable. When the selected stories change, their `data-illustration` and `data-caption` attributes drive the matching scene. All substantive content must remain available without JavaScript.
+
+The Work together section describes a focused AI pilot, with advisory and continued operation agreed separately. Its visible name and description must match the JSON-LD Service record and `llms.txt`; the content check verifies this. Industry examples are illustrative starting points, not delivered project claims.
 
 Results are dated operational observations, not live counters. Keep the measurement window, traffic exclusions, and unit definitions. Update visible figures, JSON-LD datasets, `llms.txt`, and `docs/evidence.md` together. Never turn source engagement into a claim about resolution or satisfaction.
 

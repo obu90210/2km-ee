@@ -1,3 +1,7 @@
+## Focused AI pilot offer — 1 November 2026
+
+The owner approved a focused pilot as the main engagement, with advisory and ongoing operation agreed separately. Broadened homepage/contact copy, added a four-step Work together section and six clearly labelled possible industry applications. Existing 32 projects, dated results, scripts, imagery credits and permanent links are preserved. HTML/Service metadata/plain text/social preview agree; the social image was regenerated. Definition: docs/service-offering.md. Release/rollback: docs/release-2026-11-01-pilot.md. All six README checks and seven browser configurations pass; no visitor/customer records were accessed. Publication is authorised under the project's standing commit/push instruction; independent review found no actionable issues; live verification is pending. Preserve unrelated archive/config/documentation work.
+
 # Portfolio handover — 24 October 2026
 
 ## Published and verified

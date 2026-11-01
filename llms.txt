@@ -1,6 +1,6 @@
 # Kaupo Karuse — AI Platform Lead
 
-> Kaupo Karuse, AI Platform Lead in Tallinn. 20+ years of ERP expertise applied to AI knowledge services, customer support, and developer tools. Explore the work and measured results.
+> Kaupo Karuse, AI Platform Lead in Tallinn. Practical AI pilots connecting business knowledge, systems and workflows, backed by 20+ years of ERP experience.
 
 Canonical portfolio: https://2km.ee/
 GitHub: https://github.com/obu90210
@@ -9,7 +9,7 @@ Content reviewed: 2026-11-01.
 
 ## About
 
-Kaupo brings 20+ years of ERP domain experience to AI platform design, implementation with coding assistants and developers, and operations. His work connects business requirements, MCP knowledge services, RAG, developer workflows, integration testing, and business applications. Claude supported much of the existing work; Codex is now part of his workflow too. He also uses a shared GPU AI box and runs models entirely locally on his own PC’s graphics card. He works across macOS, Windows, and Linux every day.
+Kaupo helps businesses connect their knowledge, systems and workflows with AI. He brings 20+ years of ERP domain experience to focused AI pilots, platform design, implementation with coding assistants and developers, and operations. His work connects business requirements, MCP knowledge services, RAG, developer workflows, integration testing, and business applications. Claude supported much of the existing work; Codex is now part of his workflow too. He also uses a shared GPU AI box and runs models entirely locally on his own PC’s graphics card. He works across macOS, Windows, and Linux every day.
 
 This is an author-maintained portfolio, not independent certification. Organisations, proprietary products, and customers are anonymised with Star Wars codenames. Technology names are literal. Customer Chatbot was reviewed against 1 November 2026 operating records; Jedi Archives retains its 20 October snapshot. Hyperspace Migration reflects a 29 October 2026 development and test-rehearsal review. Other project statuses remain a July 2026 snapshot; the invoicing project is explicitly a prototype. Usage figures below are dated observations, not current totals or claims of support resolution, satisfaction, or uptime.
 
@@ -29,6 +29,32 @@ The shared product knowledge service and customer chatbot are the lead case stud
 These figures were recorded in project operations and are historical snapshots, not live counters. The self-selected rating sample does not support a customer-satisfaction percentage.
 
 The improvement workflow: maintain sources, retrieve relevant context, answer with citations, review real questions and feedback, then improve the knowledge and retrieval.
+
+## Working together
+
+### [Focused AI pilot](https://2km.ee/#work-together)
+
+Connect the knowledge, systems and people behind one workflow. Together we define the scope, build a pilot and measure whether it helps.
+
+1. Understand the work. Map the process with the people doing it. Identify the business rules, available data and current baseline.
+2. Choose one useful change. Agree on a bounded problem, what the pilot will deliver and how to judge it: time, corrections, completeness or another relevant measure.
+3. Build and test the pilot. I guide implementation with developers and AI coding assistants. Your team checks the result against real work and agreed business rules.
+4. Review and hand over. Review the measured results, document the solution and decide whether to extend it. Advisory and continued operation can be agreed separately.
+
+The deliverable: a working pilot, agreed checks, a results review and a documented handover. Scope, responsibilities and access are agreed before work begins. Advisory and continued operation can be agreed separately.
+
+### Possible applications
+
+Possible applications to explore with your team. Each depends on your processes, available data and specialist knowledge.
+
+- Agriculture: What does each field or crop really cost? Bring together purchase, fuel, labour and machinery records to investigate costs. Prepare activity notes for staff to review.
+- Transport: Which completed jobs are still waiting to be invoiced? Connect orders, delivery documents, work hours and invoices. Show missing paperwork and costs that need attention.
+- Manufacturing: Can staff find the right instruction for this job? Make approved work instructions searchable with references. Compare recorded material use with production plans.
+- Construction: Which extra work still needs approval or billing? Connect site reports, estimates, approved changes and actual costs so the team can follow up.
+- Wholesale and retail: How much of an incoming order needs retyping? Prepare order entries from emails or documents for staff review, and highlight missing details or stock exceptions.
+- Services: Where does completed work get lost before invoicing? Connect enquiries, quotations, scheduled work, timesheets and billing. Make the next action visible.
+
+Tell Kaupo about one process you want to improve: kaupo@2km.ee.
 
 ## Selected work
 

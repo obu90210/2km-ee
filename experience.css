@@ -197,3 +197,30 @@ html[data-motion='paused'] .row, html[data-motion='paused'] .fleet-point::before
 }
 
 @media (max-width: 640px) { .toplinks { justify-content: flex-start; } .visual-overline { gap: 12px; } }
+
+/* A scoped engagement and illustrative applications, in the existing reading theme. */
+.offer-section { padding: 100px 40px 0; }
+.offer-intro, .offer-outcome, .applications-heading, .offer-next { max-width: 850px; margin: 0 auto; }
+.offer-intro { font-size: 24px; text-align: center; }
+.pilot-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 64px; padding: 0; margin: 48px 0 32px; list-style-position: inside; }
+.pilot-steps li { padding: 0; }
+.pilot-steps li::marker { color: var(--accent); font-weight: 600; }
+.pilot-steps h3 { display: inline; font-size: 30px; }
+.pilot-steps p { margin-top: 12px; color: var(--muted); }
+.offer-outcome { color: var(--muted); }
+.applications-heading { margin-top: 64px; text-align: center; }
+.applications-heading h3 { margin-bottom: 16px; }
+.applications-heading p { color: var(--muted); }
+.industry-examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 64px; margin: 40px 0; }
+.industry-examples dt { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+.industry-examples dd { margin: 0; }
+.industry-examples dd p { color: var(--muted); }
+.industry-examples .industry-question { font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.offer-next { text-align: center; font-weight: 600; }
+@media (max-width: 760px) {
+  .offer-section { padding: 64px 24px 0; }
+  .offer-intro { font-size: 22px; }
+  .pilot-steps, .industry-examples { grid-template-columns: 1fr; gap: 28px; }
+  .pilot-steps { margin-top: 32px; }
+  .applications-heading { margin-top: 48px; }
+}

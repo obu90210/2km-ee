@@ -11,6 +11,16 @@ const text = value => value.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').repla
 const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
 const collection = graph.find(x => x['@type'] === 'CollectionPage');
 const projects = collection.mainEntity.itemListElement;
+const service = graph.find(x => x['@type'] === 'Service');
+assert.ok(service, 'A declared service describes the visible engagement');
+assert.equal(service.provider['@id'], graph.find(x => x['@type'] === 'Person')['@id'], 'Service attribution');
+assert.equal(service.url, 'https://2km.ee/#work-together', 'Canonical service link');
+for (const field of ['name', 'description']) {
+  const visible = html.match(new RegExp(`data-service-${field}>([\\s\\S]*?)</(?:span|p)>`));
+  assert.ok(visible, 'Visible service ' + field);
+  assert.equal(text(visible[1]), service[field], 'Service ' + field + ' agrees with visible copy');
+  assert.ok(llms.includes(service[field]), 'Plain-text service ' + field);
+}
 const entries = [...html.matchAll(/<details class="entry" data-cat="([^"]+)" id="([^"]+)">([\s\S]*?)<\/details>/g)];
 assert.equal(entries.length, projects.length);
 assert.equal(projects.length, collection.mainEntity.numberOfItems);
@@ -58,4 +68,4 @@ assert.ok(!/excellent\.(ee|lv|lt|fi|no|se)|halocron\.excellent|testman\.|\/opt\/
 for (const path of ['index.html', 'llms.txt', 'experience.js', 'docs/og-card.html', 'docs/evidence.md']) {
   assert.ok(!/source[\s-]*code|ERP\s+(?:source|code)|source\s+retrieval|source[\s-]+review/i.test(read(path)), 'Restricted implementation reference in ' + path);
 }
-console.log(`PASS: ${entries.length} project records, category counts, descriptions/statuses, fragments/assets, four dated measurements, story mappings, metadata dates, CSP and packaging`);
+console.log(`PASS: ${entries.length} project records, service consistency, category counts, descriptions/statuses, fragments/assets, four dated measurements, story mappings, metadata dates, CSP and packaging`);
