@@ -34,6 +34,8 @@ Use authentic photography and project-specific diagrams for visual interest. Let
 
 The migration replay uses the dark scene palette for a fictional invoice and its run log. Keep each step in HTML with a stable fragment. The script switches the visible step and manages focus. Label the results as fictional at their headings so the context survives a direct link. Keep the real case citation separately labelled and readable with or without the clipboard. A visit to the citation preserves its originating step in browser history.
 
+Project trails use ordered lists of public project notes. The constellation uses those same links to number and connect the points in reading order. Each trail has a stable fragment and a copyable public link, and all three lists remain readable without JavaScript. Selecting a trail restores the full constellation. Choosing a specific category clears the trail. Keep the reading order and URLs aligned with `llms.txt` when updating the trails.
+
 ## Motion, sharing and maintenance
 
 Preserve the strength and timing of the photo parallax, hero illustration, knowledge flow, selected-work illustrations and project index through visual refinements. Agree motion changes with the owner. Pause motion and the operating system's reduced-motion preference take priority. Page content remains ordinary HTML and readable without scripts.

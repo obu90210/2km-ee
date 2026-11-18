@@ -49,6 +49,20 @@ function checkLocalAssets(markup) {
   }
 }
 checkLocalAssets(html);
+const projectNames = new Map(entries.map((entry, index) => [entry[2], projects[index].item.name]));
+const trailPanels = [...html.matchAll(/<section class="project-trail" id="(trail-[a-z-]+)" data-project-trail[^>]*>([\s\S]*?)<\/section>/g)];
+assert.equal(trailPanels.length, 3, 'Three problem trails are readable in HTML');
+assert.ok(trailPanels.some(([, id]) => id === 'trail-find-knowledge'), 'The knowledge trail has a permanent fragment');
+for (const [, id, panel] of trailPanels) {
+  const title = text(panel.match(/<h3[^>]*>([^<]+)<\/h3>/)[1]);
+  const url = `https://2km.ee/#${id}`;
+  const members = [...panel.matchAll(/<a href="#([^"]+)">/g)].map(link => link[1]);
+  assert.ok(html.includes(`href="#${id}" data-trail-choice`), 'Trail picker link: ' + title);
+  assert.ok(panel.includes(`data-citation-source href="${url}"`), 'Public trail URL: ' + title);
+  assert.ok(members.length >= 2 && members.length === new Set(members).size, 'A trail has distinct projects: ' + title);
+  for (const member of members) assert.ok(projectNames.has(member), 'Trail stop is a public project: ' + member);
+  assert.ok(llms.includes(`${title} — ${url} — ${members.map(member => projectNames.get(member)).join(', ')}.`), 'Plain-text trail and order: ' + title);
+}
 const replayPath = 'migration-replay.html';
 const replayRoute = '/migration-replay';
 const replayUrl = `https://2km.ee${replayRoute}`;

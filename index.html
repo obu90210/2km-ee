@@ -83,7 +83,59 @@
 <article class="case" data-work="1" data-illustration="knowledge" data-caption="Scattered guidance → shared knowledge" id="work-story-2"><div class="case-title"><p class="eyebrow">Jedi Archives</p><h3>Build the foundation behind the answer.</h3><a href="#jedi-archives">Project notes ↗</a></div><div class="case-body"><p><b>The problem.</b> Useful product knowledge is spread across FAQs, manuals, references, and support material. It needs to be searchable and maintained before an assistant can use it well.</p><p><b>My contribution.</b> I build and operate the shared knowledge service, from source ingestion and terminology to search and article retrieval through the Model Context Protocol (MCP).</p><p><b>The result.</b> The index held 43,583 records in the 20 October snapshot. The same knowledge foundation supports assistant workflows and the customer chatbot. Customer answers stay within the product-support knowledge base.</p><a class="case-evidence-link" href="#results">See the knowledge snapshot ↑</a></div></article>
 <article class="case" data-work="2" data-illustration="development" data-caption="Development guides → relevant context" id="work-story-3"><div class="case-title"><p class="eyebrow">Holocron</p><h3>Give developers the missing context.</h3><a href="#holocron">Project notes ↗</a></div><div class="case-body"><p><b>The problem.</b> Specialist ERP development conventions and guides need to be available when a developer or coding assistant needs them.</p><p><b>My contribution.</b> My work brings development documentation, reusable reference material, and controlled assistant access into one service for the development workflow.</p><p><b>The result.</b> Coding assistants can retrieve relevant domain material before proposing changes. Vector search and reranking support retrieval; company sign-in controls access to internal material.</p></div></article>
 <article class="case" data-work="3" data-illustration="testing" data-caption="Generate → run → inspect → repeat" id="work-story-4"><div class="case-title"><p class="eyebrow">Autotests Portal</p><h3>Make verification part of the workflow.</h3><a href="#autotests-portal">Project notes ↗</a></div><div class="case-body"><p><b>The problem.</b> Generating a test is only useful if people can run it, inspect the result, and repeat it.</p><p><b>My contribution.</b> My platform work connects test authoring, AI-assisted generation, execution, and result review in a shared portal.</p><p><b>The result.</b> Developers and testers have a common workflow for exercising ERP behaviour and investigating regressions. The test run gives the team evidence to review alongside generated code.</p></div></article></div></div></section>
-<figure class="nature-break"><img src="/assets/kasmu-coast.jpg" alt="Boulders in the Baltic Sea beside Käsmu village at night, Estonia" width="2500" height="1667" loading="lazy"><figcaption><span>Käsmu, Estonia</span><a href="/photo-credits.html">Photography credits</a></figcaption></figure><section class="section" id="projects" aria-labelledby="projects-heading"><div class="section-heading"><span class="section-no">Project index</span><h2 id="projects-heading">The rest of the fleet. And its foundations.</h2></div><p class="index-intro">32 projects and workstreams. The knowledge services and customer assistant are the centre of the work; the index shows the wider platform, testing, and integrations around them. Open any row for context and technologies. Some are shared services; others are prototypes, designs, or completed work.</p><div class="fleet-visual" hidden aria-label="Project constellation; select a dot to open its project"><canvas data-scene="fleet" aria-hidden="true"></canvas><div class="fleet-links" id="fleet-links"></div><p class="fleet-caption">Each point is a project. <span id="fleet-caption-detail">Explore the connections.</span></p></div><nav class="filters" id="filters" hidden aria-label="Filter projects by category"><button class="fbtn active" data-f="all" aria-pressed="true">All projects <span>32</span></button><button class="fbtn" data-f="infra" aria-pressed="false">Knowledge &amp; infrastructure <span>7</span></button>
+<figure class="nature-break"><img src="/assets/kasmu-coast.jpg" alt="Boulders in the Baltic Sea beside Käsmu village at night, Estonia" width="2500" height="1667" loading="lazy"><figcaption><span>Käsmu, Estonia</span><a href="/photo-credits.html">Photography credits</a></figcaption></figure><section class="section" id="projects" aria-labelledby="projects-heading"><div class="section-heading"><span class="section-no">Project index</span><h2 id="projects-heading">The rest of the fleet. And its foundations.</h2></div><p class="index-intro">32 projects and workstreams. The knowledge services and customer assistant are the centre of the work; the index shows the wider platform, testing, and integrations around them. Open any row for context and technologies. Some are shared services; others are prototypes, designs, or completed work.</p>
+<div class="trail-picker" id="project-trails">
+  <h3 id="trail-picker-heading">Explore by problem</h3>
+  <nav class="trail-options" aria-labelledby="trail-picker-heading">
+    <a class="utility-button" href="#trail-find-knowledge" data-trail-choice>Our knowledge is hard to find</a>
+    <a class="utility-button" href="#trail-release-testing" data-trail-choice>Release testing is too manual</a>
+    <a class="utility-button" href="#trail-move-erp-data" data-trail-choice>We need to move ERP data safely</a>
+    <a class="trail-clear" href="#projects" data-trail-clear hidden>Clear trail</a>
+  </nav>
+  <p class="trail-status" data-trail-status role="status"></p>
+</div>
+<div class="trail-view" id="trail-view">
+<div class="fleet-visual" hidden aria-label="Project constellation; select a dot to open its project"><canvas data-scene="fleet" aria-hidden="true"></canvas><div class="fleet-links" id="fleet-links"></div><p class="fleet-caption">Each point is a project. <span id="fleet-caption-detail">Explore the connections.</span></p></div>
+  <section class="project-trail" id="trail-find-knowledge" data-project-trail aria-labelledby="trail-knowledge-heading">
+    <h3 id="trail-knowledge-heading">Our knowledge is hard to find</h3>
+    <ol class="trail-stops">
+      <li><a href="#holonet">HoloNet</a><p>Publish and maintain multilingual product help in one place.</p></li>
+      <li><a href="#jedi-archives">Jedi Archives</a><p>Make guidance from manuals, FAQs, and support searchable.</p></li>
+      <li><a href="#customer-chatbot">Customer Chatbot</a><p>Answer customer questions and link back to the guidance.</p></li>
+    </ol>
+    <div class="trail-share" data-citation>
+      <div class="trail-actions"><button class="utility-button" type="button" data-copy-citation data-copy-success="Trail link copied." hidden>Copy trail link</button><a data-citation-source href="https://2km.ee/#trail-find-knowledge">Permanent trail link</a></div>
+      <p class="citation-status" data-copy-status role="status"></p>
+      <label class="citation-fallback" data-copy-fallback hidden>Copy the trail link from this field<textarea rows="2" readonly></textarea></label>
+    </div>
+  </section>
+  <section class="project-trail" id="trail-release-testing" data-project-trail aria-labelledby="trail-testing-heading">
+    <h3 id="trail-testing-heading">Release testing is too manual</h3>
+    <ol class="trail-stops">
+      <li><a href="#automated-tests">Automated Tests</a><p>Turn repeatable ERP workflows into checks with expected results.</p></li>
+      <li><a href="#autotests-portal">Autotests Portal</a><p>Author tests, run them, and inspect the results in one place.</p></li>
+      <li><a href="#acceptance-testing">Acceptance Testing</a><p>Collect evidence and coordinate the human review before a release.</p></li>
+    </ol>
+    <div class="trail-share" data-citation>
+      <div class="trail-actions"><button class="utility-button" type="button" data-copy-citation data-copy-success="Trail link copied." hidden>Copy trail link</button><a data-citation-source href="https://2km.ee/#trail-release-testing">Permanent trail link</a></div>
+      <p class="citation-status" data-copy-status role="status"></p>
+      <label class="citation-fallback" data-copy-fallback hidden>Copy the trail link from this field<textarea rows="2" readonly></textarea></label>
+    </div>
+  </section>
+  <section class="project-trail" id="trail-move-erp-data" data-project-trail aria-labelledby="trail-migration-heading">
+    <h3 id="trail-migration-heading">We need to move ERP data safely</h3>
+    <ol class="trail-stops">
+      <li><a href="#legacy-migration-toolkit">Legacy Migration Toolkit</a><p>Transform ledger records and account structures for import.</p></li>
+      <li><a href="#hyperspace-migration">Hyperspace Migration</a><p>Trace mapping decisions and check the recorded outcome after an interrupted request.</p></li>
+    </ol>
+    <div class="trail-share" data-citation>
+      <div class="trail-actions"><button class="utility-button" type="button" data-copy-citation data-copy-success="Trail link copied." hidden>Copy trail link</button><a data-citation-source href="https://2km.ee/#trail-move-erp-data">Permanent trail link</a></div>
+      <p class="citation-status" data-copy-status role="status"></p>
+      <label class="citation-fallback" data-copy-fallback hidden>Copy the trail link from this field<textarea rows="2" readonly></textarea></label>
+    </div>
+  </section>
+</div>
+<nav class="filters" id="filters" hidden aria-label="Filter projects by category"><button class="fbtn active" data-f="all" aria-pressed="true">All projects <span>32</span></button><button class="fbtn" data-f="infra" aria-pressed="false">Knowledge &amp; infrastructure <span>7</span></button>
 <button class="fbtn" data-f="web" aria-pressed="false">Web applications <span>10</span></button>
 <button class="fbtn" data-f="test" aria-pressed="false">Testing &amp; QA <span>2</span></button>
 <button class="fbtn" data-f="integ" aria-pressed="false">Integrations <span>5</span></button>

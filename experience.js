@@ -13,6 +13,7 @@ workVisual.hidden = false;
 const entries = [...document.querySelectorAll('.entry')];
 const fleet = document.getElementById('fleet-links');
 const fleetCaption = document.getElementById('fleet-caption-detail');
+const filterOptions = document.getElementById('filters');
 const scenes = [...document.querySelectorAll('canvas[data-scene]')].map(canvas => ({canvas, ctx: canvas.getContext('2d'), name: canvas.dataset.scene})).filter(x => x.ctx);
 let paused = false, queued = 0, pointer = 0, selectedPoint = -1, lastScroll = scrollY;
 let workIndex = 0, workProgress = 0, workBlend = 0;
@@ -36,6 +37,63 @@ const points = entries.map((entry, i) => {
   fleet.append(a); return {...p, a, entry};
 });
 fleet.closest('.fleet-visual').hidden = false;
+
+const trailPicker = document.getElementById('project-trails');
+const trailView = document.getElementById('trail-view');
+const trailChoices = [...document.querySelectorAll('[data-trail-choice]')];
+const pointsByFragment = new Map(points.map(point => [point.a.hash, point]));
+const trails = new Map([...document.querySelectorAll('[data-project-trail]')].map(panel => {
+  const members = [...panel.querySelectorAll('.trail-stops a')]
+    .map(link => pointsByFragment.get(link.hash)).filter(Boolean);
+  return [`#${panel.id}`, { panel, members }];
+}));
+const trailInk = getComputedStyle(fleet).getPropertyValue('--scene-copper').trim();
+let activeTrail;
+
+function syncTrail() {
+  activeTrail = trails.get(location.hash);
+  for (const trail of trails.values()) trail.panel.hidden = trail !== activeTrail;
+  for (const choice of trailChoices) {
+    if (choice.hash === location.hash) choice.setAttribute('aria-current', 'location');
+    else choice.removeAttribute('aria-current');
+  }
+  trailView.toggleAttribute('data-active-trail', Boolean(activeTrail));
+  trailPicker.querySelector('[data-trail-clear]').hidden = !activeTrail;
+  trailPicker.querySelector('[data-trail-status]').textContent = activeTrail
+    ? `${activeTrail.members.length} projects highlighted. Follow the numbered points.`
+    : '';
+
+  for (const point of points) {
+    const index = activeTrail?.members.indexOf(point) ?? -1;
+    if (index < 0) {
+      delete point.a.dataset.trailOrder;
+      point.a.setAttribute('aria-label', point.a.title);
+    } else {
+      point.a.dataset.trailOrder = String(index + 1);
+      point.a.setAttribute('aria-label', `${point.a.title}, trail stop ${index + 1}`);
+    }
+  }
+
+  if (activeTrail) {
+    const showAll = filterOptions?.querySelector('[data-f="all"]');
+    if (showAll?.getAttribute('aria-pressed') === 'false') showAll.click();
+    trailPicker.scrollIntoView({ block: 'start' });
+  }
+  schedule();
+}
+
+if (trailView) {
+  // Settle the map and panel layout before script.js scrolls to a project fragment.
+  window.addEventListener('hashchange', syncTrail, { capture: true });
+  trailPicker.addEventListener('click', event => {
+    const choice = event.target.closest('[data-trail-choice]');
+    if (choice?.hash !== location.hash || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    event.preventDefault();
+    trailPicker.scrollIntoView({ block: 'start' });
+  });
+  syncTrail();
+}
+
 function prepare(s) {
   const r = s.canvas.getBoundingClientRect();
   if (!r.width || !r.height || r.bottom < 0 || r.top > innerHeight) return null;
@@ -112,11 +170,16 @@ function drawWork({c,w,h}, idx, p) {
 }
 function drawFleet({c,w,h}) {
   const visible=points.filter(x=>!x.entry.hidden);
+  const backgroundLine = activeTrail ? '#7db8db14' : '#7db8db25';
   visible.forEach((a,i)=>{
     const j=(i+7)%visible.length,b=visible[j];if(!b)return;
     const active=selectedPoint>=0&&(points[selectedPoint]===a||points[selectedPoint]===b);
-    line(c,[[a.x*w,a.y*(h-48)],[b.x*w,b.y*(h-48)]],active?'#f2683caa':'#7db8db25',active?1.5:.7);
+    line(c,[[a.x*w,a.y*(h-48)],[b.x*w,b.y*(h-48)]],active?'#f2683caa':backgroundLine,active?1.5:.7);
   });
+  if (activeTrail) {
+    const route = activeTrail.members.map(point => [point.x * w, point.y * (h - 48)]);
+    line(c, route, trailInk, 2);
+  }
 }
 function drawContact({c,w,h},p) {
   for(let i=0;i<12;i++){c.strokeStyle='#5796c5';c.lineWidth=1;c.beginPath();c.ellipse(w*.83,h*.5,40+i*22,65+i*15,p*.5+i*.06,0,Math.PI*2);c.stroke();}
@@ -163,7 +226,14 @@ function update() {
 function schedule(){if(!queued&&!document.hidden)queued=requestAnimationFrame(update);}
 window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);
 document.addEventListener('visibilitychange',schedule);document.addEventListener('toggle',schedule,true);
-document.getElementById('filters')?.addEventListener('click',schedule);
+filterOptions?.addEventListener('click', event => {
+  const button = event.target.closest('button[data-f]');
+  if (activeTrail && button && button.dataset.f !== 'all') {
+    history.replaceState(history.state, '', '#projects');
+    syncTrail();
+  }
+  schedule();
+});
 new ResizeObserver(schedule).observe(document.querySelector('main'));
 workVisual.addEventListener('pointermove',e=>{if(paused||reduced.matches||coarse.matches)return;const r=workVisual.getBoundingClientRect();pointer=(e.clientX-r.left)/r.width-.5;schedule();});
 workVisual.addEventListener('pointerleave',()=>{pointer=0;schedule();});

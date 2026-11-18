@@ -63,6 +63,14 @@ Tell Kaupo about one process you want to improve: kaupo@2km.ee.
 - [Holocron](https://2km.ee/#holocron): Specialist ERP development conventions and guides need to be available when a developer or coding assistant needs them. My work brings development documentation, reusable reference material, and controlled assistant access into one service for the development workflow. Coding assistants can retrieve relevant domain material before proposing changes. Vector search and reranking support retrieval; company sign-in controls access to internal material.
 - [Autotests Portal](https://2km.ee/#autotests-portal): Generating a test is only useful if people can run it, inspect the result, and repeat it. My platform work connects test authoring, AI-assisted generation, execution, and result review in a shared portal. Developers and testers have a common workflow for exercising ERP behaviour and investigating regressions. The test run gives the team evidence to review alongside generated code.
 
+## Project trails
+
+The constellation offers three reading trails organised by business problem. Each link opens an ordered set of public project notes.
+
+- Our knowledge is hard to find — https://2km.ee/#trail-find-knowledge — HoloNet, Jedi Archives, Customer Chatbot.
+- Release testing is too manual — https://2km.ee/#trail-release-testing — Automated Tests, Autotests Portal, Acceptance Testing.
+- We need to move ERP data safely — https://2km.ee/#trail-move-erp-data — Legacy Migration Toolkit, Hyperspace Migration.
+
 ## Full project index
 
 Interactive example: https://2km.ee/migration-replay — a fictional browser-only ERP migration replay. After a lost acknowledgement, checking the run log confirms the first write; a fresh import without a check creates a second simulated record. The page cites the documented Hyperspace Migration test-company rehearsal separately: https://2km.ee/#hyperspace-migration.

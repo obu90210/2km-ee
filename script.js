@@ -83,7 +83,7 @@ document.querySelectorAll('[data-citation]').forEach(citation => {
     try {
       await navigator.clipboard.writeText(field.value);
       fallback.hidden = true;
-      status.textContent = 'Citation copied.';
+      status.textContent = button.dataset.copySuccess || 'Citation copied.';
     } catch {
       status.textContent = 'Automatic copying is unavailable.';
       fallback.hidden = false;
