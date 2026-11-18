@@ -80,7 +80,7 @@ a:hover { color: var(--accent); }
 h1, h2, h3, .hero-statement, .name { font-family: var(--font-heading); }
 .toplinks a { display: inline-flex; align-items: center; min-height: var(--control-size); text-decoration: none; }
 .toplinks a:hover, .toplinks a:focus-visible { text-decoration: underline; }
-.primary-action, .theme-btn, .fbtn {
+.primary-action, .theme-btn, .utility-button, .fbtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -98,7 +98,7 @@ h1, h2, h3, .hero-statement, .name { font-family: var(--font-heading); }
 }
 .primary-action { border-color: var(--action-border); background: var(--action); color: var(--action-ink); text-decoration: none; }
 .primary-action:hover { color: var(--action-ink); text-decoration: underline; }
-.theme-btn:hover, .fbtn:not([aria-pressed='true']):hover { background: var(--paper-raise); }
+.theme-btn:hover, .utility-button:hover, .fbtn:not([aria-pressed='true']):hover { background: var(--paper-raise); }
 .eyebrow, .section-no { color: var(--accent); font-size: 20px; font-weight: 600; }
 h1 { font-size: var(--type-page); font-weight: 900; line-height: 1; margin: 20px 0 12px; }
 strong, b { font-weight: 600; }

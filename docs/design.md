@@ -32,6 +32,8 @@ One short vertical accent sits beside the wordmark. Avoid patterned horizontal b
 
 Use authentic photography and project-specific diagrams for visual interest. Let the typography and composition group related content before adding a panel, badge or decorative mark. Add new variants only when a recurring use calls for them.
 
+The migration replay uses the dark scene palette for a fictional invoice and its run log. Keep each step in HTML with a stable fragment. The script switches the visible step and manages focus. Keep the real case citation separately labelled and readable with or without the clipboard.
+
 ## Motion, sharing and maintenance
 
 Preserve the strength and timing of the photo parallax, hero illustration, knowledge flow, selected-work illustrations and project index through visual refinements. Agree motion changes with the owner. Pause motion and the operating system's reduced-motion preference take priority. Page content remains ordinary HTML and readable without scripts.

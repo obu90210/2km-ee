@@ -65,6 +65,8 @@ Tell Kaupo about one process you want to improve: kaupo@2km.ee.
 
 ## Full project index
 
+Interactive example: https://2km.ee/migration-replay — a fictional browser-only ERP migration replay. After a lost acknowledgement, checking the run log confirms the first write; a fresh import without a check creates a second simulated record. The page cites the documented Hyperspace Migration test-company rehearsal separately: https://2km.ee/#hyperspace-migration.
+
 ### [Star Forge](https://2km.ee/#star-forge)
 
 AI Infrastructure | Active

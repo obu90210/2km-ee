@@ -34,6 +34,7 @@ The content check compares all 32 HTML project entries with JSON-LD and `llms.tx
 | `experience.css` | Photography, selected-work scenes, results, responsive layouts |
 | `script.js`, `theme.js` | Theme, filters, project links and sharing |
 | `experience.js`, `experience-geometry.js` | Scroll-linked illustrations and project constellation |
+| `migration-replay.html`, `migration-replay.css`, `migration-replay.js` | Fictional ERP migration replay and copyable citation to the portfolio case |
 | `assets/`, `photo-credits.html` | Locally served visuals and required photo attribution |
 | `llms.txt`, `sitemap.xml`, `og-image.png` | Plain-text portfolio, crawler and sharing metadata |
 | `docs/design.md` | Kidise kange typography, colour roles and visual rules |

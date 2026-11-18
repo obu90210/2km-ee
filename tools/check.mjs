@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { assetIgnore } from './public-files.mjs';
+import { assetIgnore, publicFileForPath } from './public-files.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = path => readFileSync(resolve(root, path), 'utf8');
 const html = read('index.html'), llms = read('llms.txt');
@@ -42,7 +42,37 @@ for (const filter of html.matchAll(/<button class="fbtn[^\"]*" data-f="([^"]+)"[
 const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(new Set(ids).size, ids.length, 'Unique HTML IDs');
 for (const link of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(link[1]), 'Fragment: ' + link[1]);
-for (const asset of html.matchAll(/(?:src|href)="\/([^"#?]+)"/g)) assert.ok(existsSync(resolve(root, asset[1])), 'Asset: ' + asset[1]);
+function checkLocalAssets(markup) {
+  for (const [, pathname] of markup.matchAll(/(?:src|href)="(\/[^"#?]+)"/g)) {
+    const publicFile = publicFileForPath(pathname);
+    assert.ok(publicFile && existsSync(resolve(root, publicFile)), 'Public asset: ' + pathname);
+  }
+}
+checkLocalAssets(html);
+const replayPath = 'migration-replay.html';
+const replayRoute = '/migration-replay';
+const replayUrl = `https://2km.ee${replayRoute}`;
+const migrationUrl = 'https://2km.ee/#hyperspace-migration';
+assert.ok(existsSync(resolve(root, replayPath)), 'The public migration replay exists');
+const replay = read(replayPath);
+assert.ok(html.includes(`href="${replayRoute}"`) && llms.includes(replayUrl), 'The replay is discoverable from the homepage and plain-text portfolio');
+assert.ok(read('sitemap.xml').includes(`<loc>${replayUrl}</loc>`), 'The replay is listed in the sitemap');
+assert.ok(replay.includes(`<link rel="canonical" href="${replayUrl}">`), 'Replay canonical URL');
+assert.ok(replay.includes(`href="${migrationUrl}"`) && /fictional/i.test(replay), 'The fictional replay links to the real migration case');
+const replayMetadata = JSON.parse(replay.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+assert.equal(replayMetadata['@id'], replayUrl, 'Replay metadata uses the canonical URL');
+assert.equal(replayMetadata.citation, migrationUrl, 'Replay metadata cites the real case');
+const migration = projects.find(({ item }) => item.url === migrationUrl)?.item;
+const rehearsal = migration?.description.match(/A [\d,]+-record test-company rehearsal completed, including recovery after a lost API response\./)?.[0];
+const citation = text(replay.match(/<p data-citation-text>([^<]+)<\/p>/)[1]);
+const reviewDate = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(migration.dateModified));
+assert.ok(rehearsal && citation.includes(rehearsal) && citation.includes(reviewDate), 'The public citation matches the portfolio evidence and review date');
+const replaySteps = [...replay.matchAll(/<section id="([^"]+)" class="replay-step"/g)].map(match => match[1]);
+assert.deepEqual(replaySteps, ['start', 'timeout', 'check-log', 'send-again'], 'All replay paths exist as native HTML');
+const replayIds = [...replay.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
+assert.equal(new Set(replayIds).size, replayIds.length, 'Unique replay IDs');
+for (const link of replay.matchAll(/href="#([^"]+)"/g)) assert.ok(replayIds.includes(link[1]), 'Replay fragment: ' + link[1]);
+checkLocalAssets(replay);
 const metrics = graph.filter(x => x['@type'] === 'Dataset').flatMap(x => x.variableMeasured);
 assert.equal(metrics.length, 4, 'Four declared measurements across two dated snapshots');
 for (const metric of metrics) {
@@ -65,8 +95,8 @@ for (const script of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)) {
 }
 const ignored = read('.assetsignore');
 assert.equal(ignored.replace(/\r\n/g, '\n'), assetIgnore(), 'Deployment is limited to the reviewed public asset manifest');
-assert.ok(!/excellent\.(ee|lv|lt|fi|no|se)|halocron\.excellent|testman\.|\/opt\//i.test(html + llms + read('docs/og-card.html')), 'Public copy has no private entity or host references');
-for (const path of ['index.html', 'llms.txt', 'experience.js', 'docs/og-card.html', 'docs/evidence.md']) {
+assert.ok(!/excellent\.(ee|lv|lt|fi|no|se)|halocron\.excellent|testman\.|\/opt\//i.test(html + replay + llms + read('docs/og-card.html')), 'Public copy has no private entity or host references');
+for (const path of ['index.html', replayPath, 'llms.txt', 'experience.js', 'docs/og-card.html', 'docs/evidence.md']) {
   assert.ok(!/source[\s-]*code|ERP\s+(?:source|code)|source\s+retrieval|source[\s-]+review/i.test(read(path)), 'Restricted implementation reference in ' + path);
 }
 console.log(`PASS: ${entries.length} project records, service consistency, category counts, descriptions/statuses, fragments/assets, four dated measurements, story mappings, metadata dates, CSP and packaging`);

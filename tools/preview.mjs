@@ -4,10 +4,9 @@ import { readFile, realpath } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { dirname, extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { publicFiles } from './public-files.mjs';
+import { publicFileForPath } from './public-files.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const allowed = new Set(publicFiles);
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.txt': 'text/plain', '.xml': 'application/xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.woff2': 'font/woff2' };
 const productionHeaders = Object.fromEntries(
   readFileSync(resolve(root, '_headers'), 'utf8').split(/\r?\n/)
@@ -24,8 +23,8 @@ export function createPreviewServer() {
     if (!['GET', 'HEAD'].includes(request.method)) return sendError(405, 'Method not allowed');
     try {
       const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
-      const name = pathname === '/' ? 'index.html' : pathname.slice(1);
-      if (!allowed.has(name)) return sendError(404, 'Not found');
+      const name = publicFileForPath(pathname);
+      if (!name) return sendError(404, 'Not found');
       const path = await realpath(resolve(root, name));
       if (!path.startsWith(root + sep)) return sendError(404, 'Not found');
       const body = await readFile(path);

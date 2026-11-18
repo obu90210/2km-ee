@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The save that looked like it failed · 2km.ee</title>
+  <meta name="description" content="Replay a fictional ERP migration. When the response goes missing, decide whether to resend the invoice or check the run log.">
+  <link rel="canonical" href="https://2km.ee/migration-replay">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The save that looked like it failed">
+  <meta property="og:description" content="One invoice. One missing response. Check the run log or send it again in this fictional ERP migration replay.">
+  <meta property="og:url" content="https://2km.ee/migration-replay">
+  <meta property="og:image" content="https://2km.ee/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="/fonts.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/migration-replay.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://2km.ee/migration-replay",
+      "name": "The save that looked like it failed",
+      "description": "A fictional ERP migration replay demonstrating why checking the recorded write outcome matters after a lost response.",
+      "isPartOf": { "@id": "https://2km.ee/#website" },
+      "author": { "@id": "https://2km.ee/#kaupo" },
+      "citation": "https://2km.ee/#hyperspace-migration"
+    }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#replay-main">Skip to replay</a>
+  <header class="replay-header replay-shell">
+    <a class="wordmark" href="/" aria-label="2km.ee home">2km.ee</a>
+    <button class="theme-btn" id="theme-toggle" type="button" hidden aria-label="Toggle color theme">◑ DARK</button>
+  </header>
+  <main id="replay-main" class="replay-shell">
+    <div class="replay-layout">
+      <header class="replay-intro">
+        <h1>The save that looked like it failed</h1>
+        <p class="replay-lead">The request timed out. Did the ERP save it?</p>
+        <p>Try both decisions on one fictional invoice. This replay runs in your browser.</p>
+        <a class="replay-evidence-link" href="#citation">See the real rehearsal</a>
+      </header>
+
+      <div class="replay-demo" data-replay>
+        <div class="replay-run" aria-label="Sample invoice">
+          <span>Invoice <strong>DEMO-041</strong></span>
+          <span>€240.00</span>
+        </div>
+        <section id="start" class="replay-step" aria-labelledby="start-heading">
+          <h2 id="start-heading" tabindex="-1">Ready to import</h2>
+          <p>The invoice is queued for the destination ERP.</p>
+          <div class="replay-actions"><a class="primary-action" href="#timeout">Run the import</a></div>
+          <p class="replay-status" data-run-status role="status"></p>
+        </section>
+        <section id="timeout" class="replay-step" aria-labelledby="timeout-heading">
+          <h2 id="timeout-heading" tabindex="-1">Response timed out</h2>
+          <ol class="replay-events">
+            <li><span>Request</span><strong>Sent</strong></li>
+            <li><span>Confirmation</span><strong class="replay-uncertain">Missing</strong></li>
+            <li><span>Write outcome</span><strong>Unknown</strong></li>
+          </ol>
+          <p>Would you check the recorded outcome or send another import?</p>
+          <div class="replay-actions">
+            <a class="primary-action" href="#check-log">Check the run log</a>
+            <a href="#send-again">Send it again</a>
+          </div>
+        </section>
+        <section id="check-log" class="replay-step" aria-labelledby="check-log-heading">
+          <h2 id="check-log-heading" tabindex="-1">The invoice was saved</h2>
+          <ol class="replay-events">
+            <li><span>First write</span><strong>Committed</strong></li>
+            <li><span>Client response</span><strong class="replay-uncertain">Lost</strong></li>
+            <li><span>ERP record</span><strong>ERP-DEMO-01</strong></li>
+          </ol>
+          <p>The run log points to an existing ERP record. Checking it confirms one saved invoice, so the importer can continue.</p>
+          <div class="replay-actions">
+            <a class="primary-action" href="#send-again">See what resending does</a>
+            <a href="#start">Start over</a>
+          </div>
+        </section>
+        <section id="send-again" class="replay-step" aria-labelledby="send-again-heading">
+          <h2 id="send-again-heading" tabindex="-1">Two records for one invoice</h2>
+          <p>This branch starts a fresh import without checking the first one. The first write had already succeeded.</p>
+          <table class="replay-ledger">
+            <caption>Fictional destination records</caption>
+            <thead><tr><th scope="col">ERP record</th><th scope="col">Invoice</th><th scope="col">Total</th></tr></thead>
+            <tbody>
+              <tr><td>ERP-DEMO-01</td><td>DEMO-041</td><td>€240.00</td></tr>
+              <tr><td>ERP-DEMO-02</td><td>DEMO-041</td><td>€240.00</td></tr>
+            </tbody>
+          </table>
+          <div class="replay-actions">
+            <a class="primary-action" href="#check-log">Check the run log instead</a>
+            <a href="#start">Start over</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section id="citation" class="replay-citation" aria-labelledby="citation-heading">
+      <h2 id="citation-heading">The real rehearsal</h2>
+      <p data-citation-text>Kaupo Karuse, “Hyperspace Migration,” 2km.ee. A 486-record test-company rehearsal completed, including recovery after a lost API response. Reviewed 29 October 2026.</p>
+      <div class="replay-actions">
+        <a data-citation-source href="https://2km.ee/#hyperspace-migration">Read the Hyperspace Migration case</a>
+        <button data-copy-citation class="utility-button" type="button" hidden>Copy citation</button>
+      </div>
+      <p class="replay-status" data-copy-status role="status"></p>
+      <label class="replay-copy-fallback" data-copy-fallback hidden>
+        Copy the citation from this field
+        <textarea rows="4" readonly></textarea>
+      </label>
+    </section>
+  </main>
+  <script src="/script.js"></script>
+  <script src="/migration-replay.js"></script>
+</body>
+</html>

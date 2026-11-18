@@ -15,6 +15,10 @@ test('preview serves the portfolio with production headers and blocks private pa
     assert.match(page.headers.get('content-security-policy'), /script-src 'self'/);
     assert.equal(page.headers.get('x-robots-tag'), null, 'archive noindex must not apply to the homepage');
     assert.match(await page.text(), /Kaupo Karuse/);
+    const replay = await fetch(origin + '/migration-replay');
+    assert.equal(replay.status, 200);
+    assert.match(replay.headers.get('content-security-policy'), /script-src 'self'/);
+    assert.match(await replay.text(), /<link rel="canonical" href="https:\/\/2km\.ee\/migration-replay">/);
     for (const path of ['/CLAUDE.md', '/AGENTS.md', '/next-session.md', '/README.md', '/docs/og-card.html', '/.git/config', '/.superpowers/', '/gate/worker.js', '/wrangler.toml', '/2002/', '/2002/index.html', '/lighthouse-2km.ee.json', '/assets/%2e%2e%2fCLAUDE.md']) {
       assert.equal((await fetch(origin + path)).status, 404, path);
     }
