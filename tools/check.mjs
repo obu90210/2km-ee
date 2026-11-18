@@ -57,7 +57,8 @@ assert.equal(stories.length, 4);
 assert.deepEqual(stories.map(s => s[2]), ['chatbot', 'knowledge', 'development', 'testing']);
 assert.deepEqual(stories.map(s => Number(s[1])), [0, 1, 2, 3]);
 const reviewed = collection.dateModified;
-assert.ok(read('sitemap.xml').includes(`<lastmod>${reviewed}</lastmod>`));
+const homepageModified = read('sitemap.xml').match(/<loc>https:\/\/2km\.ee\/<\/loc>\s*<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/)?.[1];
+assert.ok(homepageModified && homepageModified >= reviewed, 'Homepage sitemap date covers the portfolio content review');
 assert.ok(llms.includes('Content reviewed: ' + reviewed));
 for (const script of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)) {
   assert.ok(script[1].includes('application/ld+json') || (/src="\/[^\"]+"/.test(script[1]) && !script[2].trim()), 'CSP-compatible script');
