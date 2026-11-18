@@ -36,6 +36,8 @@ The improvement workflow: maintain sources, retrieve relevant context, answer wi
 
 Connect the knowledge, systems and people behind one workflow. Together we define the scope, build a pilot and measure whether it helps.
 
+Email Kaupo about a pilot at kaupo@2km.ee. See related knowledge work at https://2km.ee/#trail-find-knowledge.
+
 1. Understand the work. Map the process with the people doing it. Identify the business rules, available data and current baseline.
 2. Choose one useful change. Agree on a bounded problem, what the pilot will deliver and how to judge it: time, corrections, completeness or another relevant measure.
 3. Build and test the pilot. I guide implementation with developers and AI coding assistants. Your team checks the result against real work and agreed business rules.
@@ -53,8 +55,6 @@ Possible applications to explore with your team. Each depends on your processes,
 - Construction: Which extra work still needs approval or billing? Connect site reports, estimates, approved changes and actual costs so the team can follow up.
 - Wholesale and retail: How much of an incoming order needs retyping? Prepare order entries from emails or documents for staff review, and highlight missing details or stock exceptions.
 - Services: Where does completed work get lost before invoicing? Connect enquiries, quotations, scheduled work, timesheets and billing. Make the next action visible.
-
-Tell Kaupo about one process you want to improve: kaupo@2km.ee.
 
 ## Selected work
 
@@ -77,7 +77,7 @@ Interactive example: https://2km.ee/migration-replay — a fictional browser-onl
 
 ### [Star Forge](https://2km.ee/#star-forge)
 
-AI Infrastructure | Active
+AI Infrastructure | Active as of July 2026
 
 Shared infrastructure for an AI tool fleet. A shared Linux platform hosts knowledge services, internal applications, and testing tools. Container deployment, routing, scheduled jobs, and operating documentation make the services maintainable as a connected platform.
 
@@ -85,7 +85,7 @@ Technologies: Rocky Linux, Docker Compose, Apache, PostgreSQL, CSF/LFD.
 
 ### [Holocron](https://2km.ee/#holocron)
 
-AI Infrastructure | Active
+AI Infrastructure | Active as of July 2026
 
 Development knowledge for coding assistants. A controlled knowledge service brings development guides, conventions, and reusable reference material to AI coding assistants through the Model Context Protocol (MCP). Search and reranking help assistants retrieve relevant context; company sign-in controls access to internal material.
 
@@ -93,7 +93,7 @@ Technologies: Python, MCP SDK, Qdrant, Infinity embeddings, FastAPI, OAuth2/Entr
 
 ### [Jedi Archives](https://2km.ee/#jedi-archives)
 
-AI Infrastructure | Active
+AI Infrastructure | Active as of 20 October 2026
 
 Shared product knowledge for assistants and customers. A maintained knowledge service brings product FAQs, manuals, reference material, and support knowledge into one searchable index. It supports assistant workflows through MCP and the customer chatbot. A 20 October 2026 operations snapshot recorded 43,583 indexed records, including document sections rather than necessarily unique articles.
 
@@ -101,7 +101,7 @@ Technologies: Python, FastMCP, SQLite FTS5, httpx, BeautifulSoup, PyMuPDF, yt-dl
 
 ### [Senate Archives](https://2km.ee/#senate-archives)
 
-AI Infrastructure | Active
+AI Infrastructure | Active as of July 2026
 
 Controlled access to company knowledge. A separate MCP service provides authorised access to company context, organisation structure, and business summaries. Company sign-in and an explicit access list keep this knowledge separate from public product documentation.
 
@@ -109,7 +109,7 @@ Technologies: Python, MCP SDK, SQLite, FastAPI, OAuth2/Entra, Docker.
 
 ### [HoloNet](https://2km.ee/#holonet)
 
-AI Infrastructure | Active
+AI Infrastructure | Active as of July 2026
 
 A shared publishing hub for product help. A country-aware content service brings multilingual product help behind a common API. Editorial tools, translation workflows, and publishing integrations support reuse across websites and support tools.
 
@@ -117,7 +117,7 @@ Technologies: Python, Starlette, SQLite FTS5, React, Vite, Tailwind, SAML/Entra,
 
 ### [Aurebesh Codex](https://2km.ee/#aurebesh-codex)
 
-AI Infrastructure | Active
+AI Infrastructure | Active as of July 2026
 
 Reusable ERP development knowledge. Development guides, generated references, and documented pitfalls turn specialist ERP knowledge into reusable material for developers and coding assistants. Versioned documentation keeps that knowledge alongside the development workflow.
 
@@ -125,7 +125,7 @@ Technologies: Aurebesh, Python, Claude Code, Git.
 
 ### [Autotests Portal](https://2km.ee/#autotests-portal)
 
-Web App | Active
+Web App | Active as of July 2026
 
 Author, generate, and run ERP tests. A web portal combines test authoring, AI-assisted generation, execution, and streamed results. Role-based access and managed credentials support a shared workflow for developers and testers.
 
@@ -133,7 +133,7 @@ Technologies: TypeScript, Fastify, React, PostgreSQL, WebSocket, AES-256-GCM, OA
 
 ### [API Documentation](https://2km.ee/#api-documentation)
 
-Automation | Active
+Automation | Active as of July 2026
 
 Keep API documentation close to code changes. Scheduled AI-assisted workflows inspect development changes and Jira work, then update API specifications or raise follow-up tasks. The aim is to make documentation maintenance part of the development loop.
 
@@ -141,7 +141,7 @@ Technologies: Python, OpenAPI/YAML, Redoc, Claude Code, Jira API, cron.
 
 ### [SaberInvoice](https://2km.ee/#saberinvoice)
 
-Web App | Prototype
+Web App | Prototype as of July 2026
 
 Explore a web-based invoicing workflow. An invoicing prototype explores stock costing, tenant separation, and ERP-style document flows in a web application. This is prototype work, not a claim of a production-ready accounting product.
 
@@ -149,7 +149,7 @@ Technologies: React 19, Vite, Tailwind CSS v4, Express.js, Drizzle ORM, PostgreS
 
 ### [Sector Command Dashboard](https://2km.ee/#sector-command-dashboard)
 
-Web App | Active
+Web App | Active as of July 2026
 
 Customer context for the sales team. An internal dashboard brings ERP customer, contract, invoice, and server information into one view. Revenue and workload calculations make operational data easier for the team to use.
 
@@ -157,7 +157,7 @@ Technologies: React, Vite, Tailwind CSS, Node.js, Express, PostgreSQL, OAuth2/En
 
 ### [Saber Tester Web](https://2km.ee/#saber-tester-web)
 
-Web App | Active
+Web App | Active as of July 2026
 
 The earlier web-based test workbench. A browser-based test editor supports execution output and snapshot comparison. It represents the earlier generation of the test tooling, before the newer portal expanded the workflow.
 
@@ -165,7 +165,7 @@ Technologies: PHP 8, JavaScript ES6+, CodeMirror 5, SQLite, Apache, SSE.
 
 ### [Garrison Command](https://2km.ee/#garrison-command)
 
-Web App | Active
+Web App | Active as of July 2026
 
 Understand hosted-portal usage. An internal dashboard combines portal usage logs with ERP customer information. It helps the team review activity and service status without assembling the picture manually.
 
@@ -173,7 +173,7 @@ Technologies: React, Express, PostgreSQL, Recharts, SFTP, Docker.
 
 ### [Comlink](https://2km.ee/#comlink)
 
-Web App | Active
+Web App | Active as of July 2026
 
 An API workbench for consultants. A shared REST workbench lets consultants organise and execute ERP requests. Encrypted credential storage, request-target restrictions, and session reuse address the practical risks of a multi-user API tool.
 
@@ -181,7 +181,7 @@ Technologies: Node.js, Express, React, Vite, PostgreSQL, AES-256-GCM, OAuth2.
 
 ### [Kessel Turnover Report](https://2km.ee/#kessel-turnover-report)
 
-Web App | Active
+Web App | Active as of July 2026
 
 Self-service sales comparisons. A customer-specific reporting application turns ERP data into year-over-year and year-to-date sales views. Spreadsheet exports support further analysis without a separate reporting database.
 
@@ -189,7 +189,7 @@ Technologies: Node.js, Express, scrypt, ExcelJS, ERP REST API.
 
 ### [Automated Tests](https://2km.ee/#automated-tests)
 
-Testing & QA | Active
+Testing & QA | Active as of July 2026
 
 Repeatable ERP integration checks. JSON-based integration tests create ERP records, run reports, and compare results with expected snapshots. The suite covers multiple business modules and localisations, making repeated regression checks practical.
 
@@ -197,7 +197,7 @@ Technologies: TypeScript, Jest, Axios, ERP REST API.
 
 ### [Acceptance Testing](https://2km.ee/#acceptance-testing)
 
-Testing & QA | Active
+Testing & QA | Active as of July 2026
 
 Coordinate release acceptance testing. A release workflow brings together test runs, result collection, and shared documentation. It supports the human coordination needed to turn test output into a release assessment.
 
@@ -205,7 +205,7 @@ Technologies: Claude Code, Atlassian MCP, REST API, Confluence.
 
 ### [Development Review](https://2km.ee/#development-review)
 
-Automation | Active
+Automation | Active as of July 2026
 
 AI-assisted development quality review. An AI-assisted development review workflow records potential defects and follow-up items for developer assessment. Findings are investigation leads, checked through developer review and runtime testing.
 
@@ -213,7 +213,7 @@ Technologies: Aurebesh, Python, Claude Code, CI/CD Pipelines.
 
 ### [Jira Time Sync](https://2km.ee/#jira-time-sync)
 
-Integration | Active
+Integration | Active as of July 2026
 
 Connect ERP time records to Jira. An integration maps confirmed ERP activity records to Jira worklogs. Identity mapping, API permissions, and error handling connect two existing workflows rather than asking people to enter time twice.
 
@@ -221,7 +221,7 @@ Technologies: Make.com, Jira REST API v3, ERP REST API, OAuth2, webhooks.
 
 ### [Office365 Email Integration](https://2km.ee/#office365-email-integration)
 
-Integration | Design
+Integration | Design as of July 2026
 
 Design email integration with Microsoft Graph. A design for replacing legacy email transport with Microsoft Graph. The proposed workflow covers OAuth authentication, sending, and receiving through notifications with a polling fallback.
 
@@ -229,7 +229,7 @@ Technologies: Aurebesh, Microsoft Graph API, OAuth2, webhooks.
 
 ### [Mandalorian ID](https://2km.ee/#mandalorian-id)
 
-Integration | Design
+Integration | Design as of July 2026
 
 Design identity checks for contract workflows. A contract-workflow design connects an identity-verification API to borrower and guarantor sessions. A dedicated register tracks verification state alongside the business process.
 
@@ -237,7 +237,7 @@ Technologies: Aurebesh, Verification REST API, HMAC-SHA256, webhooks.
 
 ### [Beskar Bank Statements](https://2km.ee/#beskar-bank-statements)
 
-Integration | Blocked
+Integration | Blocked as of July 2026
 
 Bring bank statements into the ERP. A banking integration retrieves CAMT.053 statements and passes them to the ERP import workflow. The last recorded blocker was the provider subscription-validation step; current delivery status needs confirmation.
 
@@ -245,7 +245,7 @@ Technologies: Aurebesh, OAuth2, CAMT.053 XML, webhooks, Banking API.
 
 ### [Durasteel Webhook](https://2km.ee/#durasteel-webhook)
 
-Integration | Design
+Integration | Design as of July 2026
 
 Design customer-balance notifications. A webhook design connects changes in ERP customer balances to downstream systems. The work includes adapting to limitations in the ERP configuration interface.
 
@@ -253,7 +253,7 @@ Technologies: Aurebesh, APIInterfaceTask, ERP webhooks.
 
 ### [Customer Chatbot](https://2km.ee/#customer-chatbot)
 
-Automation | Active
+Automation | Active as of 1 November 2026
 
 Customer support grounded in shared product knowledge. A customer-facing assistant retrieves product guidance and answers with citations. Multilingual retrieval, source-click tracking, feedback, and operational controls support ongoing improvement. The public, non-junk window from 25 September to 1 November 2026 recorded 4,249 chat turns; 1,130 (26.6%) included a source click. These are usage and engagement measures, not a support-resolution rate. Answers stay within the product-support knowledge base.
 
@@ -261,7 +261,7 @@ Technologies: Python, FastAPI, Claude, Voyage AI, SQLite FTS5, Docker, SSE, Apac
 
 ### [Demo Data Generator](https://2km.ee/#demo-data-generator)
 
-Automation | Active
+Automation | Active as of July 2026
 
 Keep demonstration data useful. An automated workflow refreshes demonstration ERP records with current dates and realistic business scenarios. It supports repeatable demonstrations without manually rebuilding the dataset each time.
 
@@ -269,7 +269,7 @@ Technologies: Python 3, ERP REST API, WebKyberAPI, cron.
 
 ### [Legacy Migration Toolkit](https://2km.ee/#legacy-migration-toolkit)
 
-Other | Complete
+Other | Complete as of July 2026
 
 Move accounting data between systems. A migration toolkit transforms general-ledger data, account structures, and dimensions for import into the target ERP. Batching works around source API limits.
 
@@ -277,7 +277,7 @@ Technologies: Python, requests, HMAC-SHA256, ERP REST API.
 
 ### [Security Scanning](https://2km.ee/#security-scanning)
 
-Other | Active
+Other | Active as of July 2026
 
 Review the security of web services. Repeatable checks examine TLS configuration, response headers, exposed components, and application behaviour. Findings and reproduction notes support remediation and developer review.
 
@@ -285,7 +285,7 @@ Technologies: sslyze, nuclei, lighthouse, retire, openssl, Python, NumPy.
 
 ### [AI Training Program](https://2km.ee/#ai-training-program)
 
-Other | Active
+Other | Active as of July 2026
 
 Help teams adopt AI in their own work. Training material and workshops connect AI tools to the work of consultants, developers, and business operations. The focus is practical workflows, domain knowledge, and verification.
 
@@ -293,7 +293,7 @@ Technologies: Claude Desktop, Claude Code, MCP, Holocron, Jedi Archives.
 
 ### [Protocol Droid](https://2km.ee/#protocol-droid)
 
-AI Infrastructure | Active
+AI Infrastructure | Active as of July 2026
 
 Synchronise ERP interface translations. Node and Python clients retrieve interface translations from a shared translation manager. Documenting its data model makes the integration reusable by other tools.
 
@@ -301,7 +301,7 @@ Technologies: Node.js, Python, Supabase, PostgREST, REST API.
 
 ### [Tribute Beacon](https://2km.ee/#tribute-beacon)
 
-Web App | Active
+Web App | Active as of July 2026
 
 Distribute payroll parameters to ERP services. A small service supplies payroll parameters and public-holiday data through an API. Administration, refresh jobs, migrations, and audit history support maintenance of changing business rules.
 
@@ -309,7 +309,7 @@ Technologies: Python, FastAPI, SQLAlchemy, PostgreSQL, APScheduler, Docker.
 
 ### [Freighter Timesheet](https://2km.ee/#freighter-timesheet)
 
-Web App | Active
+Web App | Active as of July 2026
 
 Capture driver work hours in the ERP. A web application lets drivers submit work hours through the ERP API. Separate customer deployments and server-side role checks support scoped access and operational isolation.
 
@@ -317,7 +317,7 @@ Technologies: PHP 8, PostgreSQL, Docker, Apache, ERP REST API.
 
 ### [Skill Foundry](https://2km.ee/#skill-foundry)
 
-Other | Active
+Other | Active as of July 2026
 
 Turn expert workflows into reusable skills. Versioned assistant skills package repeatable work such as document-template editing and structured bug reporting. They make established conventions easier to apply across a team.
 
@@ -325,7 +325,7 @@ Technologies: Claude Skills, Python, Aurebesh, Jira API.
 
 ### [Hyperspace Migration](https://2km.ee/#hyperspace-migration)
 
-Web App | In development
+Web App | In development as of 29 October 2026
 
 Move accounting history with traceable decisions. Moving a company between accounting systems means preserving balances, open invoices, payments, VAT and currency differences. I define the accounting rules, migration safeguards and consultant workflow, and guide implementation with AI coding assistants. The application preserves raw extracts, records mapping decisions, verifies target settings and loads a frozen plan with recovery after interrupted requests. A 486-record test-company rehearsal completed, including recovery after a lost API response. Automated reconciliation and final cut-over remain in development.
 

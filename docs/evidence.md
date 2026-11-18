@@ -31,6 +31,8 @@ The rating sample is small and self-selected. The page makes no satisfaction, su
 
 Case-study order is deliberate: Customer Chatbot, Jedi Archives, Holocron, Autotests Portal. It moves from customer use through the shared knowledge foundation to developer context and verification. Customer answers remain within the product-support knowledge base.
 
+Each public project status includes its own evidence date in the project row, JSON-LD status text, and plain-text entry. Use month precision for the July 2026 snapshot and the recorded day for later project reviews. An editorial modification date describes the portfolio copy; the status date describes the evidence behind the label.
+
 ## Migration development evidence — 29 October 2026
 
 Hyperspace Migration is listed as In development. A read-only implementation review and the project's recorded manual verification support the description: a 486-record test-company rehearsal completed, including recovery after a saved record's API response was lost. This is a controlled test rehearsal, not a customer migration or production-readiness claim. Automated reconciliation and final cut-over work remain in development. The public entry includes no customer data, private product names or internal system locations.

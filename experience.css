@@ -90,7 +90,7 @@ main > .section { max-width: var(--layout-width); margin-inline: auto; padding: 
 .trail-status:not(:empty) { margin-top: 12px; }
 .trail-view { margin-block: 24px 32px; }
 .trail-view .fleet-visual { margin: 0; }
-.trail-view[data-active-trail] { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: start; gap: var(--layout-gutter); }
+.trail-view[data-active-trail] { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); align-items: start; gap: var(--layout-gutter); }
 .project-trail { scroll-margin-block: 24px; min-width: 0; }
 .project-trail + .project-trail { margin-top: 26px; }
 .trail-view[data-active-trail] .project-trail { margin: 0; }
@@ -246,8 +246,10 @@ html[data-motion='paused'] .row, html[data-motion='paused'] .fleet-point::before
 @media (max-width: 640px) { .toplinks { justify-content: flex-start; } .visual-overline { gap: 12px; } }
 
 /* A scoped engagement and illustrative applications, in the existing reading theme. */
-.offer-intro, .offer-outcome, .applications-heading, .offer-next { max-width: var(--layout-measure); }
+.offer-intro, .offer-outcome, .applications-heading { max-width: var(--layout-measure); }
 .offer-intro { font-size: var(--type-lead); }
+.offer-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 20px; }
+.offer-actions a:not(.primary-action) { display: inline-flex; align-items: center; min-height: var(--control-size); font-size: var(--type-support); }
 .pilot-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 64px; padding: 0; margin: 48px 0 32px; list-style-position: inside; }
 .pilot-steps li { padding: 0; }
 .pilot-steps li::marker { color: var(--accent); font-weight: 600; }
@@ -262,7 +264,6 @@ html[data-motion='paused'] .row, html[data-motion='paused'] .fleet-point::before
 .industry-examples dd { margin: 0; }
 .industry-examples dd p { color: var(--muted); }
 .industry-examples .industry-question { font-weight: 600; color: var(--ink); margin-bottom: 8px; }
-.offer-next { font-weight: 600; }
 @media (max-width: 760px) {
   .pilot-steps, .industry-examples { grid-template-columns: 1fr; gap: 28px; }
   .pilot-steps { margin-top: 32px; }

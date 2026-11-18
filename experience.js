@@ -130,7 +130,7 @@ function drawWork({c,w,h}, idx, p) {
   if(mobile){c.translate(w*.42,0);c.scale(w*.58/600,h/500);}
   else {c.scale(w/600,h/750);}
   const cy=mobile?235:310, drift=(p-.5)*22;
-  c.translate(pointer*8,drift);
+  c.translate((paused || reduced.matches ? 0 : pointer) * 8, drift);
   for(let i=0;i<45;i++)dot(c,40+(i*83)%520,80+(i*97)%(mobile?330:410),.7,'#7399ad55');
   const illustration = stories[idx].dataset.illustration;
   if(illustration==='development') {
@@ -197,12 +197,14 @@ function update() {
     flow.querySelectorAll('.flow-node').forEach((node,i)=>node.style.setProperty('--node-lift',`${(1-clamp(fp*1.6-i*.18))*32}px`));
   }
   if(reduced.matches){hero.style.removeProperty('--photo-y');coast.style.removeProperty('--coast-y');flow.style.setProperty('--flow','1');flow.querySelectorAll('.flow-node').forEach(x=>x.style.removeProperty('--node-lift'));}
-  // Crossfade illustrations at story boundaries; scroll back to reverse them.
+  // The selected case follows the reader even while crossfades are paused.
   if(reduced.matches) { workBlend=0;workIndex=0;workProgress=.5; }
-  else if(!paused) {
-    workBlend=storyBlend(stories.map(el=>el.getBoundingClientRect().top),innerHeight);
-    workIndex=Math.round(workBlend);
-    const r=stories[workIndex].getBoundingClientRect();workProgress=reduced.matches ? .5 : clamp((innerHeight*.7-r.top)/(r.height+innerHeight*.25));
+  else {
+    const blend = storyBlend(stories.map(story => story.getBoundingClientRect().top), innerHeight);
+    workIndex = Math.round(blend);
+    workBlend = paused ? workIndex : blend;
+    const rect = stories[workIndex].getBoundingClientRect();
+    workProgress = paused ? .5 : clamp((innerHeight * .7 - rect.top) / (rect.height + innerHeight * .25));
   }
   document.getElementById('work-label').textContent=names[workIndex];
   document.getElementById('work-description').textContent=descriptions[workIndex];

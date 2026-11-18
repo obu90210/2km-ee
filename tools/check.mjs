@@ -24,6 +24,7 @@ for (const field of ['name', 'description']) {
 const entries = [...html.matchAll(/<details class="entry" data-cat="([^"]+)" id="([^"]+)">([\s\S]*?)<\/details>/g)];
 assert.equal(entries.length, projects.length);
 assert.equal(projects.length, collection.mainEntity.numberOfItems);
+const plain = llms.replace(/\r\n/g, '\n');
 for (const [i, entry] of entries.entries()) {
   const item = projects[i].item;
   assert.equal(projects[i].position, i + 1);
@@ -33,9 +34,20 @@ for (const [i, entry] of entries.entries()) {
   }
   assert.equal(text(entry[3].match(/<div class="detail"><p>([\s\S]*?)<\/p>/)[1]), item.description, item.name);
   assert.ok(llms.includes(item.headline + '. ' + item.description), 'Plain-text description: ' + item.name);
-  const status = text(entry[3].match(/<span class="status [^"]+">([^<]+)<\/span>/)[1]).replace(/\*$/, '');
-  assert.equal(status, item.creativeWorkStatus, item.name);
+  const status = entry[3].match(/<span class="status [^"]+">([^<]+)<time class="status-date" datetime="(\d{4}-\d{2}(?:-\d{2})?)">([^<]+)<\/time><\/span>/);
+  assert.ok(status, 'Project status has its own snapshot date: ' + item.name);
+  const [label, date, dateText] = status.slice(1);
+  const dateFormat = { timeZone: 'UTC', month: 'long', year: 'numeric', ...(date.length > 7 && { day: 'numeric' }) };
+  const firstDay = date.length > 7 ? date : `${date}-01`;
+  assert.equal(dateText, 'as of ' + new Intl.DateTimeFormat('en-GB', dateFormat).format(new Date(firstDay)), item.name);
+  const qualifiedStatus = `${label.trim()} ${dateText}`;
+  assert.equal(qualifiedStatus, item.creativeWorkStatus, item.name);
+  const plainProject = plain.split(`### [${item.name}](${item.url})\n\n`)[1];
+  assert.equal(plainProject?.split('\n', 1)[0].split(' | ')[1], qualifiedStatus, 'Plain-text status and date: ' + item.name);
 }
+const offerOpening = html.match(/<p class="offer-intro"[^>]*>[\s\S]*?<ol class="pilot-steps">/)?.[0];
+assert.ok(offerOpening?.includes('href="mailto:kaupo@2km.ee"') && offerOpening.includes('href="#trail-find-knowledge"'), 'Pilot opening offers email and related work');
+assert.ok(html.indexOf('id="trail-find-knowledge"') < html.indexOf('class="fleet-visual"'), 'Named trail stops precede the constellation in reading order');
 for (const filter of html.matchAll(/<button class="fbtn[^\"]*" data-f="([^"]+)"[^>]*>[^<]*<span>(\d+)<\/span>/g)) {
   assert.equal(Number(filter[2]), filter[1] === 'all' ? entries.length : entries.filter(e => e[1] === filter[1]).length, filter[1]);
 }

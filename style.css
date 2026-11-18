@@ -137,15 +137,16 @@ h3 { font-size: var(--type-subhead); font-weight: 700; line-height: 1.15; }
 .fbtn span { font-variant-numeric: tabular-nums; }
 .fbtn[aria-pressed='true'] { background: var(--paper-raise); border-color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
 .entry { border-bottom: 1px solid var(--hair); scroll-margin-top: 24px; }
-.row { display: grid; grid-template-columns: 30px 225px 1fr 105px; align-items: baseline; gap: 18px; padding: 22px 16px; cursor: pointer; list-style: none; border-radius: var(--control-radius); }
+.row { display: grid; grid-template-columns: 30px 225px minmax(0, 1fr) 9.5rem; align-items: baseline; gap: 18px; padding: 22px 16px; cursor: pointer; list-style: none; border-radius: var(--control-radius); }
 .row::-webkit-details-marker { display: none; }
 .row:hover, .entry[open] .row { background: var(--paper-raise); }
 .no { font-size: 18px; color: var(--muted); }
-.name { font-size: 24px; font-weight: 700; }
+.name { font-size: 24px; font-weight: 700; overflow-wrap: anywhere; }
 .name:after { content: ' +'; color: var(--accent); }
 .entry[open] .name:after { content: ' −'; }
 .desc { font-size: 20px; color: var(--muted); }
 .status { font-size: 18px; text-align: right; color: var(--muted); }
+.status-date { display: block; color: var(--muted); }
 .st-active { color: var(--live); }
 .st-design { color: var(--warn); }
 .st-blocked { color: var(--blocked); }
@@ -162,7 +163,7 @@ h3 { font-size: var(--type-subhead); font-weight: 700; line-height: 1.15; }
   .wrap { padding: 24px; }
   .toplinks { gap: 20px; }
   .case { gap: 32px; padding: 32px; }
-  .row { grid-template-columns: 24px 180px 1fr 105px; gap: 12px; }
+  .row { grid-template-columns: 24px 180px minmax(0, 1fr) 9rem; gap: 12px; }
   #about, .contact { padding: 36px; }
 }
 @media (max-width: 640px) {
@@ -174,7 +175,7 @@ h3 { font-size: var(--type-subhead); font-weight: 700; line-height: 1.15; }
   #about { padding: 32px 24px; }
   .about-grid, .case, .contact { grid-template-columns: 1fr; gap: 24px; }
   .case { padding: 28px 24px; margin-bottom: 8px; }
-  .row { grid-template-columns: 22px 1fr auto; gap: 6px 10px; padding: 18px 6px; }
+  .row { grid-template-columns: 22px minmax(0, 1fr) minmax(0, 43%); gap: 6px 10px; padding: 18px 6px; }
   .desc { grid-column: 2 / 4; grid-row: 2; }
   .status { grid-column: 3; grid-row: 1; }
   .detail { padding: 12px 6px 24px 38px; }
