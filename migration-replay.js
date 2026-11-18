@@ -1,14 +1,30 @@
 const replay = document.querySelector('[data-replay]');
 const steps = new Map([...replay.querySelectorAll('.replay-step')].map(step => [`#${step.id}`, step]));
+let activeStep;
 
 function showReplayStep(current, focusHeading) {
+  activeStep = current;
   for (const step of steps.values()) step.hidden = step !== current;
   if (focusHeading) current.querySelector('h2').focus();
 }
 
+function citationStep() {
+  return steps.get(history.state?.migrationReplayStep);
+}
+
+function syncCitationEntry() {
+  const savedStep = citationStep();
+  if (savedStep) {
+    if (savedStep !== activeStep) showReplayStep(savedStep, false);
+    return;
+  }
+  history.replaceState({ ...history.state, migrationReplayStep: `#${activeStep.id}` }, '');
+}
+
 replay.dataset.interactive = '';
 const initialStep = steps.get(location.hash);
-showReplayStep(initialStep ?? steps.get('#start'), Boolean(initialStep));
+const initialCitation = location.hash === '#citation' ? citationStep() : undefined;
+showReplayStep(initialStep ?? initialCitation ?? steps.get('#start'), Boolean(initialStep));
 
 const runLink = steps.get('#start').querySelector('a[href="#timeout"]');
 const runStatus = replay.querySelector('[data-run-status]');
@@ -36,9 +52,16 @@ runLink.addEventListener('click', event => {
 
 window.addEventListener('hashchange', () => {
   if (pendingRun !== undefined) clearPendingRun();
-  // A link to the citation leaves the visitor's current branch visible.
+  if (location.hash === '#citation') {
+    syncCitationEntry();
+    return;
+  }
   const current = steps.get(location.hash || '#start');
   if (current) showReplayStep(current, true);
+});
+// History traversal can revisit a citation entry without changing the fragment.
+window.addEventListener('popstate', () => {
+  if (location.hash === '#citation') syncCitationEntry();
 });
 
 const copyButton = document.querySelector('[data-copy-citation]');

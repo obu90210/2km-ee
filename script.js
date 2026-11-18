@@ -7,14 +7,19 @@ if (themeBtn) {
   const current = () =>
     document.documentElement.dataset.theme ||
     'light';
-  const setLabel = () => { themeBtn.textContent = current() === 'dark' ? '◐ LIGHT' : '◑ DARK'; };
+  const usesPressedState = themeBtn.hasAttribute('aria-pressed');
+  const updateControl = () => {
+    const dark = current() === 'dark';
+    if (usesPressedState) themeBtn.setAttribute('aria-pressed', String(dark));
+    else themeBtn.textContent = dark ? '◐ LIGHT' : '◑ DARK';
+  };
   themeBtn.addEventListener('click', () => {
     const next = current() === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
-    setLabel();
+    updateControl();
   });
-  setLabel();
+  updateControl();
   themeBtn.hidden = false;
 }
 

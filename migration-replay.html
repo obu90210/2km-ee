@@ -34,7 +34,7 @@
   <a class="skip" href="#replay-main">Skip to replay</a>
   <header class="replay-header replay-shell">
     <a class="wordmark" href="/" aria-label="2km.ee home">2km.ee</a>
-    <button class="theme-btn" id="theme-toggle" type="button" hidden aria-label="Toggle color theme">◑ DARK</button>
+    <button class="theme-btn" id="theme-toggle" type="button" aria-pressed="false" hidden>Dark theme</button>
   </header>
   <main id="replay-main" class="replay-shell">
     <div class="replay-layout">
@@ -57,7 +57,7 @@
           <p class="replay-status" data-run-status role="status"></p>
         </section>
         <section id="timeout" class="replay-step" aria-labelledby="timeout-heading">
-          <h2 id="timeout-heading" tabindex="-1">Response timed out</h2>
+          <h2 id="timeout-heading" tabindex="-1">Simulated response timeout</h2>
           <ol class="replay-events">
             <li><span>Request</span><strong>Sent</strong></li>
             <li><span>Confirmation</span><strong class="replay-uncertain">Missing</strong></li>
@@ -70,7 +70,7 @@
           </div>
         </section>
         <section id="check-log" class="replay-step" aria-labelledby="check-log-heading">
-          <h2 id="check-log-heading" tabindex="-1">The invoice was saved</h2>
+          <h2 id="check-log-heading" tabindex="-1">The fictional invoice was saved</h2>
           <ol class="replay-events">
             <li><span>First write</span><strong>Committed</strong></li>
             <li><span>Client response</span><strong class="replay-uncertain">Lost</strong></li>
@@ -83,7 +83,7 @@
           </div>
         </section>
         <section id="send-again" class="replay-step" aria-labelledby="send-again-heading">
-          <h2 id="send-again-heading" tabindex="-1">Two records for one invoice</h2>
+          <h2 id="send-again-heading" tabindex="-1">Two records for one fictional invoice</h2>
           <p>This branch starts a fresh import without checking the first one. The first write had already succeeded.</p>
           <table class="replay-ledger">
             <caption>Fictional destination records</caption>

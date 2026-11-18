@@ -32,7 +32,7 @@ One short vertical accent sits beside the wordmark. Avoid patterned horizontal b
 
 Use authentic photography and project-specific diagrams for visual interest. Let the typography and composition group related content before adding a panel, badge or decorative mark. Add new variants only when a recurring use calls for them.
 
-The migration replay uses the dark scene palette for a fictional invoice and its run log. Keep each step in HTML with a stable fragment. The script switches the visible step and manages focus. Keep the real case citation separately labelled and readable with or without the clipboard.
+The migration replay uses the dark scene palette for a fictional invoice and its run log. Keep each step in HTML with a stable fragment. The script switches the visible step and manages focus. Label the results as fictional at their headings so the context survives a direct link. Keep the real case citation separately labelled and readable with or without the clipboard. A visit to the citation preserves its originating step in browser history.
 
 ## Motion, sharing and maintenance
 

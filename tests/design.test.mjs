@@ -15,7 +15,7 @@ for(const saved of [null,'invalid','light','dark']){
 const scriptSource=readFileSync(new URL('../script.js',import.meta.url),'utf8');
 for(const initial of [undefined,'light','dark']){
   const handlers={};const saved=[];
-  const button={addEventListener:(name,handler)=>{handlers[name]=handler;}};
+  const button={hasAttribute:()=>false,addEventListener:(name,handler)=>{handlers[name]=handler;}};
   const document={documentElement:{dataset:initial?{theme:initial}:{}},getElementById:id=>id==='theme-toggle'?button:null,querySelectorAll:()=>[],addEventListener(){}};
   runInNewContext(scriptSource,{document,window:{addEventListener(){}},location:{hash:''},matchMedia:()=>({matches:true}),localStorage:{setItem:(key,value)=>saved.push([key,value])}});
   assert.equal(button.textContent,initial==='dark'?'◐ LIGHT':'◑ DARK','Toggle label agrees with the light default');
@@ -23,6 +23,28 @@ for(const initial of [undefined,'light','dark']){
   const next=initial==='dark'?'light':'dark';
   assert.equal(document.documentElement.dataset.theme,next,'Toggle still switches both ways');
   assert.deepEqual(saved,[['theme',next]],'Explicit theme choice is saved');
+}
+for (const theme of ['light', 'dark']) {
+  const attributes = new Map([['aria-pressed', 'false']]);
+  let toggle;
+  const button = {
+    textContent: 'Dark theme',
+    hasAttribute: name => attributes.has(name),
+    setAttribute: (name, value) => attributes.set(name, value),
+    addEventListener: (name, handler) => { if (name === 'click') toggle = handler; },
+  };
+  const document = {
+    documentElement: { dataset: { theme } },
+    getElementById: id => id === 'theme-toggle' ? button : null,
+    querySelectorAll: () => [],
+    addEventListener() {},
+  };
+  runInNewContext(scriptSource, { document, window: { addEventListener() {} }, location: { hash: '' } });
+  assert.equal(button.textContent, 'Dark theme', 'The toggle has a stable visible and accessible name');
+  assert.equal(attributes.get('aria-pressed'), String(theme === 'dark'), 'The toggle reflects the initial theme');
+  toggle();
+  assert.equal(attributes.get('aria-pressed'), String(theme !== 'dark'), 'The toggle announces the new theme');
+  assert.equal(button.textContent, 'Dark theme');
 }
 console.log('PASS: light default, saved choices, blocked storage and theme toggling');
 const css = readFileSync(new URL('../style.css',import.meta.url),'utf8');

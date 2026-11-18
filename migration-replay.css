@@ -1,5 +1,6 @@
 .replay-shell { max-width: var(--layout-width); margin-inline: auto; padding-inline: var(--layout-gutter); }
 .replay-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
+.replay-header .theme-btn[aria-pressed='true'] { border-color: var(--accent); background: var(--paper-raise); box-shadow: inset 0 -2px 0 var(--accent); }
 .replay-layout {
   display: grid;
   grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
