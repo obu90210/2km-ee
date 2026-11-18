@@ -28,13 +28,13 @@ One short vertical accent sits beside the wordmark. Avoid patterned horizontal b
 | Primary and secondary links | Use a filled copper control for the hero's pilot link. Use an underlined text link for its secondary action and plain text for header navigation. Keep one clear primary action in a group. |
 | Utility buttons and filters | Use a 4px radius and at least 44px height. Use a border for utility controls. Pair a raised surface and copper edge with `aria-pressed` for the selected filter. Keep focus visible and test longer labels at phone widths. |
 | Evidence | Place figures on the reading surface in aligned columns. Stack them with horizontal separators on phones. Keep each figure with its label, definition and date. |
-| Project index | Use native disclosure rows. Use background and keyboard focus to signal interaction, with a stable text edge during hover and expansion. |
+| Project index | Use native disclosure rows with a visible focus state. With motion enabled, the row moves on hover and keyboard focus and the disclosure marker rotates when opened. |
 
 Use authentic photography and project-specific diagrams for visual interest. Let the typography and composition group related content before adding a panel, badge or decorative mark. Add new variants only when a recurring use calls for them.
 
 ## Motion, sharing and maintenance
 
-The photo parallax, knowledge flow, selected-work illustrations and project constellation retain their existing JavaScript and reduced-motion behaviour. Page content remains ordinary HTML. Do not hide substantive content behind motion or scripts.
+Preserve the strength and timing of the photo parallax, hero illustration, knowledge flow, selected-work illustrations and project index through visual refinements. Agree motion changes with the owner. Pause motion and the operating system's reduced-motion preference take priority. Page content remains ordinary HTML and readable without scripts.
 
 The credits and security pages use the same fonts and theme roles. The social card source is `docs/og-card.html` plus `docs/og-card.css`; export and inspect `og-image.png` at 1200×630 after visual changes.
 
