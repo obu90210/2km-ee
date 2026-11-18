@@ -16,6 +16,8 @@ The cutoff is 22:04:09 in Tallinn on 1 November; that day is partial. The window
 
 The aggregate used a read-only database transaction and the production reporting helpers for public traffic, the current configured office exclusion, and the stored non-junk flag. Source engagement counts each turn once when at least one associated source-click record exists, divided by all included turns; this differs from a rate calculated only over answers offering links. Timing medians use recorded total-request and request-to-first-token milliseconds, rounded to one decimal second; missing first-token timings are excluded. Only counts, timing medians and dates were returned; no visitor text, identifiers or source URLs were exported.
 
+The public source-click calculation is linked directly at `https://2km.ee/#source-click-rate`. The Copy citation button uses the same visible count, UTC window and scope. When refreshing the snapshot, update the disclosure alongside the other public figures. The portfolio check compares its rate, denominator, numerator and window with JSON-LD and `llms.txt`.
+
 Knowledge records may represent document sections and other indexed units. They must not be presented as unique original articles. The knowledge snapshot has its own date and must not be merged into the chatbot observation period.
 
 The rating sample is small and self-selected. The page makes no satisfaction, support-deflection, uptime, or international-adoption claim. Multilingual capability is separate from measured use in each country.

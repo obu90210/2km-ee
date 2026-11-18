@@ -52,10 +52,8 @@
 .replay-ledger :is(th, td):last-child { padding-right: 0; text-align: right; }
 .replay-citation { max-width: var(--layout-measure); margin-bottom: var(--space-section); padding-top: 24px; border-top: 1px solid var(--hair); }
 .replay-citation h2 { font-size: var(--type-subhead); margin-bottom: 12px; }
-.replay-status, .replay-copy-fallback { font-size: var(--type-support); }
-.replay-status:not(:empty), .replay-copy-fallback { margin-top: 12px; }
-.replay-copy-fallback { display: block; }
-.replay-copy-fallback textarea { display: block; width: 100%; margin-top: 6px; padding: 10px; border: 1px solid var(--hair); border-radius: var(--control-radius); color: var(--ink); background: var(--paper); font: inherit; }
+.replay-status { font-size: var(--type-support); }
+.replay-status:not(:empty) { margin-top: 12px; }
 
 @media (max-width: 760px) {
   .replay-layout { grid-template-columns: 1fr; padding-top: 32px; }

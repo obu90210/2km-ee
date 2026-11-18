@@ -99,6 +99,20 @@ h1, h2, h3, .hero-statement, .name { font-family: var(--font-heading); }
 .primary-action { border-color: var(--action-border); background: var(--action); color: var(--action-ink); text-decoration: none; }
 .primary-action:hover { color: var(--action-ink); text-decoration: underline; }
 .theme-btn:hover, .utility-button:hover, .fbtn:not([aria-pressed='true']):hover { background: var(--paper-raise); }
+.citation-status, .citation-fallback { font-size: var(--type-support); }
+.citation-status:not(:empty), .citation-fallback { margin-top: 12px; }
+.citation-fallback { display: block; }
+.citation-fallback textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid var(--hair);
+  border-radius: var(--control-radius);
+  color: var(--ink);
+  background: var(--paper);
+  font: inherit;
+}
 .eyebrow, .section-no { color: var(--accent); font-size: 20px; font-weight: 600; }
 h1 { font-size: var(--type-page); font-weight: 900; line-height: 1; margin: 20px 0 12px; }
 strong, b { font-weight: 600; }

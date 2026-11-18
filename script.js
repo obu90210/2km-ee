@@ -45,22 +45,55 @@ if (filters) {
   if (feedback) feedback.hidden = false;
 }
 
-// Direct project links also open the native details, including after filtering.
-function revealProject() {
+// Direct links open their details, including projects hidden by a category filter.
+function revealPortfolioDetails() {
   let id;
   try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
-  const entry = document.getElementById(id);
-  if (!entry || !entry.classList.contains('entry')) return;
+  const target = document.getElementById(id);
+  if (!target) return;
+  const entry = target.classList.contains('entry') ? target : target.closest('details.metric-disclosure');
+  if (!entry) return;
   if (entry.hidden) filters?.querySelector('[data-f="all"]')?.click();
   entry.open = true;
-  entry.scrollIntoView({ block: 'start' });
+  target.scrollIntoView({ block: 'start' });
 }
-window.addEventListener('hashchange', revealProject);
+window.addEventListener('hashchange', revealPortfolioDetails);
 document.addEventListener('click', event => {
   const link = event.target.closest('a[href^="#"]');
-  if (link && link.getAttribute('href') === location.hash) revealProject();
+  if (link && link.getAttribute('href') === location.hash) revealPortfolioDetails();
 });
-revealProject();
+revealPortfolioDetails();
+
+// Copy the published evidence and its canonical link from the same HTML visitors read.
+document.querySelectorAll('[data-citation]').forEach(citation => {
+  const button = citation.querySelector('[data-copy-citation]');
+  const status = citation.querySelector('[data-copy-status]');
+  const fallback = citation.querySelector('[data-copy-fallback]');
+  const field = fallback.querySelector('textarea');
+  const paragraphs = [...citation.querySelectorAll('[data-citation-text]')]
+    .map(paragraph => paragraph.textContent.trim().replace(/\s+/g, ' '));
+  const source = citation.querySelector('[data-citation-source]').href;
+  field.value = [...paragraphs, source].join('\n');
+  button.hidden = false;
+
+  button.addEventListener('click', async () => {
+    if (button.getAttribute('aria-busy') === 'true') return;
+    button.setAttribute('aria-busy', 'true');
+    status.textContent = '';
+    try {
+      await navigator.clipboard.writeText(field.value);
+      fallback.hidden = true;
+      status.textContent = 'Citation copied.';
+    } catch {
+      status.textContent = 'Automatic copying is unavailable.';
+      fallback.hidden = false;
+      field.focus();
+      field.select();
+    } finally {
+      button.removeAttribute('aria-busy');
+    }
+  });
+});
 
 // Share portfolio entries, not private applications. Keep anchors usable without JS.
 document.querySelectorAll('a.permalink').forEach(link => {

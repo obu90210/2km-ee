@@ -22,7 +22,7 @@ The portfolio is static, with first-party scripts, styles, fonts and images. It 
 The shared product knowledge service and customer chatbot are the lead case study: specialist ERP knowledge becomes searchable context and cited customer answers; usage and feedback guide improvements.
 
 - 4,249 public chat turns, 25 September 2026 at 00:00 UTC to 1 November 2026 at 20:04 UTC (22:04 in Tallinn; final day partial). Public, non-junk scope; staff and evaluation traffic excluded. A turn is one question or lookup, not a unique user or resolved support case.
-- 1,130 turns included a source click, approximately 26.6% of all public turns. Source clicks measure engagement, not answer accuracy or avoided support tickets.
+- 1,130 turns included a source click, approximately 26.6% of all public turns. Source clicks measure engagement, not answer accuracy or avoided support tickets. Calculation, measurement window and citation: https://2km.ee/#source-click-rate.
 - Median answer completion: 10.4 seconds across all 4,249 turns; median first token: 6.0 seconds across the 4,183 turns with a recorded first-token timing in that chatbot window.
 - 43,583 indexed knowledge records, recorded 20 October 2026. This separate snapshot counts records, which can include document sections rather than unique original articles.
 

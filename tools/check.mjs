@@ -82,6 +82,21 @@ for (const metric of metrics) {
   assert.equal(Number(text(match[2]).replace(/[^\d.]/g, '')), metric.value);
   assert.ok(llms.includes(metric.value.toLocaleString('en-US')), 'Plain-text metric: ' + metric.propertyID);
 }
+const clickDisclosure = html.match(/<details class="metric-disclosure">([\s\S]+?)<\/details>/)?.[1];
+assert.ok(clickDisclosure, 'Source engagement has a native evidence disclosure');
+const clickCitationUrl = 'https://2km.ee/#source-click-rate';
+assert.ok(clickDisclosure.includes('id="source-click-rate"') && clickDisclosure.includes(`href="${clickCitationUrl}"`) && llms.includes(clickCitationUrl), 'The visible and plain-text evidence link to the same citation');
+assert.match(clickDisclosure, /<summary[^>]*>[\s\S]*?data-metric="source-click-rate"[\s\S]*?<\/summary>/, 'The percentage itself opens the disclosure');
+const counts = clickDisclosure.match(/<strong>([\d,]+)<\/strong> out of <strong>([\d,]+)<\/strong>/);
+assert.ok(counts, 'Source engagement shows the numerator and denominator');
+const [clicks, turns] = counts.slice(1).map(count => Number(count.replaceAll(',', '')));
+assert.equal(turns, metrics.find(metric => metric.propertyID === 'public-turns').value);
+const roundedRate = Number((100 * clicks / turns).toFixed(1));
+assert.equal(roundedRate, metrics.find(metric => metric.propertyID === 'source-click-rate').value);
+assert.ok(clickDisclosure.includes(`(${roundedRate}%).`), 'The citation text includes the displayed percentage');
+assert.ok(llms.includes(counts[1] + ' turns included a source click'), 'The source-click count matches the plain-text evidence');
+const clickWindow = [...clickDisclosure.matchAll(/<time datetime="([^"]+)">/g)].map(match => match[1]);
+assert.equal(clickWindow.join('/'), graph.find(item => item['@id'] === 'https://2km.ee/#chatbot-snapshot').temporalCoverage, 'The source-click citation uses the chatbot snapshot window');
 const stories = [...html.matchAll(/<article class="case" data-work="(\d+)" data-illustration="([^"]+)" data-caption="([^"]+)"/g)];
 assert.equal(stories.length, 4);
 assert.deepEqual(stories.map(s => s[2]), ['chatbot', 'knowledge', 'development', 'testing']);

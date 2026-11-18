@@ -63,30 +63,3 @@ window.addEventListener('hashchange', () => {
 window.addEventListener('popstate', () => {
   if (location.hash === '#citation') syncCitationEntry();
 });
-
-const copyButton = document.querySelector('[data-copy-citation]');
-const copyStatus = document.querySelector('[data-copy-status]');
-const copyFallback = document.querySelector('[data-copy-fallback]');
-const copyField = copyFallback.querySelector('textarea');
-const citationText = document.querySelector('[data-citation-text]').textContent.trim();
-const citationSource = document.querySelector('[data-citation-source]').href;
-copyField.value = `${citationText}\n${citationSource}`;
-
-copyButton.hidden = false;
-copyButton.addEventListener('click', async () => {
-  if (copyButton.getAttribute('aria-busy') === 'true') return;
-  copyButton.setAttribute('aria-busy', 'true');
-  copyStatus.textContent = '';
-  try {
-    await navigator.clipboard.writeText(copyField.value);
-    copyFallback.hidden = true;
-    copyStatus.textContent = 'Citation copied.';
-  } catch {
-    copyStatus.textContent = 'Automatic copying is unavailable.';
-    copyFallback.hidden = false;
-    copyField.focus();
-    copyField.select();
-  } finally {
-    copyButton.removeAttribute('aria-busy');
-  }
-});
